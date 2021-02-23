@@ -1,0 +1,11 @@
+Demo:
+
+(1)   Toggle LED0 every 1000ms.
+(2)   Toggle LED1 when SW_USER is pushed.
+(3-1) Echo every three characters through the UART3 using the following sockets.
+        RxD3 : J7-D0
+        TxD3 : J7-D1
+        GND  : J8-G
+        Baud rate : 2Mbps
+(3-2) Blink LED1 faster if parity error, framing error, overrun error or timeout
+occurs. The error state is cleared when SW_USER is pushed. */
