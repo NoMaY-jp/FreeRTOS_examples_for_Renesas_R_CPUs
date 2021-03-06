@@ -32,7 +32,9 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_intc.h"
 /* Start user code for include. Do not edit comment generated here */
+
 #include "freertos_start.h"
+
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -40,7 +42,9 @@ Includes
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
+
 TaskHandle_t g_intc0_task;     /* intc0 event notify task */
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -106,12 +110,13 @@ void R_INTC0_Stop(void)
 }
 
 /* Start user code for adding. Do not edit comment generated here */
-/***********************************************************************************************************************
+
+/******************************************************************************
 * Function Name: U_INTC0_Start_Wait
 * Description  : This function clears INTP0 interrupt flag and enables interrupt.
 * Arguments    : None
 * Return Value : None
-***********************************************************************************************************************/
+******************************************************************************/
 void U_INTC0_Wait(void)
 {
     g_intc0_task = xTaskGetCurrentTaskHandle_R_Helper();
@@ -119,4 +124,5 @@ void U_INTC0_Wait(void)
     /* Wait for a notification from the interrupt/callback */
     ulTaskNotifyTake_R_Helper( portMAX_DELAY );
 }
+
 /* End user code. Do not edit comment generated here */

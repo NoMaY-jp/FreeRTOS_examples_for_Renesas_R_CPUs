@@ -87,38 +87,25 @@ void U_IICA1_Slave_Send_Receive_Stop(void);    /* for internal use */
 
 static void U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
 static void U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
+static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
 
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
-/* Workaround for the limitation that the Renesas RL78 simulator doesn't support the port redirection featue. */
-void R_IICA0_Create_Org(void);
+/* Workaround for the limitation that the Renesas RL78 simulator doesn't support
+ * the port redirection featue. */
+void R_IICA0_Create_org(void);
+void R_IICA0_Create_simulator_patch(void);
 void R_IICA0_Create(void)
 {
     if (IsRenesasSimDebugMode())
     {
-        /* Reset port redirection registers */
+        /* Reset port redirection registers before starting the IICA0 module. */
         PIOR0 = 0x00U;
         PIOR1 = 0x00U;
     }
-
-    R_IICA0_Create_Org();
-
-    if (IsRenesasSimDebugMode())
-    {
-        /* Reset SCLA0, SDAA0 pin */
-        PM1 &= ~0x30U;
-        P1 |= ~0xCFU;
-        POM1 &= ~0x30U;
-        /* Reset SCLA0, SDAA0 pin */
-        PM1 &= 0xCFU;
-
-        /* Set SCLA0, SDAA0 pin */
-        P6 &= 0xFCU;
-        PM6 |= 0x03U;
-        /* Set SCLA0, SDAA0 pin */
-        PM6 &= 0xFCU;
-    }
+    R_IICA0_Create_org();
+    R_IICA0_Create_simulator_patch();
 }
-#define R_IICA0_Create R_IICA0_Create_Org
+#define R_IICA0_Create R_IICA0_Create_org
 #endif
 
 /* End user code. Do not edit comment generated here */
@@ -143,8 +130,8 @@ void R_IICA0_Create(void)
     P1 &= 0xCFU;
     PM1 |= 0x30U;
     SMC0 = 0U;
-    IICWL0 = _E2_IICA0_IICWL_VALUE;
-    IICWH0 = _FF_IICA0_IICWH_VALUE;
+    IICWL0 = _4C_IICA0_IICWL_VALUE;
+    IICWH0 = _55_IICA0_IICWH_VALUE;
     IICCTL01 |= _01_IICA_fCLK_HALF;
     SVA0 = _12_IICA0_MASTERADDRESS;
     STCEN0 = 1U;
@@ -300,9 +287,9 @@ void R_IICA1_Create(void)
     IICE1 = 0U; /* disable IICA1 operation */
     IICAMK1 = 1U; /* disable INTIICA1 interrupt */
     IICAIF1 = 0U; /* clear INTIICA1 interrupt flag */
-    /* Set INTIICA1 low priority */
+    /* Set INTIICA1 level 2 priority */
     IICAPR11 = 1U;
-    IICAPR01 = 1U; 
+    IICAPR01 = 0U;
     /* Set SCLA1, SDAA1 pin */
     P6 &= 0xF3U;
     PM6 |= 0x0CU;
@@ -368,6 +355,35 @@ void R_IICA1_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 }
 
 /* Start user code for adding. Do not edit comment generated here */
+
+/******************************************************************************
+* Function Name: R_IICA0_Create_simulator_patch
+* Description  : This function patches R_IICA0_Create() for the Renesas RL78 Simulator
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+#if defined(RENESAS_SIMULATOR_DEBUGGING)
+/* Workaround for the limitation that the Renesas RL78 simulator doesn't support
+ * the port redirection featue. */
+void R_IICA0_Create_simulator_patch(void)
+{
+    if (IsRenesasSimDebugMode())
+    {
+        /* Reset SCLA0, SDAA0 pin */
+        PM1 &= ~0x30U;
+        P1 |= ~0xCFU;
+        POM1 &= ~0x30U;
+        /* Reset SCLA0, SDAA0 pin */
+        PM1 &= 0xCFU;
+
+        /* Set SCLA0, SDAA0 pin */
+        P6 &= 0xFCU;
+        PM6 |= 0x03U;
+        /* Set SCLA0, SDAA0 pin */
+        PM6 &= 0xFCU;
+    }
+}
+#endif
 
 /******************************************************************************
 * Function Name: U_IICA0_Master_Lock
@@ -585,6 +601,41 @@ static void U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     /* This function should be called in IICAMK1==1 */
     R_IICA1_Slave_Receive( (uint8_t *)rx_buf, rx_num );
+    IICAMK1 = 0U; /* enable INTIICA1 interrupt */
+}
+
+/******************************************************************************
+* Function Name: U_IICA1_Slave_Receive2_Wait
+* Description  : This function receives more data as slave mode.
+* Arguments    : rx_buf -
+*                    receive buffer pointer
+*                rx_num -
+*                    buffer size
+* Return Value : status -
+*                    MD_OK or MD_ERROR or MD_NACK
+******************************************************************************/
+MD_STATUS U_IICA1_Slave_Receive2_Wait(uint8_t *rx_buf, uint16_t rx_num)
+{
+    uint32_t value;
+
+    /* Set up the interrupt/callback ready to post a notification */
+    g_iica1_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
+    U_IICA1_Slave_Receive2( rx_buf, rx_num );
+
+    /* Wait for a notification from the interrupt/callback */
+    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+
+    return value & 0xFFFFU;
+}
+
+static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
+{
+    uint8_t t_iica1_slave_status_flag;
+
+    /* This function should be called in IICAMK1==1 */
+    t_iica1_slave_status_flag = g_iica1_slave_status_flag;
+    R_IICA1_Slave_Receive( (uint8_t *)rx_buf, rx_num );
+    g_iica1_slave_status_flag = t_iica1_slave_status_flag;
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
 }
 

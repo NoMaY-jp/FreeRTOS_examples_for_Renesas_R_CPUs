@@ -32,7 +32,9 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_serial.h"
 /* Start user code for include. Do not edit comment generated here */
+
 #include "freertos_start.h"
+
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -66,17 +68,28 @@ extern volatile uint16_t  g_iica0_tx_cnt;              /* iica0 send data count 
 /* Start user code for global. Do not edit comment generated here */
 
 extern TaskHandle_t       g_iic00_master_task;         /* iic00 master task */
-extern QueueHandle_t      g_iic00_master_mutex;        /* iic00 master mutex */
 extern TaskHandle_t       g_iica0_slave_task;          /* iica0 slave task */
+
+static volatile uint32_t  g_iica0_slave_notification;  /* iica0 slave notification */
 
 extern void U_IIC00_Master_Send_Receive_Stop(void);    /* for internal use */
 extern void U_IICA0_Slave_Send_Receive_Stop(void);     /* for internal use */
 
 static void u_iic00_callback_master_common(MD_STATUS flag);    /* iic00 master common callback */
 static void u_iica0_callback_slave_common(MD_STATUS flag);     /* iica0 slave common callback */
+static void u_wdt_request_interrupt(void);             /* wdt interrupt (as a software intetrrupt) request */
+
+static inline void WTIM0_controle_patch(uint8_t val)
+{
+    if (1U == val) { WTIM0 = 1U; } else { WTIM0 = 0U; }
+}
+static volatile uint8_t WTIM0_controle_ignore;
+#undef WTIM0
+#define WTIM0 WTIM0_controle_patch(1U); WTIM0_controle_ignore
 
 #define r_iic00_interrupt R_CG_FREERTOS_INTERRUPT_EI(r_iic00_interrupt)
-#define r_iica0_interrupt R_CG_FREERTOS_INTERRUPT_EI(r_iica0_interrupt)
+#define r_iica0_interrupt R_CG_INTERRUPT_EI(r_iica0_interrupt)
+#define u_wdt_interrupt R_CG_FREERTOS_INTERRUPT_EI(u_wdt_interrupt)
 
 /* End user code. Do not edit comment generated here */
 
@@ -394,7 +407,7 @@ static void u_iic00_callback_master_common(MD_STATUS flag)
 /******************************************************************************
 * Function Name: u_iica0_callback_slave_common
 * Description  : This function is a callback function when IICA0 finishes
-*                master transmission/reception or IIC0 master error occurs.
+*                slave transmission/reception or IICA0 slave error occurs.
 * Arguments    : flag -
 *                    status flag
 * Return Value : None
@@ -403,7 +416,48 @@ static void u_iica0_callback_slave_common(MD_STATUS flag)
 {
     U_IICA0_Slave_Send_Receive_Stop();
 
-    xTaskNotifyFromISR_R_Helper( &g_iica0_slave_task, 0x10000 | flag );
+    /* If there are no tasks waiting for a notification or a notification was already
+     * sent (or is going to be sent), i.e. 
+     * when g_iica0_slave_task == NULL || g_iica0_slave_notification != 0U,
+     * a notification isn't sent or is skipped.
+     */
+    if (NULL != g_iica0_slave_task && 0U == g_iica0_slave_notification)
+    {
+        /* Generate INTWDTI interrupt manually as a software intetrrupt. The interrupt
+         * priority of INTIICA0 is configured higher than the SYSCALL interrupt priority.
+         * On the other hand, the interrupt priority of INTWDTI is configured within
+         * the SYSCALL interrupt priority.
+         */
+        g_iica0_slave_notification = 0x10000 | flag;
+        u_wdt_request_interrupt();
+    }
+}
+
+/******************************************************************************
+* Function Name: u_wdt_request_interrupt
+* Description  : This function requests INTWDT interrupt (as a software intetrrupt).
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+static void u_wdt_request_interrupt(void)
+{
+    WDTIIF = 1U;   /* set INTWDTI interrupt flag (as a software interrupt) */
+    WDTIMK = 0U;   /* enable INTWDTI interrupt (as a software interrupt) */
+}
+
+/******************************************************************************
+* Function Name: u_wdt_interrupt
+* Description  : This function is INTWDT interrupt (as a software intetrrupt) service routine.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+static void __near u_wdt_interrupt(void)
+{
+    /* Note that g_iica0_slave_task is automatically set to NULL after posting a notification,
+     * but g_iica0_slave_notification isn't automatically set to 0, so is manually set to 0.
+     */
+    xTaskNotifyFromISR_R_Helper( &g_iica0_slave_task, g_iica0_slave_notification );
+    g_iica0_slave_notification = 0U;
 }
 
 /* End user code. Do not edit comment generated here */

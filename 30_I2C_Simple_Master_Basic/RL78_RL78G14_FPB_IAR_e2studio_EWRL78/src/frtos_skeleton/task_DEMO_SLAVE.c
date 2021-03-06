@@ -21,19 +21,13 @@ Includes   <System Includes> , "Project Includes"
 ***********************************************************************************************************************/
 #include "task_function.h"
 /* Start user code for import. Do not edit comment generated here */
+
 #include "freertos_start.h"
 #include "platform.h"
 #include "r_cg_serial.h"
 #include "rl78g14fpbdef.h"
 #include "demo_slave.h"
 
-#if defined(RENESAS_SIMULATOR_DEBUGGING)
-/* Hardware or Renesas RL78 Simulator */
-#define SW1_REMOVE_CHATTERING_PERIOD_MS pdMS_TO_TICKS( !IsRenesasSimDebugMode() ? 10 : 0 )
-#else
-/* Hardware only */
-#define SW1_REMOVE_CHATTERING_PERIOD_MS pdMS_TO_TICKS( 10 )
-#endif
 /* End user code. Do not edit comment generated here */
 
 void task_DMSLV(void * pvParameters)
@@ -60,7 +54,7 @@ void task_DMSLV(void * pvParameters)
         switch (recv_buff[0])
         {
         case DEMO_SLAVE_GET_SW_STAT:
-            status = U_IICA0_Slave_Receive_Wait( &recv_buff[1], 1 );
+            status = U_IICA0_Slave_Receive2_Wait( &recv_buff[1], 1 );
             if (MD_OK != status)
             {
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */
@@ -73,15 +67,16 @@ void task_DMSLV(void * pvParameters)
             {
             case DEMO_SLAVE_SW1:
                 send_buff[0] = SW1;
-                U_IICA0_Slave_Send_Wait( &send_buff[0], 1 );
                 break;
             default:
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */
+                send_buff[0] = SW1_RELEASE;
                 break;
             }
+            U_IICA0_Slave_Send_Wait( &send_buff[0], 1 );
             break;
         case DEMO_SLAVE_SET_LED_STAT:
-            status = U_IICA0_Slave_Receive_Wait( &recv_buff[1], 2 );
+            status = U_IICA0_Slave_Receive2_Wait( &recv_buff[1], 2 );
             if (MD_OK != status)
             {
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */

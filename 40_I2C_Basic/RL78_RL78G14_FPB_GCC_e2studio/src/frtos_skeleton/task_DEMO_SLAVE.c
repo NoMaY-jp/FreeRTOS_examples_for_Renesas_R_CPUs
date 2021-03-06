@@ -21,11 +21,13 @@ Includes   <System Includes> , "Project Includes"
 ***********************************************************************************************************************/
 #include "task_function.h"
 /* Start user code for import. Do not edit comment generated here */
+
 #include "freertos_start.h"
 #include "platform.h"
 #include "r_cg_serial.h"
 #include "rl78g14fpbdef.h"
 #include "demo_slave.h"
+
 /* End user code. Do not edit comment generated here */
 
 void task_DMSLV(void * pvParameters)
@@ -52,7 +54,7 @@ void task_DMSLV(void * pvParameters)
         switch (recv_buff[0])
         {
         case DEMO_SLAVE_GET_SW_STAT:
-            status = U_IICA1_Slave_Receive_Wait( &recv_buff[1], 1 );
+            status = U_IICA1_Slave_Receive2_Wait( &recv_buff[1], 1 );
             if (MD_OK != status)
             {
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */
@@ -65,15 +67,16 @@ void task_DMSLV(void * pvParameters)
             {
             case DEMO_SLAVE_SW1:
                 send_buff[0] = SW1;
-                U_IICA1_Slave_Send_Wait( &send_buff[0], 1 );
                 break;
             default:
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */
+                send_buff[0] = SW1_RELEASE;
                 break;
             }
+            U_IICA1_Slave_Send_Wait( &send_buff[0], 1 );
             break;
         case DEMO_SLAVE_SET_LED_STAT:
-            status = U_IICA1_Slave_Receive_Wait( &recv_buff[1], 2 );
+            status = U_IICA1_Slave_Receive2_Wait( &recv_buff[1], 2 );
             if (MD_OK != status)
             {
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */

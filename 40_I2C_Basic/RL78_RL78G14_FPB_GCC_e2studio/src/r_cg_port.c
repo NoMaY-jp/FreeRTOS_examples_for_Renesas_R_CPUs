@@ -72,6 +72,12 @@ void R_PORT_Create(void)
 
 /* Start user code for adding. Do not edit comment generated here */
 
+/******************************************************************************
+* Function Name: R_PORT_Create_simulator_patch
+* Description  : This function patches R_PORT_Create() for the Renesas RL78 Simulator
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Workaround for a problem that the Renesas RL78 simulator does not work expectedly
  * for a wiring such as "N-ch Open Drain Output Port <--> LED <--> R <--> VDD" */

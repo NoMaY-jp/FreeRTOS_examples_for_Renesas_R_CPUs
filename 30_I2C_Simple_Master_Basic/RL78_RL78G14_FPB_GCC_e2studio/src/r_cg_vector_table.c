@@ -197,6 +197,7 @@ void R_Dummy(void)
 
 #ifndef VECTOR_TABLE_H
 #error The r_cg_vector_table.c has not been modified by the r_cg_vector_table.js yet.
+#error Please touch the r_cg_vector_table.c (without anything other than saving it).
 #endif
 
 /* End user code. Do not edit comment generated here */

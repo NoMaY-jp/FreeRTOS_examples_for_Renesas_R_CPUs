@@ -21,6 +21,7 @@ Includes   <System Includes> , "Project Includes"
 ***********************************************************************************************************************/
 #include "task_function.h"
 /* Start user code for import. Do not edit comment generated here */
+
 #include "freertos_start.h"
 #include "platform.h"
 #include "r_cg_serial.h"
@@ -34,6 +35,7 @@ Includes   <System Includes> , "Project Includes"
 /* Hardware only */
 #define LED0_BLINK_FREQUENCY_MS pdMS_TO_TICKS( 1000 )
 #endif
+
 /* End user code. Do not edit comment generated here */
 
 void task_LED0(void * pvParameters)
@@ -48,13 +50,14 @@ void task_LED0(void * pvParameters)
 
     if (IsRenesasSimDebugMode())
     {
-        vTaskDelay( portMAX_DELAY - 1 );
+        vTaskSuspend( NULL );
     }
+
+    U_IICA0_Master_Lock();
 
     send_buff[0] = DEMO_SLAVE_SET_LED_STAT;
     send_buff[1] = DEMO_SLAVE_LED0;
     send_buff[2] = LED_ON;
-    U_IICA0_Master_Lock();
     status = U_IICA0_Master_Send_Wait( DEMO_SLAVE_I2C_ADDR7, send_buff, 3 );
     if (MD_OK != status)
     {
@@ -64,17 +67,20 @@ void task_LED0(void * pvParameters)
             nop();
         }
     }
+
     U_IICA0_Master_Unlock();
+
     last_LED0_stat = send_buff[2];
 
     for (;;)
     {
         vTaskDelay( LED0_BLINK_FREQUENCY_MS );
 
+        U_IICA0_Master_Lock();
+
         send_buff[0] = DEMO_SLAVE_SET_LED_STAT;
         send_buff[1] = DEMO_SLAVE_LED0;
         send_buff[2] = (last_LED0_stat == LED_ON) ? LED_OFF : LED_ON;
-        U_IICA0_Master_Lock();
         status = U_IICA0_Master_Send_Wait( DEMO_SLAVE_I2C_ADDR7, send_buff, 3 );
         if (MD_OK != status)
         {
@@ -84,7 +90,9 @@ void task_LED0(void * pvParameters)
                 nop();
             }
         }
+
         U_IICA0_Master_Unlock();
+
         last_LED0_stat = send_buff[2];
     }
 

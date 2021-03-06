@@ -45,6 +45,7 @@ Pragma directive
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
+
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Workaround for a problem that the Renesas RL78 simulator does not work expectedly
  * for a wiring such as "N-ch Open Drain Output Port <--> LED <--> R <--> VDD" */
@@ -57,6 +58,7 @@ void R_PORT_Create(void)
 }
 #define R_PORT_Create R_PORT_Create_org
 #endif
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -77,6 +79,13 @@ void R_PORT_Create(void)
 }
 
 /* Start user code for adding. Do not edit comment generated here */
+
+/******************************************************************************
+* Function Name: R_PORT_Create_simulator_patch
+* Description  : This function patches R_PORT_Create() for the Renesas RL78 Simulator
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Workaround for a problem that the Renesas RL78 simulator does not work expectedly
  * for a wiring such as "N-ch Open Drain Output Port <--> LED <--> R <--> VDD" */
@@ -88,4 +97,5 @@ void R_PORT_Create_simulator_patch(void)
     }
 }
 #endif
+
 /* End user code. Do not edit comment generated here */

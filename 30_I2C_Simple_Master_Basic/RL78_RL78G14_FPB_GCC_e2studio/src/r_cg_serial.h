@@ -373,7 +373,7 @@ Macro definitions (Register bit)
 /***********************************************************************************************************************
 Macro definitions
 ***********************************************************************************************************************/
-#define _8400_IIC00_DIVISOR              (0x8400U)
+#define _9E00_IIC00_DIVISOR              (0x9E00U)
 #define IIC00_WAITTIME                   (13U) /* change the waiting time according to the system */
 #define IIC00_WAITTIME_2                 (53U) /* change the waiting time according to the system */
 #define _10_IICA0_SLAVEADDRESS           (0x10U)
@@ -416,6 +416,7 @@ MD_STATUS U_IIC00_Master_Receive_Wait(uint8_t adr7, uint8_t * rx_buf, uint16_t r
 
 MD_STATUS U_IICA0_Slave_Send_Wait(const uint8_t * tx_buf, uint16_t tx_num);
 MD_STATUS U_IICA0_Slave_Receive_Wait(uint8_t * rx_buf, uint16_t rx_num);
+MD_STATUS U_IICA0_Slave_Receive2_Wait(uint8_t * rx_buf, uint16_t rx_num);
 
 /* End user code. Do not edit comment generated here */
 #endif

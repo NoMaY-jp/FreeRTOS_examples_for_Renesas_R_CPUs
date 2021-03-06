@@ -35,7 +35,9 @@ Includes
 #include "r_cg_intc.h"
 #include "r_cg_serial.h"
 /* Start user code for include. Do not edit comment generated here */
+
 #include "freertos_start.h"
+
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -72,6 +74,7 @@ void main(void)
 {
     R_MAIN_UserInit();
     /* Start user code. Do not edit comment generated here */
+
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
     /* Prevent the variable from being optimized away for the debugger stratup command or script */
     (void) *(volatile unsigned short *)&renesas_simulator_debugging_key;
@@ -88,6 +91,7 @@ void main(void)
     {
         ;
     }
+
     /* End user code. Do not edit comment generated here */
 }
 

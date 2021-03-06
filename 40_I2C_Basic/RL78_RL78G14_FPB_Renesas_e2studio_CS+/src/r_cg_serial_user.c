@@ -44,6 +44,9 @@ Pragma directive
 #pragma interrupt r_iica0_interrupt(vect=INTIICA0)
 #pragma interrupt r_iica1_interrupt(vect=INTIICA1)
 /* Start user code for pragma. Do not edit comment generated here */
+
+#pragma interrupt u_wdt_interrupt(vect=INTWDTI)
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -68,14 +71,26 @@ extern volatile uint16_t  g_iica1_tx_cnt;              /* iica1 send data count 
 extern TaskHandle_t       g_iica0_master_task;         /* iica0 master task */
 extern TaskHandle_t       g_iica1_slave_task;          /* iica1 slave task */
 
+static volatile uint32_t  g_iica1_slave_notification;  /* iica1 slave notification */
+
 extern void U_IICA0_Master_Send_Receive_Stop(void);    /* for internal use */
 extern void U_IICA1_Slave_Send_Receive_Stop(void);     /* for internal use */
 
 static void u_iica0_callback_master_common(MD_STATUS flag);    /* iica0 master common callback */
 static void u_iica1_callback_slave_common(MD_STATUS flag);     /* iica1 slave common callback */
+static void u_wdt_request_interrupt(void);             /* wdt interrupt (as a software intetrrupt) request */
+
+static inline void WTIM1_controle_patch(uint8_t val)
+{
+    if (1U == val) { WTIM1 = 1U; } else { WTIM1 = 0U; }
+}
+static volatile uint8_t WTIM1_controle_ignore;
+#undef WTIM1
+#define WTIM1 WTIM1_controle_patch(TRC1); WTIM1_controle_ignore
 
 #define r_iica0_interrupt R_CG_FREERTOS_INTERRUPT_EI(r_iica0_interrupt)
-#define r_iica1_interrupt R_CG_FREERTOS_INTERRUPT_EI(r_iica1_interrupt)
+#define r_iica1_interrupt R_CG_INTERRUPT_EI(r_iica1_interrupt)
+#define u_wdt_interrupt R_CG_FREERTOS_INTERRUPT_EI(u_wdt_interrupt)
 
 /* End user code. Do not edit comment generated here */
 
@@ -432,7 +447,48 @@ static void u_iica1_callback_slave_common(MD_STATUS flag)
 {
     U_IICA1_Slave_Send_Receive_Stop();
 
-    xTaskNotifyFromISR_R_Helper( &g_iica1_slave_task, 0x10000 | flag );
+    /* If there are no tasks waiting for a notification or a notification was already
+     * sent (or is going to be sent), i.e. 
+     * when g_iica1_slave_task == NULL || g_iica1_slave_notification != 0U,
+     * a notification isn't sent or is skipped.
+     */
+    if (NULL != g_iica1_slave_task && 0U == g_iica1_slave_notification)
+    {
+        /* Generate INTWDTI interrupt manually as a software intetrrupt. The interrupt
+         * priority of INTIICA1 is configured higher than the SYSCALL interrupt priority.
+         * On the other hand, the interrupt priority of INTWDTI is configured within
+         * the SYSCALL interrupt priority.
+         */
+        g_iica1_slave_notification = 0x10000 | flag;
+        u_wdt_request_interrupt();
+    }
+}
+
+/******************************************************************************
+* Function Name: u_wdt_request_interrupt
+* Description  : This function requests INTWDT interrupt (as a software intetrrupt).
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+static void u_wdt_request_interrupt(void)
+{
+    WDTIIF = 1U;   /* set INTWDTI interrupt flag (as a software interrupt) */
+    WDTIMK = 0U;   /* enable INTWDTI interrupt (as a software interrupt) */
+}
+
+/******************************************************************************
+* Function Name: u_wdt_interrupt
+* Description  : This function is INTWDT interrupt (as a software intetrrupt) service routine.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+static void __near u_wdt_interrupt(void)
+{
+    /* Note that g_iica1_slave_task is automatically set to NULL after posting a notification,
+     * but g_iica1_slave_notification isn't automatically set to 0, so is manually set to 0.
+     */
+    xTaskNotifyFromISR_R_Helper( &g_iica1_slave_task, g_iica1_slave_notification );
+    g_iica1_slave_notification = 0U;
 }
 
 /* End user code. Do not edit comment generated here */

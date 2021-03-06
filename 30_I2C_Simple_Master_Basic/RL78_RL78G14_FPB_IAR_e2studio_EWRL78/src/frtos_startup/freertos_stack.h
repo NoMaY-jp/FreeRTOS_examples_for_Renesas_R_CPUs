@@ -51,8 +51,7 @@ extern "C" {
 
 #elif defined(__ICCRL78__)
 
-/* The stack usage analysis tool 'Call Walker' provides detail stack usage information.
- * The following table is based on the result of analysis 02-Mar-2021.
+/* The following table is based on the result of analysis 02-Mar-2021.
  *
  * The stack space for interrupt stub is calculated as follows:
  *
@@ -65,7 +64,7 @@ extern "C" {
 
 #if defined(NDEBUG)
 
-/* The following table is for the case of using compile optimization of CC-RL. */
+/* The following table is for the case of using compile optimization of ICCRL78. */
 
 #define task_LED0_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(  72, 16, 32 ) )
 #define task_LED1_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(  74, 16, 32 ) )
@@ -76,7 +75,7 @@ extern "C" {
 
 #else
 
-/* The following table is for the case of NOT using compile optimization of CC-RL. */
+/* The following table is for the case of NOT using compile optimization of ICCRL78. */
 
 #define task_LED0_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES( 114, 16, 32 ) )
 #define task_LED1_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES( 116, 16, 32 ) )

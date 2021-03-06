@@ -2605,7 +2605,7 @@
         <setting name="ClockSetting" value="fCLKHalf" />
         <setting name="SlaveAddress" value="18" />
         <setting name="Transfer_speed" value="standard" />
-        <setting name="Transfer_rate" value="33300" />
+        <setting name="Transfer_rate" value="100000" />
         <setting name="Digital_filter" value="unused" />
         <setting name="Interrupt_Priority" value="3" />
         <setting name="Master_receive_end_callback_function" value="generated" />
@@ -2621,7 +2621,7 @@
         <setting name="SlaveAddress" value="16" />
         <setting name="Transfer_speed" value="standard" />
         <setting name="Digital_filter" value="unused" />
-        <setting name="Interrupt_Priority" value="3" />
+        <setting name="Interrupt_Priority" value="2" />
         <setting name="CallSlaveReceptionEnd" value="Checked" />
         <setting name="CallSlaveTransmitEnd" value="Checked" />
         <setting name="CallSlaveError" value="Checked" />

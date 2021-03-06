@@ -2454,7 +2454,7 @@
         <setting name="Channel_function_-i" value="3" />
         <setting name="Detail_function_-i" value="-1" />
         <IIC00>
-          <setting name="TransferSpeed" value="30000" />
+          <setting name="TransferSpeed" value="100000" />
           <setting name="Interrupt_priority" value="3" />
           <setting name="Master_receive_end_callback_function" value="generated" />
           <setting name="Master_transmit_end_callback_function" value="generated" />
@@ -2558,7 +2558,7 @@
         <setting name="SlaveAddress" value="16" />
         <setting name="Transfer_speed" value="standard" />
         <setting name="Digital_filter" value="unused" />
-        <setting name="Interrupt_Priority" value="3" />
+        <setting name="Interrupt_Priority" value="2" />
         <setting name="CallSlaveReceptionEnd" value="Checked" />
         <setting name="CallSlaveTransmitEnd" value="Checked" />
         <setting name="CallSlaveError" value="Checked" />

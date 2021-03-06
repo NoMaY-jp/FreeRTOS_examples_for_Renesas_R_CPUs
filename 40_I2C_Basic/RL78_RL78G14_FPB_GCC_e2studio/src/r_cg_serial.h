@@ -374,8 +374,8 @@ Macro definitions (Register bit)
 Macro definitions
 ***********************************************************************************************************************/
 #define _12_IICA0_MASTERADDRESS          (0x12U)
-#define _FF_IICA0_IICWH_VALUE            (0xFFU)
-#define _E2_IICA0_IICWL_VALUE            (0xE2U)
+#define _55_IICA0_IICWH_VALUE            (0x55U)
+#define _4C_IICA0_IICWL_VALUE            (0x4CU)
 #define _10_IICA1_SLAVEADDRESS           (0x10U)
 #define _55_IICA1_IICWH_VALUE            (0x55U)
 #define _4C_IICA1_IICWL_VALUE            (0x4CU)
@@ -416,6 +416,7 @@ MD_STATUS U_IICA0_Master_Receive_Wait(uint8_t adr7, uint8_t * rx_buf, uint16_t r
 
 MD_STATUS U_IICA1_Slave_Send_Wait(const uint8_t * tx_buf, uint16_t tx_num);
 MD_STATUS U_IICA1_Slave_Receive_Wait(uint8_t * rx_buf, uint16_t rx_num);
+MD_STATUS U_IICA1_Slave_Receive2_Wait(uint8_t * rx_buf, uint16_t rx_num);
 
 /* End user code. Do not edit comment generated here */
 #endif
