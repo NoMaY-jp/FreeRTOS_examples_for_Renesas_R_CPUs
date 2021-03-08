@@ -78,7 +78,7 @@
     <ADPC_DA_PIN Name="ADPC_DA_PIN" Text="false" />
     <ADPC_AD Name="ADPC_AD" Value="-1" />
     <ADPC_DA Name="ADPC_DA" Value="0" />
-    <IIC00 Name="IIC00" Text="false" Comment="unused" Trigger="IIC00">
+    <IIC00 Name="IIC00" Text="true" Comment="unused" Trigger="IIC00">
       <Effect>
         <PORT Forcible="" />
       </Effect>
@@ -135,7 +135,7 @@
     <TRD1_INTP0 Name="TRD1_INTP0" Value="0" />
     <ELC_TARGET8 Name="ELC_TARGET8" Text="disable" />
     <ProjectName Name="PrjName" Text="Applilet3" />
-    <ProjectPath Name="PrjPath" Text="C:\Renesas\GitHubDesktop\work\FreeRTOS_Examples\30_I2C_Simple_Master_Basic\RL78_RL78G14_FPB_IAR_e2studio_EWRL78" />
+    <ProjectPath Name="PrjPath" Text="C:\Renesas\GitHubDesktop\work\FreeRTOS\FreeRTOS\Demo\RL78_RL78G14_FPB_IAR_e2studio_EWRL78" />
     <ProjectKind Name="PrjKind" Text="Project78K0R" />
     <DeviceName Name="DeviceName" Fixed="" Text="RL78G14" />
     <CPUCoreType Name="CPUCoreType" Fixed="" Text="1" />
@@ -309,7 +309,7 @@
           <P27 Chip="RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P27/ANI7" AltFunc="" Point="I/O" />
         </Port2>
         <Port3 Pullup="true">
-          <P30 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin" Name="P30/INTP3/RTC1HZ/_SCK00/SCL00/TRJO0" Nch="true" TTL="true" AltFunc="" Point="I/O" />
+          <P30 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin" Name="P30/INTP3/RTC1HZ/_SCK00/SCL00/TRJO0" Nch="true" TTL="true" AltFunc="SCL00" Point="I/O" />
           <P31 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P31/TI03/TO03/INTP4" AltFunc="" Point="I/O" />
         </Port3>
         <Port4 Pullup="true">
@@ -321,7 +321,7 @@
           <P45 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P45/SO01" Nch="true" AltFunc="" Point="I/O" />
         </Port4>
         <Port5 Pullup="true">
-          <P50 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin" Name="P50/INTP1/SI00/RXD0/TOOLRXD/SDA00/TRGIOA" TTL="true" Nch="true" AltFunc="" Point="I/O" />
+          <P50 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin" Name="P50/INTP1/SI00/RXD0/TOOLRXD/SDA00/TRGIOA" TTL="true" Nch="true" AltFunc="SDA00" Point="I/O" />
           <P51 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_100pin" Name="P51/INTP2/SO00/TXD0/TOOLTXD/TRGIOB" Nch="true" AltFunc="" Point="I/O" />
           <P52 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Nch="true" Name="P52/SO31" AltFunc="" Point="I/O" />
           <P53 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" TTL="true" Nch="true" Name="P53/SI31/SDA31" AltFunc="" Point="I/O" />
@@ -331,8 +331,8 @@
         <Port6>
           <P60 Name="P60/SCLA0" AltFunc="" Point="I/O" />
           <P61 Name="P61/SDAA0" AltFunc="" Point="I/O" />
-          <P62 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P62/_SSI00/SCLA1" AltFunc="SCLA1" Point="I/O" />
-          <P63 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P63/SDAA1" AltFunc="SDAA1" Point="I/O" />
+          <P62 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P62/_SSI00/SCLA1" AltFunc="" Point="I/O" />
+          <P63 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Name="P63/SDAA1" AltFunc="" Point="I/O" />
           <P64 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Pullup="true" Name="P64/TI10/TO10" AltFunc="" Point="I/O" />
           <P65 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Pullup="true" Name="P65/TI11/TO11" AltFunc="" Point="I/O" />
           <P66 Chip="RL78G14_80pin,RL78G14_100pin,RL78G14_128pin" Pullup="true" Name="P66/TI12/TO12" AltFunc="" Point="I/O" />
@@ -686,7 +686,7 @@
           <INTSRE1 InUse="0" ISR="r_uart1_interrupt_error" />
           <INTSR0 InUse="0" ISR="r_uart0_interrupt_receive" />
           <INTSR1 InUse="0" ISR="r_uart1_interrupt_receive" />
-          <INTIIC00 InUse="0" ISR="r_iic00_interrupt" />
+          <INTIIC00 InUse="1" ISR="r_iic00_interrupt" />
           <INTIIC01 InUse="0" ISR="r_iic01_interrupt" />
           <INTIIC10 InUse="0" ISR="r_iic10_interrupt" />
           <INTIIC11 InUse="0" ISR="r_iic11_interrupt" />
@@ -711,7 +711,7 @@
           <INTIICA0 InUse="1" ISR="r_iica0_interrupt" />
         </IICA0>
         <IICA1>
-          <INTIICA1 Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" InUse="1" ISR="r_iica1_interrupt" />
+          <INTIICA1 Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" InUse="0" ISR="r_iica1_interrupt" />
         </IICA1>
       </Serial>
       <ADC>
@@ -946,7 +946,7 @@
         <r_cg_serial.c UserName="r_cg_serial.c" LibName=".c" InUse="1">
           <Type R_SAUn_Create="void R_SAUn_Create(void)" R_SAUn_Set_PowerOff="void R_SAUn_Set_PowerOff(void)" R_SAUn_Set_SnoozeOn="void R_SAUn_Set_SnoozeOn(void)" R_SAUn_Set_SnoozeOff="void R_SAUn_Set_SnoozeOff(void)" R_UARTn_Create="void R_UARTn_Create(void)" R_UARTn_Send="MD_STATUS R_UARTn_Send(uint8_t * const tx_buf, uint16_t tx_num)" R_UARTn_Receive="MD_STATUS R_UARTn_Receive(uint8_t * const rx_buf, uint16_t rx_num)" R_UARTn_Start="void R_UARTn_Start(void)" R_UARTn_Stop="void R_UARTn_Stop(void)" R_CSIn_Create="void R_CSIn_Create(void)" R_CSIn_Send="MD_STATUS R_CSIn_Send(uint8_t * const tx_buf, uint16_t tx_num)" R_CSIn_Receive="MD_STATUS R_CSIn_Receive(uint8_t * const rx_buf, uint16_t rx_num) " R_CSIn_Send_Receive="MD_STATUS R_CSIn_Send_Receive(uint8_t * const tx_buf, uint16_t tx_num, uint8_t * const rx_buf) " R_CSIn_Start="void R_CSIn_Start(void)" R_CSIn_Stop="void R_CSIn_Stop(void)" R_IICn_Create="void R_IICn_Create(void)" R_IICn_Master_Send="void R_IICn_Master_Send(uint8_t adr, uint8_t * const tx_buf, uint16_t tx_num)" R_IICn_Master_Receive="void R_IICn_Master_Receive(uint8_t adr, uint8_t * const rx_buf, uint16_t rx_num) " R_IICn_Stop="void R_IICn_Stop(void)" R_IICn_StartCondition="void R_IICn_StartCondition(void)" R_IICn_StopCondition="void R_IICn_StopCondition(void)" R_IICAn_Create="void R_IICAn_Create(void)" R_IICAn_Master_Send="MD_STATUS R_IICAn_Master_Send(uint8_t adr, uint8_t * const tx_buf, uint16_t tx_num, uint8_t wait)" R_IICAn_Master_Receive="MD_STATUS R_IICAn_Master_Receive(uint8_t adr, uint8_t * const rx_buf, uint16_t rx_num, uint8_t wait)" R_IICAn_Slave_Send="void R_IICAn_Slave_Send(uint8_t * const tx_buf, uint16_t tx_num)" R_IICAn_Slave_Receive="void R_IICAn_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)" R_IICAn_Stop="void R_IICAn_Stop(void)" R_IICAn_StopCondition="void R_IICAn_StopCondition(void)" R_IICAn_Set_SnoozeOn="void R_IICAn_Set_SnoozeOn(void)" R_IICAn_Set_SnoozeOff="void R_IICAn_Set_SnoozeOff(void)" R_IICAn_Set_PowerOff="void R_IICAn_Set_PowerOff(void)" />
           <SAU0 InUse="">
-            <R_SAU0_Create UserName="R_SAU0_Create" LibName="R_SAUn_Create" InUse="0" Init="1" InitMode="" />
+            <R_SAU0_Create UserName="R_SAU0_Create" LibName="R_SAUn_Create" InUse="1" Init="1" InitMode="" />
             <R_SAU0_Set_PowerOff UserName="R_SAU0_Set_PowerOff" LibName="R_SAUn_Set_PowerOff" InUse="0" />
             <R_SAU0_Set_SnoozeOn UserName="R_SAU0_Set_SnoozeOn" LibName="R_SAUn_Set_SnoozeOn" InUse="0" />
             <R_SAU0_Set_SnoozeOff UserName="R_SAU0_Set_SnoozeOff" LibName="R_SAUn_Set_SnoozeOff" InUse="0" />
@@ -997,12 +997,12 @@
               <R_CSI11_Send_Receive UserName="R_CSI11_Send_Receive" LibName="R_CSIn_Send_Receive" InUse="0" />
             </CSI11>
             <IIC00 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" PIOR1="0" InUse="">
-              <R_IIC00_Create UserName="R_IIC00_Create" LibName="R_IICn_Create" InUse="0" InitMode="" />
-              <R_IIC00_Master_Send UserName="R_IIC00_Master_Send" LibName="R_IICn_Master_Send" InUse="0" />
-              <R_IIC00_Master_Receive UserName="R_IIC00_Master_Receive" LibName="R_IICn_Master_Receive" InUse="0" />
-              <R_IIC00_Stop UserName="R_IIC00_Stop" LibName="R_IICn_Stop" InUse="0" />
-              <R_IIC00_StartCondition UserName="R_IIC00_StartCondition" LibName="R_IICn_StartCondition" InUse="0" />
-              <R_IIC00_StopCondition UserName="R_IIC00_StopCondition" LibName="R_IICn_StopCondition" InUse="0" />
+              <R_IIC00_Create UserName="R_IIC00_Create" LibName="R_IICn_Create" InUse="1" InitMode="" />
+              <R_IIC00_Master_Send UserName="R_IIC00_Master_Send" LibName="R_IICn_Master_Send" InUse="1" />
+              <R_IIC00_Master_Receive UserName="R_IIC00_Master_Receive" LibName="R_IICn_Master_Receive" InUse="1" />
+              <R_IIC00_Stop UserName="R_IIC00_Stop" LibName="R_IICn_Stop" InUse="1" />
+              <R_IIC00_StartCondition UserName="R_IIC00_StartCondition" LibName="R_IICn_StartCondition" InUse="1" />
+              <R_IIC00_StopCondition UserName="R_IIC00_StopCondition" LibName="R_IICn_StopCondition" InUse="1" />
             </IIC00>
             <IIC01 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
               <R_IIC01_Create UserName="R_IIC01_Create" LibName="R_IICn_Create" InUse="0" InitMode="" />
@@ -1113,23 +1113,23 @@
           </SAU1>
           <IICA0 InUse="">
             <R_IICA0_Create UserName="R_IICA0_Create" LibName="R_IICAn_Create" InUse="1" Init="1" InitMode="" />
-            <R_IICA0_Master_Send UserName="R_IICA0_Master_Send" LibName="R_IICAn_Master_Send" InUse="1" />
-            <R_IICA0_Master_Receive UserName="R_IICA0_Master_Receive" LibName="R_IICAn_Master_Receive" InUse="1" />
-            <R_IICA0_Slave_Send UserName="R_IICA0_Slave_Send" LibName="R_IICAn_Slave_Send" InUse="0" />
-            <R_IICA0_Slave_Receive UserName="R_IICA0_Slave_Receive" LibName="R_IICAn_Slave_Receive" InUse="0" />
+            <R_IICA0_Master_Send UserName="R_IICA0_Master_Send" LibName="R_IICAn_Master_Send" InUse="0" />
+            <R_IICA0_Master_Receive UserName="R_IICA0_Master_Receive" LibName="R_IICAn_Master_Receive" InUse="0" />
+            <R_IICA0_Slave_Send UserName="R_IICA0_Slave_Send" LibName="R_IICAn_Slave_Send" InUse="1" />
+            <R_IICA0_Slave_Receive UserName="R_IICA0_Slave_Receive" LibName="R_IICAn_Slave_Receive" InUse="1" />
             <R_IICA0_Stop UserName="R_IICA0_Stop" LibName="R_IICAn_Stop" InUse="1" />
-            <R_IICA0_StopCondition UserName="R_IICA0_StopCondition" LibName="R_IICAn_StopCondition" InUse="1" />
+            <R_IICA0_StopCondition UserName="R_IICA0_StopCondition" LibName="R_IICAn_StopCondition" InUse="0" />
             <R_IICA0_Set_SnoozeOn UserName="R_IICA0_Set_SnoozeOn" LibName="R_IICAn_Set_SnoozeOn" InUse="0" />
             <R_IICA0_Set_SnoozeOff UserName="R_IICA0_Set_SnoozeOff" LibName="R_IICAn_Set_SnoozeOff" InUse="0" />
             <R_IICA0_Set_PowerOff UserName="R_IICA0_Set_PowerOff" LibName="R_IICAn_Set_PowerOff" InUse="0" />
           </IICA0>
           <IICA1 Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" InUse="">
-            <R_IICA1_Create UserName="R_IICA1_Create" LibName="R_IICAn_Create" InUse="1" Init="1" InitMode="" />
+            <R_IICA1_Create UserName="R_IICA1_Create" LibName="R_IICAn_Create" InUse="0" Init="1" InitMode="" />
             <R_IICA1_Master_Send UserName="R_IICA1_Master_Send" LibName="R_IICAn_Master_Send" InUse="0" />
             <R_IICA1_Master_Receive UserName="R_IICA1_Master_Receive" LibName="R_IICAn_Master_Receive" InUse="0" />
-            <R_IICA1_Slave_Send UserName="R_IICA1_Slave_Send" LibName="R_IICAn_Slave_Send" InUse="1" />
-            <R_IICA1_Slave_Receive UserName="R_IICA1_Slave_Receive" LibName="R_IICAn_Slave_Receive" InUse="1" />
-            <R_IICA1_Stop UserName="R_IICA1_Stop" LibName="R_IICAn_Stop" InUse="1" />
+            <R_IICA1_Slave_Send UserName="R_IICA1_Slave_Send" LibName="R_IICAn_Slave_Send" InUse="0" />
+            <R_IICA1_Slave_Receive UserName="R_IICA1_Slave_Receive" LibName="R_IICAn_Slave_Receive" InUse="0" />
+            <R_IICA1_Stop UserName="R_IICA1_Stop" LibName="R_IICAn_Stop" InUse="0" />
             <R_IICA1_StopCondition UserName="R_IICA1_StopCondition" LibName="R_IICAn_StopCondition" InUse="0" />
             <R_IICA1_Set_SnoozeOn UserName="R_IICA1_Set_SnoozeOn" LibName="R_IICAn_Set_SnoozeOn" InUse="0" />
             <R_IICA1_Set_SnoozeOff UserName="R_IICA1_Set_SnoozeOff" LibName="R_IICAn_Set_SnoozeOff" InUse="0" />
@@ -1183,10 +1183,10 @@
               <r_csi11_callback_sendend UserName="r_csi11_callback_sendend" LibName="R_CSIn_Callback_SendEnd" InUse="0" />
             </CSI11>
             <IIC00 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" PIOR1="0" InUse="">
-              <r_iic00_interrupt UserName="r_iic00_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="0" />
-              <r_iic00_callback_master_receiveend UserName="r_iic00_callback_master_receiveend" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="0" />
-              <r_iic00_callback_master_sendend UserName="r_iic00_callback_master_sendend" LibName="R_IICn_Callback_Master_SendEnd" InUse="0" />
-              <r_iic00_callback_master_error UserName="r_iic00_callback_master_error" LibName="R_IICn_Callback_Master_Error" InUse="0" />
+              <r_iic00_interrupt UserName="r_iic00_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="1" />
+              <r_iic00_callback_master_receiveend UserName="r_iic00_callback_master_receiveend" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="1" />
+              <r_iic00_callback_master_sendend UserName="r_iic00_callback_master_sendend" LibName="R_IICn_Callback_Master_SendEnd" InUse="1" />
+              <r_iic00_callback_master_error UserName="r_iic00_callback_master_error" LibName="R_IICn_Callback_Master_Error" InUse="1" />
             </IIC00>
             <IIC01 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
               <r_iic01_interrupt UserName="r_iic01_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="0" />
@@ -1279,23 +1279,23 @@
           <IICA0 InUse="">
             <R_IICA0_Create_UserInit UserName="R_IICA0_Create_UserInit" LibName="R_IICAn_Create_UserInit" InUse="0" />
             <r_iica0_interrupt UserName="r_iica0_interrupt" INTHandle="" LibName="r_iican_interrupt" InUse="1" />
-            <r_iica0_callback_master_sendend UserName="r_iica0_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="1" />
-            <r_iica0_callback_master_receiveend UserName="r_iica0_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="1" />
-            <r_iica0_callback_slave_sendend UserName="r_iica0_callback_slave_sendend" LibName="r_iican_callback_slave_sendend" InUse="0" />
-            <r_iica0_callback_slave_receiveend UserName="r_iica0_callback_slave_receiveend" LibName="r_iican_callback_slave_receiveend" InUse="0" />
-            <r_iica0_callback_master_error UserName="r_iica0_callback_master_error" LibName="r_iican_callback_master_error" InUse="1" />
-            <r_iica0_callback_slave_error UserName="r_iica0_callback_slave_error" LibName="r_iican_callback_slave_error" InUse="0" />
+            <r_iica0_callback_master_sendend UserName="r_iica0_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="0" />
+            <r_iica0_callback_master_receiveend UserName="r_iica0_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="0" />
+            <r_iica0_callback_slave_sendend UserName="r_iica0_callback_slave_sendend" LibName="r_iican_callback_slave_sendend" InUse="1" />
+            <r_iica0_callback_slave_receiveend UserName="r_iica0_callback_slave_receiveend" LibName="r_iican_callback_slave_receiveend" InUse="1" />
+            <r_iica0_callback_master_error UserName="r_iica0_callback_master_error" LibName="r_iican_callback_master_error" InUse="0" />
+            <r_iica0_callback_slave_error UserName="r_iica0_callback_slave_error" LibName="r_iican_callback_slave_error" InUse="1" />
             <r_iica0_callback_getstopcondition UserName="r_iica0_callback_getstopcondition" LibName="r_iican_callback_getstopcondition" InUse="0" />
           </IICA0>
           <IICA1 Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" InUse="">
             <R_IICA1_Create_UserInit UserName="R_IICA1_Create_UserInit" LibName="R_IICAn_Create_UserInit" InUse="0" />
-            <r_iica1_interrupt UserName="r_iica1_interrupt" INTHandle="" LibName="r_iican_interrupt" InUse="1" />
+            <r_iica1_interrupt UserName="r_iica1_interrupt" INTHandle="" LibName="r_iican_interrupt" InUse="0" />
             <r_iica1_callback_master_sendend UserName="r_iica1_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="0" />
             <r_iica1_callback_master_receiveend UserName="r_iica1_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="0" />
-            <r_iica1_callback_slave_sendend UserName="r_iica1_callback_slave_sendend" LibName="r_iican_callback_slave_sendend" InUse="1" />
-            <r_iica1_callback_slave_receiveend UserName="r_iica1_callback_slave_receiveend" LibName="r_iican_callback_slave_receiveend" InUse="1" />
+            <r_iica1_callback_slave_sendend UserName="r_iica1_callback_slave_sendend" LibName="r_iican_callback_slave_sendend" InUse="0" />
+            <r_iica1_callback_slave_receiveend UserName="r_iica1_callback_slave_receiveend" LibName="r_iican_callback_slave_receiveend" InUse="0" />
             <r_iica1_callback_master_error UserName="r_iica1_callback_master_error" LibName="r_iican_callback_master_error" InUse="0" />
-            <r_iica1_callback_slave_error UserName="r_iica1_callback_slave_error" LibName="r_iican_callback_slave_error" InUse="1" />
+            <r_iica1_callback_slave_error UserName="r_iica1_callback_slave_error" LibName="r_iican_callback_slave_error" InUse="0" />
             <r_iica1_callback_getstopcondition UserName="r_iica1_callback_getstopcondition" LibName="r_iican_callback_getstopcondition" InUse="0" />
           </IICA1>
         </r_cg_serial_user.c>
@@ -1786,7 +1786,7 @@
       <KEY Chip="RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin," MacroName="KEY" TabEnable="True" />
     </INTC>
     <Serial SetFlag="True" HelpID="serial" NeedRefresh="False">
-      <SAU0 Accelerate="No" MacroName="SAU" Channel="0" SetFlag="False" TabEnable="True">
+      <SAU0 Accelerate="No" MacroName="SAU" Channel="0" SetFlag="True" TabEnable="True">
         <Channel0 Chip="RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" PIOR1="0" UART="0" CSI="00" IIC="00" Channel="0" />
         <Channel1 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" UART="0" CSI="01" IIC="01" Channel="1" />
         <Channel2 Chip="RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" UART="1" CSI="10" IIC="10" Channel="2" />
@@ -1799,7 +1799,7 @@
         <Channel3 Chip="RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" UART="3" CSI="31" IIC="31" Channel="3" />
       </SAU1>
       <IICA0 Accelerate="No" MacroName="IICA" Channel="0" SetFlag="True" TabEnable="True" />
-      <IICA1 Accelerate="No" Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" MacroName="IICA" Channel="1" SetFlag="True" TabEnable="True" />
+      <IICA1 Accelerate="No" Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" MacroName="IICA" Channel="1" SetFlag="False" TabEnable="True" />
     </Serial>
     <ADC SetFlag="" HelpID="adc" NeedRefresh="False">
       <ADC SetFlag="" MacroName="ADC" />
@@ -1987,7 +1987,7 @@
           <setting name="Operation" value="unused" />
           <setting name="Pull_up" value="unused" />
           <setting name="TTL_buffer" value="unused" />
-          <setting name="N-ch_open-drain" value="used" />
+          <setting name="N-ch_open-drain" value="unused" />
           <setting name="Output_value" value="0" />
         </P14>
         <P15>
@@ -1995,7 +1995,7 @@
           <setting name="Operation" value="unused" />
           <setting name="Pull_up" value="unused" />
           <setting name="TTL_buffer" value="unused" />
-          <setting name="N-ch_open-drain" value="used" />
+          <setting name="N-ch_open-drain" value="unused" />
           <setting name="Output_value" value="0" />
         </P15>
         <P16>
@@ -2073,10 +2073,11 @@
       </PortP2>
       <PortP3>
         <P30>
+          <setting name="IIC_STATUS" value="used" />
           <setting name="Operation" value="unused" />
           <setting name="Pull_up" value="unused" />
           <setting name="TTL_buffer" value="unused" />
-          <setting name="N-ch_open-drain" value="unused" />
+          <setting name="N-ch_open-drain" value="used" />
           <setting name="Output_value" value="0" />
         </P30>
         <P31>
@@ -2133,10 +2134,11 @@
       </PortP4>
       <PortP5>
         <P50>
+          <setting name="IIC_STATUS" value="used" />
           <setting name="Operation" value="unused" />
           <setting name="Pull_up" value="unused" />
           <setting name="TTL_buffer" value="unused" />
-          <setting name="N-ch_open-drain" value="unused" />
+          <setting name="N-ch_open-drain" value="used" />
           <setting name="Output_value" value="0" />
         </P50>
         <P51>
@@ -2191,7 +2193,6 @@
           <setting name="Output_value" value="0" />
         </P61>
         <P62>
-          <setting name="IIC_STATUS" value="used" />
           <setting name="Operation" value="unused" />
           <setting name="Pull_up" value="unused" />
           <setting name="TTL_buffer" value="unused" />
@@ -2199,7 +2200,6 @@
           <setting name="Output_value" value="0" />
         </P62>
         <P63>
-          <setting name="IIC_STATUS" value="used" />
           <setting name="Operation" value="unused" />
           <setting name="Pull_up" value="unused" />
           <setting name="TTL_buffer" value="unused" />
@@ -2659,8 +2659,15 @@
       <CSI00 />
       <UART0 />
       <Channel0>
-        <setting name="Channel_function_-i" value="0" />
+        <setting name="Channel_function_-i" value="3" />
         <setting name="Detail_function_-i" value="-1" />
+        <IIC00>
+          <setting name="TransferSpeed" value="100000" />
+          <setting name="Interrupt_priority" value="3" />
+          <setting name="Master_receive_end_callback_function" value="generated" />
+          <setting name="Master_transmit_end_callback_function" value="generated" />
+          <setting name="Master_error_callback_function" value="generated" />
+        </IIC00>
       </Channel0>
       <IIC01 />
       <CSI01 />
@@ -2753,23 +2760,8 @@
       <CSI31 />
     </SAU1>
     <IICA0>
-      <setting name="TransferMode" value="Master" />
-      <Master0>
-        <setting name="ClockSetting" value="fCLKHalf" />
-        <setting name="SlaveAddress" value="18" />
-        <setting name="Transfer_speed" value="standard" />
-        <setting name="Transfer_rate" value="100000" />
-        <setting name="Digital_filter" value="unused" />
-        <setting name="Interrupt_Priority" value="3" />
-        <setting name="Master_receive_end_callback_function" value="generated" />
-        <setting name="Master_transmit_end_callback_function" value="generated" />
-        <setting name="Master_error_end_callback_function" value="generated" />
-        <setting name="StopBit" value="generated" />
-      </Master0>
-    </IICA0>
-    <IICA1>
       <setting name="TransferMode" value="Slave" />
-      <Slave1>
+      <Slave0>
         <setting name="ClockSetting" value="fCLKHalf" />
         <setting name="SlaveAddress" value="16" />
         <setting name="Transfer_speed" value="standard" />
@@ -2780,7 +2772,10 @@
         <setting name="CallSlaveError" value="Checked" />
         <setting name="SLAVE_WAKEUP_MODE_ON" value="false" />
         <setting name="SLAVE_WAKEUP_MODE_OFF" value="true" />
-      </Slave1>
+      </Slave0>
+    </IICA0>
+    <IICA1>
+      <setting name="Mode" value="Unused" />
     </IICA1>
     <INTP>
       <INTP0>

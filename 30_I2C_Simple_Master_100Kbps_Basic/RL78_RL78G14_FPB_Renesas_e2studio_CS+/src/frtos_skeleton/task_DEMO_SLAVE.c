@@ -73,13 +73,25 @@ void task_DMSLV(void * pvParameters)
                 send_buff[0] = SW1_RELEASE;
                 break;
             }
-            U_IICA0_Slave_Send_Wait( &send_buff[0], 1 );
+            status = U_IICA0_Slave_Send_Wait( &send_buff[0], 1 );
+            if (MD_OK != status)
+            {
+                configASSERT( ( volatile void * ) NULL );   /* Force an assert. */
+                for (;;)
+                {
+                    nop();
+                }
+            }
             break;
         case DEMO_SLAVE_SET_LED_STAT:
             status = U_IICA0_Slave_Receive2_Wait( &recv_buff[1], 2 );
             if (MD_OK != status)
             {
                 configASSERT( ( volatile void * ) NULL );   /* Force an assert. */
+                for (;;)
+                {
+                    nop();
+                }
             }
             switch (recv_buff[1])
             {

@@ -358,37 +358,8 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 /* Start user code for adding. Do not edit comment generated here */
 
 /******************************************************************************
-* Function Name: R_IICA0_Create_simulator_patch
-* Description  : This function patches R_IICA0_Create() for the Renesas RL78 Simulator
-* Arguments    : None
-* Return Value : None
-******************************************************************************/
-#if defined(RENESAS_SIMULATOR_DEBUGGING)
-/* Workaround for the limitation that the Renesas RL78 simulator doesn't support
- * the port redirection featue. */
-void R_IICA0_Create_simulator_patch(void)
-{
-    if (IsRenesasSimDebugMode())
-    {
-        /* Reset SCLA0, SDAA0 pin */
-        PM1 &= ~0x30U;
-        P1 |= ~0xCFU;
-        POM1 &= ~0x30U;
-        /* Reset SCLA0, SDAA0 pin */
-        PM1 &= 0xCFU;
-
-        /* Set SCLA0, SDAA0 pin */
-        P6 &= 0xFCU;
-        PM6 |= 0x03U;
-        /* Set SCLA0, SDAA0 pin */
-        PM6 &= 0xFCU;
-    }
-}
-#endif
-
-/******************************************************************************
 * Function Name: U_IIC00_Master_Lock
-* Description  : This function locks IICA0 module for exclusive operation.
+* Description  : This function locks IIC00 module for exclusive operation.
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
@@ -408,7 +379,7 @@ void U_IIC00_Master_Lock(void)
 
 /******************************************************************************
 * Function Name: U_IIC00_Master_Unlock
-* Description  : This function unlocks IICA0 module which was locked for exclusive operation.
+* Description  : This function unlocks IIC00 module which was locked for exclusive operation.
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
@@ -484,6 +455,35 @@ void U_IIC00_Master_Send_Receive_Stop(void)
 {
     IICMK00 = 1U;   /* disable INTIIC00 interrupt */
 }
+
+/******************************************************************************
+* Function Name: R_IICA0_Create_simulator_patch
+* Description  : This function patches R_IICA0_Create() for the Renesas RL78 Simulator
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+#if defined(RENESAS_SIMULATOR_DEBUGGING)
+/* Workaround for the limitation that the Renesas RL78 simulator doesn't support
+ * the port redirection featue. */
+void R_IICA0_Create_simulator_patch(void)
+{
+    if (IsRenesasSimDebugMode())
+    {
+        /* Reset SCLA0, SDAA0 pin */
+        PM1 &= ~0x30U;
+        P1 |= ~0xCFU;
+        POM1 &= ~0x30U;
+        /* Reset SCLA0, SDAA0 pin */
+        PM1 &= 0xCFU;
+
+        /* Set SCLA0, SDAA0 pin */
+        P6 &= 0xFCU;
+        PM6 |= 0x03U;
+        /* Set SCLA0, SDAA0 pin */
+        PM6 &= 0xFCU;
+    }
+}
+#endif
 
 /******************************************************************************
 * Function Name: U_IICA0_Slave_Send_Wait
