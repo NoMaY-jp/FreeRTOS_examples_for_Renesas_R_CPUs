@@ -40,15 +40,21 @@
  * See http://www.freertos.org/a00110.html
  *----------------------------------------------------------*/
 
-/* Include hardware dependent header files to allow this demo to run on
-multiple evaluation boards. */
-#include "demo_specific_io.h"
+#if defined(__CCRL__)
+	#include "iodefine.h"
+#elif defined(__GNUC__) && !defined(__ASSEMBLER__)
+	#include "iodefine.h"
+	#include "iodefine_ext.h"
+#elif defined(__ICCRL78__) ||  defined(__IASMRL78__)
+	#include "ior5f104ml.h"
+	#include "ior5f104ml_ext.h"
+#endif
 
 #define configUSE_PREEMPTION			1
 #define configUSE_TIME_SLICING			1
 #define configUSE_IDLE_HOOK				0
 #define configUSE_TICK_HOOK				0
-#define configTICK_RATE_HZ				(( TickType_t ) 1000)
+#define configTICK_RATE_HZ				(( TickType_t ) 100)
 #define configMINIMAL_STACK_SIZE		(( unsigned short ) 0)
 #define configTOTAL_HEAP_SIZE			( ( size_t ) 0 )
 #define configMAX_TASK_NAME_LEN			(12)
@@ -139,7 +145,7 @@ void vConfigureTimerForRunTimeStats( void );
 //#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS()    vConfigureTimerForRunTimeStats()
 //#define portGET_RUN_TIME_COUNTER_VALUE()            ulGetRunTimeCounterValue()
 
-#endif /* defined(__CCRL__) || (defined(__GNUC__) && !defined(__ASSEMBLER__)) || defined(__ICCRL78__) */
+#endif
 
 #define NDEBUG  /* Defined: Release build, Not defined: Debug build */
 
@@ -162,7 +168,7 @@ void vConfigureTimerForRunTimeStats( void );
 void vAssertCalled( void );
 #define configASSERT( x ) if( ( x ) == 0 ) vAssertCalled()
 #endif
-#endif /* defined(__CCRL__) || (defined(__GNUC__) && !defined(__ASSEMBLER__)) || defined(__ICCRL78__) */
+#endif
 
 #endif /*  !defined(NDEBUG) */
 

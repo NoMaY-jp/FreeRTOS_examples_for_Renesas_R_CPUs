@@ -398,10 +398,10 @@ do{ \
     static StaticTask_t pxTaskCode##_xTCBBuffer; \
     static StackType_t  pxTaskCode##_xStackBuffer[usStackDepth]; \
     TaskHandle_t xCreatedTask; \
-    xCreatedTask = xTaskCreateStatic( pxTaskCode, pcName, usStackDepth, pvParameters, uxPriority, pxTaskCode##_xStackBuffer, &pxTaskCode##_xTCBBuffer ); \
-    if (0U != (uint8_t *)(TaskHandle_t *)pxCreatedTask - (uint8_t *)NULL) \
+    xCreatedTask = xTaskCreateStatic( pxTaskCode, (pcName), (usStackDepth), (pvParameters), (uxPriority), pxTaskCode##_xStackBuffer, &pxTaskCode##_xTCBBuffer ); \
+    if (0U != (uint8_t *)(TaskHandle_t *)(pxCreatedTask) - (uint8_t *)NULL) \
     { \
-        *(TaskHandle_t *)pxCreatedTask = xCreatedTask; \
+        *(TaskHandle_t *)(pxCreatedTask) = xCreatedTask; \
     } \
 }while (0)
 
@@ -410,11 +410,22 @@ do{ \
     static StaticSemaphore_t xStaticSemaphore; \
     QueueHandle_t xCreatedQueue; \
     xCreatedQueue = xSemaphoreCreateMutexStatic( &xStaticSemaphore ); \
-    if (0U != (uint8_t *)(QueueHandle_t *)pxCreatedSemaphore - (uint8_t *)NULL) \
+    if (0U != (uint8_t *)(QueueHandle_t *)(pxCreatedSemaphore) - (uint8_t *)NULL) \
     { \
-        *(QueueHandle_t *)pxCreatedSemaphore = xCreatedQueue; \
+        *(QueueHandle_t *)(pxCreatedSemaphore) = xCreatedQueue; \
     } \
 }while (0)
+
+uint32_t ulTaskNotifyTake_R_Helper_Ex__helper(TaskHandle_t *pxTask, MD_STATUS xStatus);
+#define ulTaskNotifyTake_R_Helper_Ex(pxTask, vStartFunc) \
+    ulTaskNotifyTake_R_Helper_Ex__helper( \
+        pxTask, \
+        /* Setup the interrupt/callback ready to post a notification */ \
+        ( \
+            (*(pxTask) = xTaskGetCurrentTaskHandle_R_Helper()), \
+            (vStartFunc) \
+        ) \
+    )
 
 #ifdef __cplusplus
 }

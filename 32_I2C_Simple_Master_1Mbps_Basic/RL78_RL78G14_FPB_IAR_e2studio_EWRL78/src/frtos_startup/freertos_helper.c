@@ -111,6 +111,33 @@ uint32_t ulTaskNotifyTake_R_Helper(TickType_t xTicksToWait)
 } /* End of function ulTaskNotifyTake_R_Helper() */
 
 /******************************************************************************
+* Function Name: ulTaskNotifyTake_R_Helper_Ex__helper
+* Description  : Helper function for ulTaskNotifyTake_R_Helper_Ex().
+* Arguments    : pxTask -
+*                    Pointer to variable of task handler
+*                xStatus -
+*                    Status of setup of interrupt/callback
+* Return value : The same return value from ulTaskNotifyTake().
+* Note         : Internal use only.
+******************************************************************************/
+uint32_t ulTaskNotifyTake_R_Helper_Ex__helper(TaskHandle_t *pxTask, MD_STATUS xStatus)
+{
+    uint32_t ulValue = 0;
+
+    /* Check whether the setup of the interrupt/callback was succeeded. */
+    if (xStatus == MD_OK)
+    {
+        /* Wait to be notified that the interrupt/callback is complete. */
+        ulValue = ulTaskNotifyTake( pdTRUE, portMAX_DELAY );
+    }
+
+    /* There are no interrupt/callback in progress, so ensure no tasks to notify. */
+    *pxTask = NULL;
+
+    return ulValue;
+}
+
+/******************************************************************************
 * Function Name: xTaskGetCurrentTaskHandle_R_Helper
 * Description  : Helper function for xTaskGetCurrentTaskHandle().
 * Arguments    : None.

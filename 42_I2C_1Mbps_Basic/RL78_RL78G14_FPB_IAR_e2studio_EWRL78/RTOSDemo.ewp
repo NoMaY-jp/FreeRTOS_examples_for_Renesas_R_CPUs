@@ -2277,10 +2277,10 @@
     <group>
         <name>Src</name>
         <file>
-            <name>$PROJ_DIR$\src\demo_slave.h</name>
+            <name>$PROJ_DIR$\src\demo_description.txt</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\src\demo_specific_io.h</name>
+            <name>$PROJ_DIR$\src\demo_slave.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\platform.h</name>

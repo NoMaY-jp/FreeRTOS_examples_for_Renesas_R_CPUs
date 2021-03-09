@@ -14,7 +14,7 @@ extern "C" {
 #if defined(__CCRL__)
 
 /* The stack usage analysis tool 'Call Walker' provides detail stack usage information.
- * The following table is based on the result of analysis 04-Mar-2021.
+ * The following table is based on the result of analysis 09-Mar-2021.
  *
  * The stack space for interrupt stub is calculated as follows:
  *
@@ -31,7 +31,7 @@ extern "C" {
 
 #define task_LED0_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(  68, 16, 32 ) )
 #define task_LED1_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(  70, 16, 32 ) )
-#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  54, 16, 32 ) )
+#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  60, 16, 32 ) )
 #define main_task_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   4, 16, 32 ) )
 #define IdleTask_STACK_BUFF_DEPTH   stackBYTES_TO_DEPTH( stackBUFF_BYTES(   4, 16, 32 ) )
 #define TimerTask_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   0,  0,  0 ) )
@@ -42,7 +42,7 @@ extern "C" {
 
 #define task_LED0_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES( 134, 16, 32 ) )
 #define task_LED1_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES( 136, 16, 32 ) )
-#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  82, 16, 32 ) )
+#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  88, 16, 32 ) )
 #define main_task_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   6, 16, 32 ) )
 #define IdleTask_STACK_BUFF_DEPTH   stackBYTES_TO_DEPTH( stackBUFF_BYTES(  10, 16, 32 ) )
 #define TimerTask_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   0,  0,  0 ) )
@@ -51,7 +51,8 @@ extern "C" {
 
 #elif defined(__ICCRL78__)
 
-/* The following table is based on the result of analysis 04-Mar-2021.
+/* The linker log file's stack usage call graph provides detail stack usage information.
+ * The following table is based on the result of analysis 09-Mar-2021.
  *
  * The stack space for interrupt stub is calculated as follows:
  *
@@ -68,7 +69,7 @@ extern "C" {
 
 #define task_LED0_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(  72, 16, 32 ) )
 #define task_LED1_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(  74, 16, 32 ) )
-#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  62, 16, 32 ) )
+#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  66, 16, 32 ) )
 #define main_task_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   4, 16, 32 ) )
 #define IdleTask_STACK_BUFF_DEPTH   stackBYTES_TO_DEPTH( stackBUFF_BYTES(   4, 16, 32 ) )
 #define TimerTask_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   0,  0,  0 ) )
@@ -79,7 +80,7 @@ extern "C" {
 
 #define task_LED0_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES( 114, 16, 32 ) )
 #define task_LED1_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES( 116, 16, 32 ) )
-#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  66, 16, 32 ) )
+#define task_DMSLV_STACK_BUFF_DEPTH stackBYTES_TO_DEPTH( stackBUFF_BYTES(  72, 16, 32 ) )
 #define main_task_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   4, 16, 32 ) )
 #define IdleTask_STACK_BUFF_DEPTH   stackBYTES_TO_DEPTH( stackBUFF_BYTES(  10, 16, 32 ) )
 #define TimerTask_STACK_BUFF_DEPTH  stackBYTES_TO_DEPTH( stackBUFF_BYTES(   0,  0,  0 ) )

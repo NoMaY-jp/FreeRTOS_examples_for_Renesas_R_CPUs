@@ -73,9 +73,11 @@ static QueueHandle_t g_iica0_master_mutex;     /* iica0 master mutex */
 void U_IICA0_Master_Send_Receive_Stop(void);   /* for internal use */
 void U_IICA1_Slave_Send_Receive_Stop(void);    /* for internal use */
 
-static void U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
-static void U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
-static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
+static MD_STATUS U_IICA0_Master_Send(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num);
+static MD_STATUS U_IICA0_Master_Receive(uint8_t adr7, uint8_t *rx_buf, uint16_t rx_num);
+static MD_STATUS U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
+static MD_STATUS U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
+static MD_STATUS U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
 
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Workaround for the limitation that the Renesas RL78 simulator doesn't support
@@ -421,6 +423,20 @@ MD_STATUS U_IICA0_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t
     MD_STATUS status;
     uint32_t value;
 
+    /* Wait for a notification from the interrupt/callback */
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_master_task, status = U_IICA0_Master_Send( adr7, tx_buf, tx_num ) );
+    if (0U != value)
+    {
+        status = value & 0xFFFFU;
+    }
+
+    return status;
+}
+
+static MD_STATUS U_IICA0_Master_Send(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num)
+{
+    MD_STATUS status;
+
     IICAMK0 = 1U;  /* disable INTIIA0 interrupt */
     if ((1U == IICBSY0) && (0U == MSTS0))
     {
@@ -440,22 +456,7 @@ MD_STATUS U_IICA0_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t
             nop(); /* This is necessary when using compile optimization of GNURL78 */
         }
 
-       /* Set up the interrupt/callback ready to post a notification */
-        g_iica0_master_task = xTaskGetCurrentTaskHandle_R_Helper();
         status = R_IICA0_Master_Send( (adr7 << 1), (uint8_t *)tx_buf, tx_num, 0 );
-
-        if (MD_OK == status)
-        {
-            /* Wait for a notification from the interrupt/callback */
-            value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
-
-            status = value & 0xFFFFU;
-        }
-        else
-        {
-           /* Invalidate the interrupt/callback ready state of posting a notification */
-            g_iica0_master_task = NULL;
-        }
     }
 
     return status;
@@ -478,6 +479,20 @@ MD_STATUS U_IICA0_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx
     MD_STATUS status;
     uint32_t value;
 
+    /* Wait for a notification from the interrupt/callback */
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_master_task, status = U_IICA0_Master_Receive( adr7, rx_buf, rx_num ) );
+    if (0U != value)
+    {
+        status = value & 0xFFFFU;
+    }
+
+    return status;
+}
+
+static MD_STATUS U_IICA0_Master_Receive(uint8_t adr7, uint8_t *rx_buf, uint16_t rx_num)
+{
+    MD_STATUS status;
+
     IICAMK0 = 1U;  /* disable INTIIA0 interrupt */
     if ((1U == IICBSY0) && (0U == MSTS0))
     {
@@ -497,22 +512,7 @@ MD_STATUS U_IICA0_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx
             nop(); /* This is necessary when using compile optimization of GNURL78 */
         }
 
-       /* Set up the interrupt/callback ready to post a notification */
-        g_iica0_master_task = xTaskGetCurrentTaskHandle_R_Helper();
         status = R_IICA0_Master_Receive( (adr7 << 1), rx_buf, rx_num, 0 );
-
-        if (MD_OK == status)
-        {
-            /* Wait for a notification from the interrupt/callback */
-            value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
-
-            status = value & 0xFFFFU;
-        }
-        else
-        {
-           /* Invalidate the interrupt/callback ready state of posting a notification */
-            g_iica0_master_task = NULL;
-        }
     }
 
     return status;
@@ -544,21 +544,19 @@ MD_STATUS U_IICA1_Slave_Send_Wait(const uint8_t *tx_buf, uint16_t tx_num)
 {
     uint32_t value;
 
-    /* Set up the interrupt/callback ready to post a notification */
-    g_iica1_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
-    U_IICA1_Slave_Send( tx_buf, tx_num );
-
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Send( tx_buf, tx_num ) );
 
     return value & 0xFFFFU;
 }
 
-static void U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num)
+static MD_STATUS  U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num)
 {
     /* This function should be called in IICAMK1==1 */
     R_IICA1_Slave_Send( (uint8_t *)tx_buf, tx_num );
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
+
+    return MD_OK;
 }
 
 /******************************************************************************
@@ -575,21 +573,19 @@ MD_STATUS U_IICA1_Slave_Receive_Wait(uint8_t *rx_buf, uint16_t rx_num)
 {
     uint32_t value;
 
-    /* Set up the interrupt/callback ready to post a notification */
-    g_iica1_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
-    U_IICA1_Slave_Receive( rx_buf, rx_num );
-
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Receive( rx_buf, rx_num ) );
 
     return value & 0xFFFFU;
 }
 
-static void U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
+static MD_STATUS U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     /* This function should be called in IICAMK1==1 */
     R_IICA1_Slave_Receive( (uint8_t *)rx_buf, rx_num );
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
+
+    return MD_OK;
 }
 
 /******************************************************************************
@@ -606,17 +602,13 @@ MD_STATUS U_IICA1_Slave_Receive2_Wait(uint8_t *rx_buf, uint16_t rx_num)
 {
     uint32_t value;
 
-    /* Set up the interrupt/callback ready to post a notification */
-    g_iica1_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
-    U_IICA1_Slave_Receive2( rx_buf, rx_num );
-
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Receive2( rx_buf, rx_num ) );
 
     return value & 0xFFFFU;
 }
 
-static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
+static MD_STATUS U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     uint8_t t_iica1_slave_status_flag;
 
@@ -625,6 +617,8 @@ static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
     R_IICA1_Slave_Receive( (uint8_t *)rx_buf, rx_num );
     g_iica1_slave_status_flag = t_iica1_slave_status_flag;
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
+
+    return MD_OK;
 }
 
 /******************************************************************************

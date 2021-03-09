@@ -90,6 +90,9 @@ static void u_iica0_callback_master_common(MD_STATUS flag);    /* iica0 master c
 static void u_iica1_callback_slave_common(MD_STATUS flag);     /* iica1 slave common callback */
 static void u_wdt_request_interrupt(void);             /* wdt interrupt (as a software intetrrupt) request */
 
+static void u_cg_task_notify_request_from_high_priority_isr(TaskHandle_t xTask, volatile uint32_t *pulNotifyVariable, uint32_t ulNotifyValue);
+static void u_cg_task_notify_requested_from_high_priority_isr(TaskHandle_t *pxTask, volatile uint32_t *pulNotifyVariable);
+
 static inline void WTIM1_controle_patch(uint8_t val)
 {
     if (1U == val) { WTIM1 = 1U; } else { WTIM1 = 0U; }
@@ -444,21 +447,7 @@ static void u_iica0_callback_master_common(MD_STATUS flag)
 {
     U_IICA0_Master_Send_Receive_Stop();
 
-    /* If there are no tasks waiting for a notification or a notification was already
-     * sent (or is going to be sent), i.e. 
-     * when g_iica0_master_task == NULL || g_iica0_master_notification != 0U,
-     * a notification isn't sent or is skipped.
-     */
-    if (NULL != g_iica0_master_task && 0U == g_iica0_master_notification)
-    {
-        /* Generate INTWDTI interrupt manually as a software intetrrupt. The interrupt
-         * priority of INTSR3 is configured higher than the SYSCALL interrupt priority.
-         * On the other hand, the interrupt priority of INTWDTI is configured within
-         * the SYSCALL interrupt priority.
-         */
-        g_iica0_master_notification = 0x10000 | flag;
-        u_wdt_request_interrupt();
-    }
+    u_cg_task_notify_request_from_high_priority_isr( g_iica0_master_task, &g_iica0_master_notification, 0x10000 | flag );
 }
 
 /******************************************************************************
@@ -471,29 +460,41 @@ static void u_iica0_callback_master_common(MD_STATUS flag)
 ******************************************************************************/
 static void u_iica1_callback_slave_common(MD_STATUS flag)
 {
-    MD_STATUS status;
+    flag = (*g_iica1_slave_cb_user)( flag );
 
-    status = (*g_iica1_slave_cb_user)( flag );
-
-    if (MD_CONTINUE != status)
+    if (MD_CONTINUE != flag)
     {
         U_IICA1_Slave_Send_Receive_Stop();
 
-        /* If there are no tasks waiting for a notification or a notification was already
-         * sent (or is going to be sent), i.e. 
-         * when g_iica1_slave_task == NULL || g_iica1_slave_notification != 0U,
-         * a notification isn't sent or is skipped.
+        u_cg_task_notify_request_from_high_priority_isr( g_iica1_slave_task, &g_iica1_slave_notification, 0x10000 | flag );
+    }
+}
+
+/******************************************************************************
+* Function Name: u_cg_task_notify_request_from_high_priority_isr
+* Description  : This function helps a task notification from high priority ISR to task.
+* Arguments    : xTask -
+*                    Task handler
+*                pulNotifyVariable -
+*                    Pointer to variable of notification value
+*                ulNotifyValue -
+*                    Notification value
+* Return Value : None
+******************************************************************************/
+static void u_cg_task_notify_request_from_high_priority_isr(TaskHandle_t xTask, volatile uint32_t *pulNotifyVariable, uint32_t ulNotifyValue)
+{
+    /* If there are no tasks waiting for a notification or a notification was already
+     * sent (or is going to be sent), a notification isn't sent or is skipped.
+     */
+    if (NULL != xTask && 0U == *pulNotifyVariable)
+    {
+        /* Generate INTWDTI interrupt manually as a software intetrrupt. The interrupt
+         * priority of the ISR is configured higher than the SYSCALL interrupt priority.
+         * On the other hand, the interrupt priority of INTWDTI is configured within
+         * the SYSCALL interrupt priority.
          */
-        if (NULL != g_iica1_slave_task && 0U == g_iica1_slave_notification)
-        {
-            /* Generate INTWDTI interrupt manually as a software intetrrupt. The interrupt
-             * priority of INTIICA0 is configured higher than the SYSCALL interrupt priority.
-             * On the other hand, the interrupt priority of INTWDTI is configured within
-             * the SYSCALL interrupt priority.
-             */
-            g_iica1_slave_notification = 0x10000 | status;
-            u_wdt_request_interrupt();
-        }
+        *pulNotifyVariable = ulNotifyValue;
+        u_wdt_request_interrupt();
     }
 }
 
@@ -518,22 +519,38 @@ static void u_wdt_request_interrupt(void)
 #pragma vector = INTWDTI_vect
 __interrupt static void u_wdt_interrupt(void)
 {
-    if (NULL != g_iica0_master_task && 0U != g_iica0_master_notification)
-    {
-        /* Note that g_iica0_master_task is automatically set to NULL after posting a notification,
-         * but g_iica0_master_notification isn't automatically set to 0, so is manually set to 0.
-         */
-        xTaskNotifyFromISR_R_Helper( &g_iica0_master_task, g_iica0_master_notification );
-        g_iica0_master_notification = 0U;
-    }
+    u_cg_task_notify_requested_from_high_priority_isr( &g_iica0_master_task, &g_iica0_master_notification );
 
-    if (NULL != g_iica1_slave_task && 0U != g_iica1_slave_notification)
+    u_cg_task_notify_requested_from_high_priority_isr( &g_iica1_slave_task, &g_iica1_slave_notification );
+}
+
+/******************************************************************************
+* Function Name: u_cg_task_notify_requested_from_high_priority_isr
+* Description  : This function helps a task notification from high priority ISR to task.
+* Arguments    : xTask -
+*                    Task handler
+*                pulNotifyVariable -
+*                    Pointer to variable of notification value
+* Return Value : None
+******************************************************************************/
+static void u_cg_task_notify_requested_from_high_priority_isr(TaskHandle_t *pxTask, volatile uint32_t *pulNotifyVariable)
+{
+    uint32_t ulNotifyValue;
+
+    /* If the task had been already notified or isn't waiting for any notification,
+     * or if the notification value isn't set,
+     * i.e. when NULL == *pxTask || 0U == *pulNotifyVariable,
+     * actually the task will not be notified.
+     */
+    if (NULL != *pxTask && 0U != *pulNotifyVariable)
     {
-        /* Note that g_iica1_slave_task is automatically set to NULL after posting a notification,
-         * but g_iica1_slave_notification isn't automatically set to 0, so is manually set to 0.
+        /* Note that *pxTask is automatically set to NULL by xTaskNotifyFromISR_R_Helper()
+         * when posting a notification. On the other hand, *pulNotifyVariable isn't
+         * set to 0 automatically therefore it is set to 0 manually.
          */
-        xTaskNotifyFromISR_R_Helper( &g_iica1_slave_task, g_iica1_slave_notification );
-        g_iica1_slave_notification = 0U;
+        ulNotifyValue = *pulNotifyVariable;
+        *pulNotifyVariable = 0U;
+        xTaskNotifyFromISR_R_Helper( pxTask, ulNotifyValue );
     }
 }
 

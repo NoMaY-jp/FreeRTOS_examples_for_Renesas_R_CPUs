@@ -64,9 +64,9 @@ static QueueHandle_t g_iic00_master_mutex;     /* iic00 master mutex */
 void U_IIC00_Master_Send_Receive_Stop(void);   /* for internal use */
 void U_IICA0_Slave_Send_Receive_Stop(void);    /* for internal use */
 
-static void U_IICA0_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
-static void U_IICA0_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
-static void U_IICA0_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
+static MD_STATUS U_IICA0_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
+static MD_STATUS U_IICA0_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
+static MD_STATUS U_IICA0_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
 
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Workaround for the limitation that the Renesas RL78 simulator doesn't support
@@ -352,6 +352,96 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 /* Start user code for adding. Do not edit comment generated here */
 
 /******************************************************************************
+* Function Name: U_IIC00_Master_Lock
+* Description  : This function locks IIC00 module for exclusive operation.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void U_IIC00_Master_Lock(void)
+{
+    taskENTER_CRITICAL();
+    {
+        if (NULL == g_iic00_master_mutex)
+        {
+            xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
+        }
+    }
+    taskEXIT_CRITICAL();
+
+    xSemaphoreTake(g_iic00_master_mutex, portMAX_DELAY);
+}
+
+/******************************************************************************
+* Function Name: U_IIC00_Master_Unlock
+* Description  : This function unlocks IIC00 module which was locked for exclusive operation.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void U_IIC00_Master_Unlock(void)
+{
+    xSemaphoreGive(g_iic00_master_mutex);
+}
+
+/******************************************************************************
+* Function Name: U_IIC00_Master_Send_Wait
+* Description  : This function starts transferring data for IIC00 in master mode.
+* Arguments    : adr7 -
+*                    slave device '7-bit' address (Not '8-bit' address)
+*                tx_buf -
+*                    transfer buffer pointer
+*                tx_num -
+*                    buffer size
+* Return Value : status -
+*                    MD_OK or MD_OVERRUN or MD_NACK
+******************************************************************************/
+MD_STATUS U_IIC00_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num)
+{
+    uint32_t value;
+
+    /* Wait for a notification from the interrupt/callback */
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iic00_master_task, (R_IIC00_Master_Send( (adr7 << 1), (uint8_t *)tx_buf, tx_num ), MD_OK) );
+    R_IIC00_StopCondition();
+
+    return value & 0xFFFFU;
+}
+
+/******************************************************************************
+* Function Name: U_IIC00_Master_Receive_Wait
+* Description  : This function starts receiving data for IIC00 in master mode.
+* Arguments    : adr7 -
+*                    slave device '7-bit' address (Not '8-bit' address)
+*                rx_buf -
+*                    receive buffer pointer
+*                rx_num -
+*                    buffer size
+* Return Value : status -
+*                    MD_OK or MD_OVERRUN or MD_NACK
+******************************************************************************/
+MD_STATUS U_IIC00_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx_num)
+{
+    uint32_t value;
+
+    /* Wait for a notification from the interrupt/callback */
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iic00_master_task, (R_IIC00_Master_Receive( (adr7 << 1), rx_buf, rx_num ), MD_OK) );
+
+    R_IIC00_StopCondition();
+
+    return value & 0xFFFFU;
+}
+
+/******************************************************************************
+* Function Name: U_IIC00_Master_Send_Receive_Stop
+* Description  : This function stops the IIC00 master transmission/reception.
+* Arguments    : None
+* Return Value : None
+* Note         : This is called from others internally.
+******************************************************************************/
+void U_IIC00_Master_Send_Receive_Stop(void)
+{
+    IICMK00 = 1U;   /* disable INTIIC00 interrupt */
+}
+
+/******************************************************************************
 * Function Name: R_IICA0_Create_simulator_patch
 * Description  : This function patches R_IICA0_Create() for the Renesas RL78 Simulator
 * Arguments    : None
@@ -381,105 +471,6 @@ void R_IICA0_Create_simulator_patch(void)
 #endif
 
 /******************************************************************************
-* Function Name: U_IIC00_Master_Lock
-* Description  : This function locks IICA0 module for exclusive operation.
-* Arguments    : None
-* Return Value : None
-******************************************************************************/
-void U_IIC00_Master_Lock(void)
-{
-    taskENTER_CRITICAL();
-    {
-        if (NULL == g_iic00_master_mutex)
-        {
-            xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
-        }
-    }
-    taskEXIT_CRITICAL();
-
-    xSemaphoreTake(g_iic00_master_mutex, portMAX_DELAY);
-}
-
-/******************************************************************************
-* Function Name: U_IIC00_Master_Unlock
-* Description  : This function unlocks IICA0 module which was locked for exclusive operation.
-* Arguments    : None
-* Return Value : None
-******************************************************************************/
-void U_IIC00_Master_Unlock(void)
-{
-    xSemaphoreGive(g_iic00_master_mutex);
-}
-
-/******************************************************************************
-* Function Name: U_IIC00_Master_Send_Wait
-* Description  : This function starts transferring data for IIC00 in master mode.
-* Arguments    : adr7 -
-*                    slave device '7-bit' address (Not '8-bit' address)
-*                tx_buf -
-*                    transfer buffer pointer
-*                tx_num -
-*                    buffer size
-* Return Value : status -
-*                    MD_OK or MD_OVERRUN or MD_NACK
-******************************************************************************/
-MD_STATUS U_IIC00_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num)
-{
-    uint32_t value;
-
-   /* Set up the interrupt/callback ready to post a notification */
-    g_iic00_master_task = xTaskGetCurrentTaskHandle_R_Helper();
-    R_IIC00_Master_Send( (adr7 << 1), (uint8_t *)tx_buf, tx_num );
-
-    /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
-
-    R_IIC00_StopCondition();
-
-    return value & 0xFFFFU;
-}
-
-/******************************************************************************
-* Function Name: U_IIC00_Master_Receive_Wait
-* Description  : This function starts receiving data for IIC00 in master mode.
-* Arguments    : adr7 -
-*                    slave device '7-bit' address (Not '8-bit' address)
-*                rx_buf -
-*                    receive buffer pointer
-*                rx_num -
-*                    buffer size
-* Return Value : status -
-*                    MD_OK or MD_OVERRUN or MD_NACK
-******************************************************************************/
-MD_STATUS U_IIC00_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx_num)
-{
-    uint32_t value;
-
-   /* Set up the interrupt/callback ready to post a notification */
-    g_iic00_master_task = xTaskGetCurrentTaskHandle_R_Helper();
-    R_IIC00_Master_Receive( (adr7 << 1), rx_buf, rx_num );
-
-    /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
-
-    R_IIC00_StopCondition();
-
-    return value & 0xFFFFU;
-}
-
-/******************************************************************************
-* Function Name: U_IIC00_Master_Send_Receive_Stop
-* Description  : This function stops the IIC00 master transmission/reception.
-* Arguments    : None
-* Return Value : None
-* Note         : This is called from others internally.
-******************************************************************************/
-void U_IIC00_Master_Send_Receive_Stop(void)
-{
-    IICMK00 = 1U;   /* disable INTIIC00 interrupt */
-}
-
-/******************************************************************************
 * Function Name: U_IICA0_Slave_Send_Wait
 * Description  : This function sends data as slave mode.
 * Arguments    : tx_buf -
@@ -493,21 +484,19 @@ MD_STATUS U_IICA0_Slave_Send_Wait(const uint8_t *tx_buf, uint16_t tx_num)
 {
     uint32_t value;
 
-    /* Set up the interrupt/callback ready to post a notification */
-    g_iica0_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
-    U_IICA0_Slave_Send( tx_buf, tx_num );
-
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_slave_task, U_IICA0_Slave_Send( tx_buf, tx_num ) );
 
     return value & 0xFFFFU;
 }
 
-static void U_IICA0_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num)
+static MD_STATUS U_IICA0_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num)
 {
     /* This function should be called in IICAMK0==1 */
     R_IICA0_Slave_Send( (uint8_t *)tx_buf, tx_num );
     IICAMK0 = 0U; /* enable INTIICA0 interrupt */
+
+    return MD_OK;
 }
 
 /******************************************************************************
@@ -524,21 +513,19 @@ MD_STATUS U_IICA0_Slave_Receive_Wait(uint8_t *rx_buf, uint16_t rx_num)
 {
     uint32_t value;
 
-    /* Set up the interrupt/callback ready to post a notification */
-    g_iica0_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
-    U_IICA0_Slave_Receive( rx_buf, rx_num );
-
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_slave_task, U_IICA0_Slave_Receive( rx_buf, rx_num ) );
 
     return value & 0xFFFFU;
 }
 
-static void U_IICA0_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
+static MD_STATUS U_IICA0_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     /* This function should be called in IICAMK0==1 */
     R_IICA0_Slave_Receive( (uint8_t *)rx_buf, rx_num );
     IICAMK0 = 0U; /* enable INTIICA0 interrupt */
+
+    return MD_OK;
 }
 
 /******************************************************************************
@@ -555,17 +542,13 @@ MD_STATUS U_IICA0_Slave_Receive2_Wait(uint8_t *rx_buf, uint16_t rx_num)
 {
     uint32_t value;
 
-    /* Set up the interrupt/callback ready to post a notification */
-    g_iica0_slave_task = xTaskGetCurrentTaskHandle_R_Helper();
-    U_IICA0_Slave_Receive2( rx_buf, rx_num );
-
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_slave_task, U_IICA0_Slave_Receive2( rx_buf, rx_num ) );
 
     return value & 0xFFFFU;
 }
 
-static void U_IICA0_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
+static MD_STATUS U_IICA0_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     uint8_t t_iica0_slave_status_flag;
 
@@ -574,6 +557,8 @@ static void U_IICA0_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
     R_IICA0_Slave_Receive( (uint8_t *)rx_buf, rx_num );
     g_iica0_slave_status_flag = t_iica0_slave_status_flag;
     IICAMK0 = 0U; /* enable INTIICA0 interrupt */
+
+    return MD_OK;
 }
 
 /******************************************************************************
