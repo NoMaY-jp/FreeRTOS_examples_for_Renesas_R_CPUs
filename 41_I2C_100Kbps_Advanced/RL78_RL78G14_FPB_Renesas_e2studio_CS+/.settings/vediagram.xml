@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Elements>
+<DIAGRAM>
+	<VEModelDiagram.BackgroundGridLinesOption>true</VEModelDiagram.BackgroundGridLinesOption>
+	<VEModelDiagram.BackgroundImageOption></VEModelDiagram.BackgroundImageOption>
+	<VEModelDiagram.BackgroundImageStretchOption>true</VEModelDiagram.BackgroundImageStretchOption>
+</DIAGRAM>
+<IMAGE>
+	<VEModelChildElement.LocationX>26</VEModelChildElement.LocationX>
+	<VEModelChildElement.LocationY>26</VEModelChildElement.LocationY>
+	<VEModelChildElement.SizeCX>150</VEModelChildElement.SizeCX>
+	<VEModelChildElement.SizeCY>124</VEModelChildElement.SizeCY>
+	<VEModelChildElement.expressionTitleVisible>true</VEModelChildElement.expressionTitleVisible>
+	<VEModelChildElement.minRange>0.0</VEModelChildElement.minRange>
+	<VEModelChildElement.maxRange>100.0</VEModelChildElement.maxRange>
+	<VEModelChildElement.expressionName>(*(uint8_t *)0xfff04) &amp; 0x08</VEModelChildElement.expressionName>
+	<VEModelChildElement.expressionUpdatesDisabled>false</VEModelChildElement.expressionUpdatesDisabled>
+	<VEModelChildElement.foregroundColor>16777215</VEModelChildElement.foregroundColor>
+	<VEModelChildElement.backgroundColor>0</VEModelChildElement.backgroundColor>
+	<VEModelImage.stretchImagesToFit>true</VEModelImage.stretchImagesToFit>
+	<VEModelImage.rangeInputNumberFormat>Decimal</VEModelImage.rangeInputNumberFormat>
+	<VEModelImage.rangeValues>8|To|8|icons/imageelement/LEDType1_square_grey.png|false</VEModelImage.rangeValues>
+	<VEModelImage.rangeValues>0|To|0|icons/imageelement/LEDType1_square_green.png|false</VEModelImage.rangeValues>
+</IMAGE>
+</Elements>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.renesas.cdt.launch.dsf.simulator.launchConfigurationType">
+    <booleanAttribute key=".setStepMode" value="false"/>
+    <stringAttribute key="com.renesas.cdt.core.additionalServerArgs" value=""/>
+    <intAttribute key="com.renesas.cdt.core.admPortNumber" value="61236"/>
+    <stringAttribute key="com.renesas.cdt.core.initCommands" value=""/>
+    <stringAttribute key="com.renesas.cdt.core.ipAddress" value="localhost"/>
+    <stringAttribute key="com.renesas.cdt.core.jtagDevice" value="RL78 Simulator"/>
+    <stringAttribute key="com.renesas.cdt.core.jtagDeviceId" value="com.renesas.hardwaredebug.simulator.rl78"/>
+    <listAttribute key="com.renesas.cdt.core.listGDBExe">
+        <listEntry value="rl78-elf-gdb"/>
+    </listAttribute>
+    <listAttribute key="com.renesas.cdt.core.listGDBLaunchName">
+        <listEntry value="main"/>
+    </listAttribute>
+    <listAttribute key="com.renesas.cdt.core.listGDBPort">
+        <listEntry value="61234"/>
+    </listAttribute>
+    <booleanAttribute key="com.renesas.cdt.core.loadImage" value="true"/>
+    <stringAttribute key="com.renesas.cdt.core.optionInitCommands" value=""/>
+    <intAttribute key="com.renesas.cdt.core.portNumber" value="61234"/>
+    <stringAttribute key="com.renesas.cdt.core.runCommands" value=""/>
+    <stringAttribute key="com.renesas.cdt.core.secondGDBExe" value="green_dsp-elf-gdb"/>
+    <booleanAttribute key="com.renesas.cdt.core.secondGDBSupport" value="false"/>
+    <intAttribute key="com.renesas.cdt.core.secondGdbPortNumber" value="61237"/>
+    <stringAttribute key="com.renesas.cdt.core.serverParam" value="-g SIMULATOR  -t R5F104ML  -umFreq= 20.00 -usFreq= 32.768 -uresetOnReload= 1"/>
+    <booleanAttribute key="com.renesas.cdt.core.setResume" value="true"/>
+    <booleanAttribute key="com.renesas.cdt.core.setStopAt" value="true"/>
+    <booleanAttribute key="com.renesas.cdt.core.startServer" value="true"/>
+    <stringAttribute key="com.renesas.cdt.core.stopAt" value="main"/>
+    <stringAttribute key="com.renesas.cdt.core.targetDevice" value="R5F104ML"/>
+    <booleanAttribute key="com.renesas.cdt.core.useRemoteTarget" value="true"/>
+    <stringAttribute key="com.renesas.cdt.debug.ioview.dsf.registerSelection" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;selectedRegisterList ioFilePath=&quot;C:\Renesas\e2_studio_v760_rl78rx\DebugComp\RL78\Iofiles\R5F104ML.sfrx&quot;/&gt;&#13;&#10;"/>
+    <stringAttribute key="com.renesas.cdt.launch.dsf.IO_MAP" value="${support_area_loc}"/>
+    <booleanAttribute key="com.renesas.cdt.launch.dsf.USE_DEFAULT_IO_MAP" value="true"/>
+    <listAttribute key="com.renesas.cdt.launch.dsf.downloadImages">
+        <listEntry value="|true|true|true||true|No core"/>
+    </listAttribute>
+    <booleanAttribute key="com.renesas.cdt.launch.dsf.downloadImagesUpgradedV30" value="true"/>
+    <stringAttribute key="com.renesas.cdt.launch.dsf.launchSeqType" value="com.renesas.cdt.launch.dsf.launchSequence.e2GdbServer"/>
+    <stringAttribute key="com.renesas.cdt.launch.dsf.serverPath" value="${renesas.support.targetLoc:rl78-debug}\e2-server-gdb"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rl78.le" value="true"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rl78.main.clock.freq" value="20.00"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rl78.sub.clock.freq" value="32.768"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.launch.options.DebugToolSettingsTree.resetAfterReload" value="true"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.rl78.sim.RL78SimDebugToolSettings.resetAfterReload" value="true"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.timemeasurement" value="true"/>
+    <intAttribute key="org.eclipse.cdt.debug.gdbjtag.core.delay" value="3"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doHalt" value="true"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doReset" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="C:\Renesas\GitHubDesktop\work\FreeRTOS\FreeRTOS\Demo\RL78_RL78G14_FPB_Renesas_e2studio_CS+\HardwareDebug\RTOSDemo.x"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageOffset" value=""/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.initCommands" value=""/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.loadImage" value="true"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.loadSymbols" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.pcRegister" value=""/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.runCommands" value="dprintf sim_debugger_console.c:1,&quot;%s&quot;,msg&#13;&#10;clear sim_debugger_console.c:1&#13;&#10;dprintf sim_debugger_console.c:1,&quot;%s&quot;,msg&#13;&#10;set renesas_simulator_debugging_key=0x0001"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setPcRegister" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="true"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.stopAt" value="Processing_Before_Start_Kernel"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="C:\Renesas\GitHubDesktop\work\FreeRTOS\FreeRTOS\Demo\RL78_RL78G14_FPB_Renesas_e2studio_CS+\HardwareDebug\RTOSDemo.x"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsOffset" value=""/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForImage" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForSymbols" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useProjBinaryForImage" value="true"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useProjBinaryForSymbols" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.dsf.gdb.DEBUG_NAME" value="rl78-elf-gdb"/>
+    <booleanAttribute key="org.eclipse.cdt.dsf.gdb.NON_STOP" value="true"/>
+    <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
+    <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL" value="Processing_Before_Start_Kernel"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="HardwareDebug/RTOSDemo.x"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="RTOSDemo"/>
+    <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value=""/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/RTOSDemo"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="4"/>
+    </listAttribute>
+    <stringAttribute key="org.eclipse.dsf.launch.MEMORY_BLOCKS" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&lt;memoryBlockExpressionList context=&quot;reserved-for-future-use&quot;/&gt;"/>
+    <stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
+</launchConfiguration>
