@@ -374,8 +374,8 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 /* Start user code for adding. Do not edit comment generated here */
 
 /******************************************************************************
-* Function Name: U_IIC00_Master_UserInit
-* Description  : This function locks IIC00 module for exclusive operation.
+* Function Name: U_IIC00_Master_init
+* Description  : This function does additional initialization for IIC00 operation.
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/
@@ -418,7 +418,7 @@ void U_IIC00_Master_Unlock(void)
 *                tx_num -
 *                    buffer size
 * Return Value : status -
-*                    MD_OK or MD_OVERRUN or MD_NACK
+*                    MD_OK(IIC_SUCCESS) or NO_SLAVE or NO_ACK
 ******************************************************************************/
 MD_STATUS U_IIC00_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num)
 {
@@ -442,7 +442,7 @@ MD_STATUS U_IIC00_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t
 *                rx_num -
 *                    buffer size
 * Return Value : status -
-*                    MD_OK or MD_OVERRUN or MD_NACK
+*                    MD_OK(IIC_SUCCESS) or NO_SLAVE or NO_ACK
 ******************************************************************************/
 MD_STATUS U_IIC00_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx_num)
 {

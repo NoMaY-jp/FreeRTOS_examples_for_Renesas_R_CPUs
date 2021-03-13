@@ -70,11 +70,11 @@ volatile uint8_t   g_iic00_status;      /* iic00 master operationflag   */
     84 : no ACK from slave for data(NO_ACK)
     85 : no ACK for slave address(NO_SLAVE)
 */
-volatile uint8_t * gp_iic00_rx_addr;    /* iic00 receive buffer address */
-volatile uint16_t  g_iic00_rx_len;      /* iic00 receive data length    */
-volatile uint16_t  g_iic00_rx_cnt;      /* iic00 receive data count     */
-volatile uint8_t * gp_iic00_tx_addr;    /* iic00 send buffer address    */
-volatile uint16_t  g_iic00_tx_cnt;      /* iic00 send data count        */
+extern volatile uint8_t * gp_iic00_rx_address;  /* iic00 receive buffer address */
+extern volatile uint16_t  g_iic00_rx_length;    /* iic00 receive data length    */
+extern volatile uint16_t  g_iic00_rx_count;     /* iic00 receive data count     */
+extern volatile uint8_t * gp_iic00_tx_address;  /* iic00 send buffer address    */
+extern volatile uint16_t  g_iic00_tx_count;     /* iic00 send data count        */
 
 /* copy following 4 + 1 definitions from r_cg_userdefine.h :@2021/03/10 */
 #define     TRUTH           ( 1U )
@@ -179,8 +179,8 @@ uint8_t R_IIC_Master_Send(uint8_t adr, uint8_t * const tx_buf, uint16_t tx_num)
 {
 
     /* copy transfer parameters */
-    g_iic00_tx_cnt = tx_num;            /* set data number to transmit  */
-    gp_iic00_tx_addr = tx_buf;          /* set data pointer             */
+    g_iic00_tx_count = tx_num;          /* set data number to transmit  */
+    gp_iic00_tx_address = tx_buf;       /* set data pointer             */
 
     /* start to access IIC bus  */
 
@@ -211,9 +211,9 @@ uint8_t R_IIC_Master_Receive(uint8_t adr, uint8_t * const rx_buf, uint16_t rx_nu
 
     /* copy parameters  */
 
-    g_iic00_rx_len = rx_num;            /* set data number to transmit  */
-    g_iic00_rx_cnt = 0x00;
-    gp_iic00_rx_addr = rx_buf;          /* set data pointer             */
+    g_iic00_rx_length = rx_num;         /* set data number to transmit  */
+    g_iic00_rx_count = 0x00;
+    gp_iic00_rx_address = rx_buf;       /* set data pointer             */
 
     /* start to access IIC bus  */
 
@@ -438,11 +438,11 @@ void r_tau0_channel3_interrupt(void)
 
     store received data
 ----------------------------------------------------------------*/
-                (*gp_iic00_rx_addr) = SIO00;    /* store RX data    */
+                (*gp_iic00_rx_address) = SIO00; /* store RX data    */
 
-                g_iic00_rx_cnt++;       /* count up received data   */
+                g_iic00_rx_count++;     /* count up received data   */
 
-                if ( g_iic00_rx_cnt < g_iic00_rx_len )
+                if ( g_iic00_rx_count < g_iic00_rx_length )
                 {
 /*-------------------------------------------------------------------
         more data to receive is exist
@@ -450,9 +450,9 @@ void r_tau0_channel3_interrupt(void)
     change parameters
 ---------------------------------------------------------------------*/
 
-                    gp_iic00_rx_addr++;
+                    gp_iic00_rx_address++;
 
-                    if ( g_iic00_rx_cnt == ( g_iic00_rx_len -1) )
+                    if ( g_iic00_rx_count == ( g_iic00_rx_length -1) )
                     {
 /*-------------------------------------------------------------------
     next data is last data to receive. then NACK response
@@ -515,11 +515,11 @@ void r_tau0_channel3_interrupt(void)
         data is transmitted 
 ----------------------------------------------------------------*/
 
-                        if ( g_iic00_tx_cnt > 0 ) /* more data to transmit */
+                        if ( g_iic00_tx_count > 0 ) /* more data to transmit */
                         {               /* set transmit data        */
-                            SIO00 = (*gp_iic00_tx_addr);
-                            gp_iic00_tx_addr++;
-                            g_iic00_tx_cnt--;
+                            SIO00 = (*gp_iic00_tx_address);
+                            gp_iic00_tx_address++;
+                            g_iic00_tx_count--;
                         }
                         else            /* data transmit complete   */
                         {
