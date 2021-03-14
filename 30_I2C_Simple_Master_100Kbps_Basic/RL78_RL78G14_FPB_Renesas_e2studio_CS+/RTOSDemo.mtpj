@@ -1256,7 +1256,7 @@ src
       <LinkOptionPostLinkCommands-0 />
       <LinkOptionShowTotalSize-0>False</LinkOptionShowTotalSize-0>
       <LinkOptionSymbolForbid-0 />
-      <LinkOptionUserOptByteValue-0>EFFFF8</LinkOptionUserOptByteValue-0>
+      <LinkOptionUserOptByteValue-0>EF7FF8</LinkOptionUserOptByteValue-0>
       <LinkOptionCFIAddFunc-0 />
       <LinkOptionChangeMessageWarningNumber-0>2300,2142</LinkOptionChangeMessageWarningNumber-0>
       <LinkOptionOtherAdditionalOptions-0 />
@@ -5258,7 +5258,7 @@ src
     &lt;StartAddressOfOnChipDebugOptionBytes Name="GOStart" Text="7FF00" /&gt;
     &lt;SizeOfOnChipDebugOptionBytesArea Name="GOSizeValue" Text="256" /&gt;
     &lt;UserOptionBytes Name="GB" Text="1" /&gt;
-    &lt;UserOptionBytesValue Name="GBValue" Text="EFFFF8" /&gt;
+    &lt;UserOptionBytesValue Name="GBValue" Text="EF7FF8" /&gt;
     &lt;RAMStartAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="RAMStartAddress" Fixed="" Text="000F3F00" /&gt;
     &lt;RAMEndAddress Name="RAMEndAddress" Fixed="" Text="000FFEFF" /&gt;
     &lt;ROMEndAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="ROMEndAddress" Fixed="" Text="0007FFFF" /&gt;
@@ -6832,17 +6832,17 @@ src
         &lt;r_cg_elc.h UserName="r_cg_elc.h" LibName=".h" InUse="" /&gt;
       &lt;/ELC&gt;
       &lt;LVD&gt;
-        &lt;r_cg_lvd.c UserName="r_cg_lvd.c" LibName=".c" InUse=""&gt;
+        &lt;r_cg_lvd.c UserName="r_cg_lvd.c" LibName=".c" InUse="0"&gt;
           &lt;Type R_LVD_Create="void R_LVD_Create(void)" R_LVD_InterruptMode_Start="void R_LVD_InterruptMode_Start(void)" /&gt;
-          &lt;R_LVD_Create UserName="R_LVD_Create" LibName="R_LVD_Create" InUse="" Init="1" InitMode="" /&gt;
-          &lt;R_LVD_InterruptMode_Start UserName="R_LVD_InterruptMode_Start" LibName="R_LVD_InterruptMode_Start" InUse="" /&gt;
+          &lt;R_LVD_Create UserName="R_LVD_Create" LibName="R_LVD_Create" InUse="0" Init="1" InitMode="" /&gt;
+          &lt;R_LVD_InterruptMode_Start UserName="R_LVD_InterruptMode_Start" LibName="R_LVD_InterruptMode_Start" InUse="0" /&gt;
         &lt;/r_cg_lvd.c&gt;
-        &lt;r_cg_lvd_user.c UserName="r_cg_lvd_user.c" LibName="_user.c" InUse=""&gt;
+        &lt;r_cg_lvd_user.c UserName="r_cg_lvd_user.c" LibName="_user.c" InUse="0"&gt;
           &lt;Type R_LVD_Creat_UserInit="void R_LVD_Creat_UserInit(void)" r_lvd_interrupt="__interrupt static void r_lvd_interrupt(void)" /&gt;
-          &lt;R_LVD_Creat_UserInit UserName="R_LVD_Creat_UserInit" LibName="R_LVD_Creat_UserInit" InUse="" /&gt;
-          &lt;r_lvd_interrupt UserName="r_lvd_interrupt" INTHandle="" LibName="r_lvd_interrupt" InUse="" /&gt;
+          &lt;R_LVD_Creat_UserInit UserName="R_LVD_Creat_UserInit" LibName="R_LVD_Creat_UserInit" InUse="0" /&gt;
+          &lt;r_lvd_interrupt UserName="r_lvd_interrupt" INTHandle="" LibName="r_lvd_interrupt" InUse="0" /&gt;
         &lt;/r_cg_lvd_user.c&gt;
-        &lt;r_cg_lvd.h UserName="r_cg_lvd.h" LibName=".h" InUse="" /&gt;
+        &lt;r_cg_lvd.h UserName="r_cg_lvd.h" LibName=".h" InUse="0" /&gt;
       &lt;/LVD&gt;
     &lt;/FUNC&gt;
     &lt;TAG&gt;
@@ -6859,7 +6859,7 @@ src
         &lt;cg_security9 Name="cg_security9" Value="00" /&gt;
         &lt;cg_option Name="cg_option" Value="85" /&gt;
         &lt;wdt_option Name="wdt_option" Value="EF" /&gt;
-        &lt;lvi_option Name="lvi_option" Value="FF" /&gt;
+        &lt;lvi_option Name="lvi_option" Value="7F" /&gt;
         &lt;clock_option Name="clock_option" Value="F8" /&gt;
         &lt;cg_crc_area Name="cg_crc_area" Value="00" /&gt;
         &lt;cg_onchip Name="cg_onchip" Value="" /&gt;
@@ -6936,8 +6936,8 @@ src
     &lt;ELC SetFlag="" HelpID="elc" NeedRefresh="False"&gt;
       &lt;ELC Accelerate="No" MacroName="ELC" /&gt;
     &lt;/ELC&gt;
-    &lt;LVD SetFlag="" Prepared="true" HelpID="lvi" NeedRefresh="False"&gt;
-      &lt;LVD MacroName="LVD" /&gt;
+    &lt;LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False"&gt;
+      &lt;LVD MacroName="LVD" SetFlag="True" /&gt;
     &lt;/LVD&gt;
   &lt;/MACRO&gt;
   &lt;SETTING&gt;
@@ -8118,8 +8118,8 @@ src
       &lt;/ELSELR8&gt;
     &lt;/ELC&gt;
     &lt;LVD&gt;
-      &lt;setting name="Operation" value="unused" /&gt;
-      &lt;setting name="Reset_only_level" value="0" /&gt;
+      &lt;setting name="Operation" value="used" /&gt;
+      &lt;setting name="Reset_only_level" value="8" /&gt;
       &lt;setting name="InterruptReset_level" value="0" /&gt;
       &lt;setting name="Interrupt_level" value="0" /&gt;
       &lt;setting name="Interrupt_only_level" value="0" /&gt;
@@ -8131,6 +8131,7 @@ src
 &lt;/RL78G14&gt;</CodeGenerator>
       <FormatVersion>1.0</FormatVersion>
       <ToolGUID>29290ca7-5d9c-4574-bf4f-4cf32eb33554</ToolGUID>
+      <CodeGeneratorItem>3da029ce-f32f-4b28-a2b1-2e15c31ead31</CodeGeneratorItem>
     </Instance>
   </Class>
   <Class Guid="6750ad11-a84e-4756-9db4-04c15ef09e7a">

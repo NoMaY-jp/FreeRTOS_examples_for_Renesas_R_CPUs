@@ -409,6 +409,7 @@ static void iica1_slave_handler(void);
 
 /* Start user code for function. Do not edit comment generated here */
 
+void U_IICA0_Master_init(void);
 void U_IICA0_Master_Lock(void);
 void U_IICA0_Master_Unlock(void);
 MD_STATUS U_IICA0_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num);

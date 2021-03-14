@@ -163,7 +163,7 @@
     <StartAddressOfOnChipDebugOptionBytes Name="GOStart" Text="7FF00" />
     <SizeOfOnChipDebugOptionBytesArea Name="GOSizeValue" Text="256" />
     <UserOptionBytes Name="GB" Text="1" />
-    <UserOptionBytesValue Name="GBValue" Text="EFFFF8" />
+    <UserOptionBytesValue Name="GBValue" Text="EF7FF8" />
     <RAMStartAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="RAMStartAddress" Fixed="" Text="000F3F00" />
     <RAMEndAddress Name="RAMEndAddress" Fixed="" Text="000FFEFF" />
     <ROMEndAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="ROMEndAddress" Fixed="" Text="0007FFFF" />
@@ -1733,17 +1733,17 @@
         <r_cg_elc.h UserName="r_cg_elc.h" LibName=".h" InUse="" />
       </ELC>
       <LVD>
-        <r_cg_lvd.c UserName="r_cg_lvd.c" LibName=".c" InUse="">
+        <r_cg_lvd.c UserName="r_cg_lvd.c" LibName=".c" InUse="0">
           <Type R_LVD_Create="void R_LVD_Create(void)" R_LVD_InterruptMode_Start="void R_LVD_InterruptMode_Start(void)" />
-          <R_LVD_Create UserName="R_LVD_Create" LibName="R_LVD_Create" InUse="" Init="1" InitMode="" />
-          <R_LVD_InterruptMode_Start UserName="R_LVD_InterruptMode_Start" LibName="R_LVD_InterruptMode_Start" InUse="" />
+          <R_LVD_Create UserName="R_LVD_Create" LibName="R_LVD_Create" InUse="0" Init="1" InitMode="" />
+          <R_LVD_InterruptMode_Start UserName="R_LVD_InterruptMode_Start" LibName="R_LVD_InterruptMode_Start" InUse="0" />
         </r_cg_lvd.c>
-        <r_cg_lvd_user.c UserName="r_cg_lvd_user.c" LibName="_user.c" InUse="">
+        <r_cg_lvd_user.c UserName="r_cg_lvd_user.c" LibName="_user.c" InUse="0">
           <Type R_LVD_Creat_UserInit="void R_LVD_Creat_UserInit(void)" r_lvd_interrupt="__interrupt static void r_lvd_interrupt(void)" />
-          <R_LVD_Creat_UserInit UserName="R_LVD_Creat_UserInit" LibName="R_LVD_Creat_UserInit" InUse="" />
-          <r_lvd_interrupt UserName="r_lvd_interrupt" INTHandle="" LibName="r_lvd_interrupt" InUse="" />
+          <R_LVD_Creat_UserInit UserName="R_LVD_Creat_UserInit" LibName="R_LVD_Creat_UserInit" InUse="0" />
+          <r_lvd_interrupt UserName="r_lvd_interrupt" INTHandle="" LibName="r_lvd_interrupt" InUse="0" />
         </r_cg_lvd_user.c>
-        <r_cg_lvd.h UserName="r_cg_lvd.h" LibName=".h" InUse="" />
+        <r_cg_lvd.h UserName="r_cg_lvd.h" LibName=".h" InUse="0" />
       </LVD>
     </FUNC>
     <TAG>
@@ -1760,7 +1760,7 @@
         <cg_security9 Name="cg_security9" Value="00" />
         <cg_option Name="cg_option" Value="85" />
         <wdt_option Name="wdt_option" Value="EF" />
-        <lvi_option Name="lvi_option" Value="FF" />
+        <lvi_option Name="lvi_option" Value="7F" />
         <clock_option Name="clock_option" Value="F8" />
         <cg_crc_area Name="cg_crc_area" Value="00" />
         <cg_onchip Name="cg_onchip" Value="" />
@@ -1837,8 +1837,8 @@
     <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
       <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
-    <LVD SetFlag="" Prepared="true" HelpID="lvi" NeedRefresh="False">
-      <LVD MacroName="LVD" />
+    <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
+      <LVD MacroName="LVD" SetFlag="True" />
     </LVD>
   </MACRO>
   <SETTING>
@@ -2702,48 +2702,6 @@
       <Channel2>
         <setting name="Channel_function_-i" value="0" />
         <setting name="Detail_function_-i" value="-1" />
-        <Both_UART3>
-          <setting name="Receive_data_direction" value="LSB" />
-          <setting name="Receive_data_length" value="8 bits" />
-          <setting name="Receive_parity" value="none" />
-          <setting name="RecBaudrate" value="9600" />
-          <setting name="Receive_end_callback_function" value="generated" />
-          <setting name="Receive_error_callback_function" value="generated" />
-          <setting name="Transfer_mode" value="single" />
-          <setting name="Transmit_data_direction" value="LSB" />
-          <setting name="Transmit_data_level" value="normal" />
-          <setting name="Transmit_data_length" value="8 bits" />
-          <setting name="Transmit_parity" value="none" />
-          <setting name="Transmit_stop_length" value="1 bit" />
-          <setting name="TranBaudrate" value="9600" />
-          <setting name="Transmit_end_callback_function" value="generated" />
-          <setting name="Transmit_end_interrupt_priority" value="3" />
-          <setting name="Receive_error_interrupt_priority" value="3" />
-          <setting name="Receive_end_interrupt_priority" value="3" />
-          <setting name="Reveive_Data_Level" value="Normal" />
-          <setting name="Receive_error_interrupt" value="not used" />
-        </Both_UART3>
-        <Receive_UART3>
-          <setting name="Receive_data_direction" value="LSB" />
-          <setting name="Receive_data_length" value="8 bits" />
-          <setting name="Receive_parity" value="none" />
-          <setting name="RecBaudrate" value="9600" />
-          <setting name="Receive_end_callback_function" value="generated" />
-          <setting name="Receive_error_callback_function" value="generated" />
-          <setting name="Transfer_mode" value="single" />
-          <setting name="Transmit_data_direction" value="LSB" />
-          <setting name="Transmit_data_level" value="normal" />
-          <setting name="Transmit_data_length" value="8 bits" />
-          <setting name="Transmit_parity" value="none" />
-          <setting name="Transmit_stop_length" value="1 bit" />
-          <setting name="TranBaudrate" value="9600" />
-          <setting name="Transmit_end_callback_function" value="generated" />
-          <setting name="Transmit_end_interrupt_priority" value="3" />
-          <setting name="Receive_error_interrupt_priority" value="3" />
-          <setting name="Receive_end_interrupt_priority" value="3" />
-          <setting name="Reveive_Data_Level" value="Normal" />
-          <setting name="Receive_error_interrupt" value="not used" />
-        </Receive_UART3>
       </Channel2>
       <UART3 />
       <Channel3>
@@ -2765,7 +2723,7 @@
         <setting name="ClockSetting" value="fCLKHalf" />
         <setting name="SlaveAddress" value="16" />
         <setting name="Transfer_speed" value="high speed" />
-        <setting name="Digital_filter" value="unused" />
+        <setting name="Digital_filter" value="used" />
         <setting name="Interrupt_Priority" value="1" />
         <setting name="CallSlaveReceptionEnd" value="Checked" />
         <setting name="CallSlaveTransmitEnd" value="Checked" />
@@ -2874,5 +2832,15 @@
       <setting name="KR6" value="unused" />
       <setting name="KR7" value="unused" />
     </KEY>
+    <LVD>
+      <setting name="Operation" value="used" />
+      <setting name="Reset_only_level" value="8" />
+      <setting name="InterruptReset_level" value="0" />
+      <setting name="Interrupt_level" value="0" />
+      <setting name="Interrupt_only_level" value="0" />
+      <setting name="operation_mode" value="reset" />
+      <setting name="Interrupt_priority" value="3" />
+      <setting name="Interrupt_only_priority" value="3" />
+    </LVD>
   </SETTING>
 </RL78G14>

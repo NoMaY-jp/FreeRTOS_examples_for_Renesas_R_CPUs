@@ -121,7 +121,7 @@ void R_IICA0_Create(void)
     SMC0 = 1U;
     IICWL0 = _09_IICA0_IICWL_VALUE;
     IICWH0 = _08_IICA0_IICWH_VALUE;
-    DFC0 = 0U; /* digital filter off */
+    DFC0 = 1U; /* digital filter on */
     IICCTL01 |= _01_IICA_fCLK_HALF;
     SVA0 = _12_IICA0_MASTERADDRESS;
     STCEN0 = 1U;
@@ -286,7 +286,7 @@ void R_IICA1_Create(void)
     SMC1 = 1U;
     IICWL1 = _15_IICA1_IICWL_VALUE;
     IICWH1 = _14_IICA1_IICWH_VALUE;
-    DFC1 = 0U; /* digital filter off */
+    DFC1 = 1U; /* digital filter on */
     IICCTL11 |= _01_IICA_fCLK_HALF;
     SVA1 = _10_IICA1_SLAVEADDRESS;
     STCEN1 = 1U;
@@ -377,6 +377,17 @@ void R_IICA0_Create_simulator_patch(void)
 #endif
 
 /******************************************************************************
+* Function Name: U_IICA0_Master_init
+* Description  : This function does additional initialization for IICA0 operation.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void U_IICA0_Master_init(void)
+{
+    xSemaphoreCreateMutexStatic_R_Helper(&g_iica0_master_mutex);
+}
+
+/******************************************************************************
 * Function Name: U_IICA0_Master_Lock
 * Description  : This function locks IICA0 module for exclusive operation.
 * Arguments    : None
@@ -384,15 +395,6 @@ void R_IICA0_Create_simulator_patch(void)
 ******************************************************************************/
 void U_IICA0_Master_Lock(void)
 {
-    taskENTER_CRITICAL();
-    {
-        if (NULL == g_iica0_master_mutex)
-        {
-            xSemaphoreCreateMutexStatic_R_Helper(&g_iica0_master_mutex);
-        }
-    }
-    taskEXIT_CRITICAL();
-
     xSemaphoreTake(g_iica0_master_mutex, portMAX_DELAY);
 }
 
@@ -426,7 +428,7 @@ MD_STATUS U_IICA0_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t
 
     /* Wait for a notification from the interrupt/callback */
     value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_master_task, status = U_IICA0_Master_Send( adr7, tx_buf, tx_num ) );
-    if (0U != value)
+    if (MD_OK == status)
     {
         status = value & 0xFFFFU;
     }
@@ -482,7 +484,7 @@ MD_STATUS U_IICA0_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx
 
     /* Wait for a notification from the interrupt/callback */
     value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_master_task, status = U_IICA0_Master_Receive( adr7, rx_buf, rx_num ) );
-    if (0U != value)
+    if (MD_OK == status)
     {
         status = value & 0xFFFFU;
     }

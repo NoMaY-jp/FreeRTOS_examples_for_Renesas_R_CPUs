@@ -409,8 +409,7 @@ static void iica0_slave_handler(void);
 
 /* Start user code for function. Do not edit comment generated here */
 
-#include "platform.h" /* for the bool type in this header file */
-
+void U_IIC00_Master_init(void);
 void U_IIC00_Master_Lock(void);
 void U_IIC00_Master_Unlock(void);
 MD_STATUS U_IIC00_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t tx_num);

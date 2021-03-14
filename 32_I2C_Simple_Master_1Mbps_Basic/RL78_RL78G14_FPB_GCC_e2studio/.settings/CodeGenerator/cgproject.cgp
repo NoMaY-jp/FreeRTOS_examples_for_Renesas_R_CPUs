@@ -163,7 +163,7 @@
     <StartAddressOfOnChipDebugOptionBytes Name="GOStart" Text="7FF00" />
     <SizeOfOnChipDebugOptionBytesArea Name="GOSizeValue" Text="256" />
     <UserOptionBytes Name="GB" Text="1" />
-    <UserOptionBytesValue Name="GBValue" Text="EFFFF8" />
+    <UserOptionBytesValue Name="GBValue" Text="EF7FF8" />
     <RAMStartAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="RAMStartAddress" Fixed="" Text="000F3F00" />
     <RAMEndAddress Name="RAMEndAddress" Fixed="" Text="000FFEFF" />
     <ROMEndAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="ROMEndAddress" Fixed="" Text="0007FFFF" />
@@ -1752,7 +1752,7 @@
         <cg_security9 Name="cg_security9" Value="00" />
         <cg_option Name="cg_option" Value="85" />
         <wdt_option Name="wdt_option" Value="EF" />
-        <lvi_option Name="lvi_option" Value="FF" />
+        <lvi_option Name="lvi_option" Value="7F" />
         <clock_option Name="clock_option" Value="F8" />
         <cg_crc_area Name="cg_crc_area" Value="00" />
         <cg_onchip Name="cg_onchip" Value="" />
@@ -1830,8 +1830,8 @@
     <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
       <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
-    <LVD SetFlag="False" Prepared="true" HelpID="lvi" NeedRefresh="False">
-      <LVD MacroName="LVD" SetFlag="False" />
+    <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
+      <LVD MacroName="LVD" SetFlag="True" />
     </LVD>
   </MACRO>
   <SETTING>
@@ -2446,6 +2446,87 @@
         </P153>
       </PortP15>
     </PORT>
+    <SAU0>
+      <IIC00 />
+      <CSI00 />
+      <UART0 />
+      <Channel0>
+        <setting name="Channel_function_-i" value="3" />
+        <setting name="Detail_function_-i" value="-1" />
+        <IIC00>
+          <setting name="TransferSpeed" value="1000000" />
+          <setting name="Interrupt_priority" value="2" />
+          <setting name="Master_receive_end_callback_function" value="generated" />
+          <setting name="Master_transmit_end_callback_function" value="generated" />
+          <setting name="Master_error_callback_function" value="generated" />
+        </IIC00>
+      </Channel0>
+      <IIC01 />
+      <CSI01 />
+      <UART1 />
+      <Channel1>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel1>
+      <Channel2>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel2>
+      <Channel3>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel3>
+      <IIC10 />
+      <CSI10 />
+      <IIC11 />
+      <CSI11 />
+    </SAU0>
+    <SAU1>
+      <Channel0>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel0>
+      <Channel1>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel1>
+      <UART2 />
+      <Channel2>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel2>
+      <UART3 />
+      <Channel3>
+        <setting name="Channel_function_-i" value="0" />
+        <setting name="Detail_function_-i" value="-1" />
+      </Channel3>
+      <IIC20 />
+      <CSI20 />
+      <IIC21 />
+      <CSI21 />
+      <IIC30 />
+      <CSI30 />
+      <IIC31 />
+      <CSI31 />
+    </SAU1>
+    <IICA0>
+      <setting name="TransferMode" value="Slave" />
+      <Slave0>
+        <setting name="ClockSetting" value="fCLKHalf" />
+        <setting name="SlaveAddress" value="16" />
+        <setting name="Transfer_speed" value="high speed" />
+        <setting name="Digital_filter" value="used" />
+        <setting name="Interrupt_Priority" value="1" />
+        <setting name="CallSlaveReceptionEnd" value="Checked" />
+        <setting name="CallSlaveTransmitEnd" value="Checked" />
+        <setting name="CallSlaveError" value="Checked" />
+        <setting name="SLAVE_WAKEUP_MODE_ON" value="false" />
+        <setting name="SLAVE_WAKEUP_MODE_OFF" value="true" />
+      </Slave0>
+    </IICA0>
+    <IICA1>
+      <setting name="Mode" value="Unused" />
+    </IICA1>
     <INTP>
       <INTP0>
         <setting name="Valid_edge" value="falling" />
@@ -2543,97 +2624,6 @@
       <setting name="KR6" value="unused" />
       <setting name="KR7" value="unused" />
     </KEY>
-    <SAU0>
-      <IIC00 />
-      <CSI00 />
-      <UART0 />
-      <Channel0>
-        <setting name="Channel_function_-i" value="3" />
-        <setting name="Detail_function_-i" value="-1" />
-        <IIC00>
-          <setting name="TransferSpeed" value="1000000" />
-          <setting name="Interrupt_priority" value="2" />
-          <setting name="Master_receive_end_callback_function" value="generated" />
-          <setting name="Master_transmit_end_callback_function" value="generated" />
-          <setting name="Master_error_callback_function" value="generated" />
-        </IIC00>
-      </Channel0>
-      <IIC01 />
-      <CSI01 />
-      <UART1 />
-      <Channel1>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel1>
-      <Channel2>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel2>
-      <Channel3>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel3>
-      <IIC10 />
-      <CSI10 />
-      <IIC11 />
-      <CSI11 />
-    </SAU0>
-    <SAU1>
-      <Channel0>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel0>
-      <Channel1>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel1>
-      <UART2 />
-      <Channel2>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel2>
-      <UART3 />
-      <Channel3>
-        <setting name="Channel_function_-i" value="0" />
-        <setting name="Detail_function_-i" value="-1" />
-      </Channel3>
-      <IIC20 />
-      <CSI20 />
-      <IIC21 />
-      <CSI21 />
-      <IIC30 />
-      <CSI30 />
-      <IIC31 />
-      <CSI31 />
-    </SAU1>
-    <IICA0>
-      <setting name="TransferMode" value="Slave" />
-      <Slave0>
-        <setting name="ClockSetting" value="fCLKHalf" />
-        <setting name="SlaveAddress" value="16" />
-        <setting name="Transfer_speed" value="high speed" />
-        <setting name="Digital_filter" value="unused" />
-        <setting name="Interrupt_Priority" value="1" />
-        <setting name="CallSlaveReceptionEnd" value="Checked" />
-        <setting name="CallSlaveTransmitEnd" value="Checked" />
-        <setting name="CallSlaveError" value="Checked" />
-        <setting name="SLAVE_WAKEUP_MODE_ON" value="false" />
-        <setting name="SLAVE_WAKEUP_MODE_OFF" value="true" />
-      </Slave0>
-    </IICA0>
-    <IICA1>
-      <setting name="Mode" value="Unused" />
-    </IICA1>
-    <LVD>
-      <setting name="Operation" value="unused" />
-      <setting name="Reset_only_level" value="0" />
-      <setting name="InterruptReset_level" value="0" />
-      <setting name="Interrupt_level" value="0" />
-      <setting name="Interrupt_only_level" value="0" />
-      <setting name="operation_mode" value="reset" />
-      <setting name="Interrupt_priority" value="3" />
-      <setting name="Interrupt_only_priority" value="3" />
-    </LVD>
     <DTC>
       <DTCBA>
         <setting name="BaseAddress" value="0xffd00" />
@@ -2771,5 +2761,15 @@
         <setting name="Source" value="0" />
       </DTCD23>
     </DTC>
+    <LVD>
+      <setting name="Operation" value="used" />
+      <setting name="Reset_only_level" value="8" />
+      <setting name="InterruptReset_level" value="0" />
+      <setting name="Interrupt_level" value="0" />
+      <setting name="Interrupt_only_level" value="0" />
+      <setting name="operation_mode" value="reset" />
+      <setting name="Interrupt_priority" value="3" />
+      <setting name="Interrupt_only_priority" value="3" />
+    </LVD>
   </SETTING>
 </RL78G14>

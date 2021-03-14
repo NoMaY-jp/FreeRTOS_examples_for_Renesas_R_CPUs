@@ -307,7 +307,7 @@ void R_IICA0_Create(void)
     SMC0 = 1U;
     IICWL0 = _15_IICA0_IICWL_VALUE;
     IICWH0 = _14_IICA0_IICWH_VALUE;
-    DFC0 = 0U; /* digital filter off */
+    DFC0 = 1U; /* digital filter on */
     IICCTL01 |= _01_IICA_fCLK_HALF;
     SVA0 = _10_IICA0_SLAVEADDRESS;
     STCEN0 = 1U;
@@ -369,6 +369,16 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 /* Start user code for adding. Do not edit comment generated here */
 
 /******************************************************************************
+* Function Name: U_IIC00_Master_init
+* Description  : This function does additional initialization for IIC00 operation.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void U_IIC00_Master_init(void)
+{
+    xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
+}
+/******************************************************************************
 * Function Name: U_IIC00_Master_Lock
 * Description  : This function locks IIC00 module for exclusive operation.
 * Arguments    : None
@@ -376,15 +386,6 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 ******************************************************************************/
 void U_IIC00_Master_Lock(void)
 {
-    taskENTER_CRITICAL();
-    {
-        if (NULL == g_iic00_master_mutex)
-        {
-            xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
-        }
-    }
-    taskEXIT_CRITICAL();
-
     xSemaphoreTake(g_iic00_master_mutex, portMAX_DELAY);
 }
 

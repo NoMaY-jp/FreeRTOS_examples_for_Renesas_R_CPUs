@@ -352,6 +352,17 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 /* Start user code for adding. Do not edit comment generated here */
 
 /******************************************************************************
+* Function Name: U_IIC00_Master_init
+* Description  : This function does additional initialization for IIC00 operation.
+* Arguments    : None
+* Return Value : None
+******************************************************************************/
+void U_IIC00_Master_init(void)
+{
+    xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
+}
+
+/******************************************************************************
 * Function Name: U_IIC00_Master_Lock
 * Description  : This function locks IIC00 module for exclusive operation.
 * Arguments    : None
@@ -359,15 +370,6 @@ void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num)
 ******************************************************************************/
 void U_IIC00_Master_Lock(void)
 {
-    taskENTER_CRITICAL();
-    {
-        if (NULL == g_iic00_master_mutex)
-        {
-            xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
-        }
-    }
-    taskEXIT_CRITICAL();
-
     xSemaphoreTake(g_iic00_master_mutex, portMAX_DELAY);
 }
 
@@ -400,6 +402,7 @@ MD_STATUS U_IIC00_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t
 
     /* Wait for a notification from the interrupt/callback */
     value = ulTaskNotifyTake_R_Helper_Ex( &g_iic00_master_task, (R_IIC00_Master_Send( (adr7 << 1), (uint8_t *)tx_buf, tx_num ), MD_OK) );
+
     R_IIC00_StopCondition();
 
     return value & 0xFFFFU;

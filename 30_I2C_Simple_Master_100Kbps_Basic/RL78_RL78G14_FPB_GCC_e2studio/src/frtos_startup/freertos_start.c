@@ -34,6 +34,7 @@
 Includes   <System Includes> , "Project Includes"
 ******************************************************************************/
 #include "freertos_start.h"
+#include "r_cg_serial.h"
 
 /******************************************************************************
 Macro definitions
@@ -388,6 +389,8 @@ void Processing_Before_Start_Kernel(void)
         }
     }
 #endif /* #if 0 */
+
+    U_IIC00_Master_init();
 
     vPrintString( NL );
 
