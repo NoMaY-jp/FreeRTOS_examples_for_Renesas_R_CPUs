@@ -32,8 +32,9 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_intc.h"
 /* Start user code for include. Do not edit comment generated here */
+
 #include "freertos_start.h"
-#include "freertos_isr.h"
+
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -48,9 +49,11 @@ Pragma directive
 Global variables and functions
 ***********************************************************************************************************************/
 /* Start user code for global. Do not edit comment generated here */
+
 extern TaskHandle_t g_intc0_task;      /* intc0 event notify task */
 
 #define r_intc0_interrupt R_CG_FREERTOS_INTERRUPT_EI(r_intc0_interrupt)
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -62,6 +65,8 @@ extern TaskHandle_t g_intc0_task;      /* intc0 event notify task */
 static void __near r_intc0_interrupt(void)
 {
     /* Start user code. Do not edit comment generated here */
+
+    R_INTC0_Stop();
 
     vTaskNotifyGiveFromISR_R_Helper( &g_intc0_task );
 

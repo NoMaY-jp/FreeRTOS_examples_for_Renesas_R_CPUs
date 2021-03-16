@@ -146,6 +146,8 @@ void R_INTC0_Start(void);
 void R_INTC0_Stop(void);
 
 /* Start user code for function. Do not edit comment generated here */
+
 void U_INTC0_Wait(void);
+
 /* End user code. Do not edit comment generated here */
 #endif

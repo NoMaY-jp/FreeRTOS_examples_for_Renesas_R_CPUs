@@ -163,7 +163,7 @@
     <StartAddressOfOnChipDebugOptionBytes Name="GOStart" Text="7FF00" />
     <SizeOfOnChipDebugOptionBytesArea Name="GOSizeValue" Text="256" />
     <UserOptionBytes Name="GB" Text="1" />
-    <UserOptionBytesValue Name="GBValue" Text="EFFFF8" />
+    <UserOptionBytesValue Name="GBValue" Text="EF7FF8" />
     <RAMStartAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="RAMStartAddress" Fixed="" Text="000F3F00" />
     <RAMEndAddress Name="RAMEndAddress" Fixed="" Text="000FFEFF" />
     <ROMEndAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="ROMEndAddress" Fixed="" Text="0007FFFF" />
@@ -251,12 +251,10 @@
     <NO_CHAIN_23 Name="NO_CHAIN_23" Text="" />
     <CHAIN_HEAD_23 Name="CHAIN_HEAD_23" Text="" />
     <dtc_controldata_channels Name="dtc_controldata_channels" Text="" />
-    <DTCCHANNEL1 Name="DTCCHANNEL1" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
-    <ITEM_CHANNEL_1 Name="ITEM_CHANNEL_1" Text="18" />
-    <DTC_VECADDRESS Name="DTC_VECADDRESS" Text="0FFD00" />
-    <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
     <DTCCHANNEL0 Name="DTCCHANNEL0" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
     <ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="18" />
+    <DTC_VECADDRESS Name="DTC_VECADDRESS" Text="0FFD00" />
+    <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
   </VAR>
   <DIR>
     <PIN>
@@ -1712,29 +1710,29 @@
         <r_cg_dtc.h UserName="r_cg_dtc.h" LibName=".h" InUse="0" />
       </DTC>
       <ELC>
-        <r_cg_elc.c UserName="" LibName=".c" InUse="0">
+        <r_cg_elc.c UserName="" LibName=".c" InUse="">
           <Type R_ELC_Create="void R_ELC_Create(void)" R_ELC_Stop="void R_ELC_Stop(uint32_t event)" />
-          <R_ELC_Create UserName="R_ELC_Create" LibName="R_ELC_Create" InUse="0" Init="2" InitMode="" />
-          <R_ELC_Stop UserName="R_ELC_Stop" LibName="R_ELC_Stop" InUse="0" />
+          <R_ELC_Create UserName="R_ELC_Create" LibName="R_ELC_Create" InUse="" Init="2" InitMode="" />
+          <R_ELC_Stop UserName="R_ELC_Stop" LibName="R_ELC_Stop" InUse="" />
         </r_cg_elc.c>
-        <r_cg_elc_user.c UserName="" LibName="_user.c" InUse="0">
+        <r_cg_elc_user.c UserName="" LibName="_user.c" InUse="">
           <Type R_ELC_Create_UserInit="void R_ELC_Create_UserInit(void)" />
-          <R_ELC_Create_UserInit UserName="R_ELC_Create_UserInit" LibName="R_ELC_Create_UserInit" InUse="0" />
+          <R_ELC_Create_UserInit UserName="R_ELC_Create_UserInit" LibName="R_ELC_Create_UserInit" InUse="" />
         </r_cg_elc_user.c>
-        <r_cg_elc.h UserName="" LibName=".h" InUse="0" />
+        <r_cg_elc.h UserName="" LibName=".h" InUse="" />
       </ELC>
       <LVD>
-        <r_cg_lvd.c UserName="" LibName=".c" InUse="">
+        <r_cg_lvd.c UserName="" LibName=".c" InUse="0">
           <Type R_LVD_Create="void R_LVD_Create(void)" R_LVD_InterruptMode_Start="void R_LVD_InterruptMode_Start(void)" />
-          <R_LVD_Create UserName="" LibName="R_LVD_Create" InUse="" Init="1" InitMode="" />
-          <R_LVD_InterruptMode_Start UserName="" LibName="R_LVD_InterruptMode_Start" InUse="" />
+          <R_LVD_Create UserName="" LibName="R_LVD_Create" InUse="0" Init="1" InitMode="" />
+          <R_LVD_InterruptMode_Start UserName="" LibName="R_LVD_InterruptMode_Start" InUse="0" />
         </r_cg_lvd.c>
-        <r_cg_lvd_user.c UserName="" LibName="_user.c" InUse="">
+        <r_cg_lvd_user.c UserName="" LibName="_user.c" InUse="0">
           <Type R_LVD_Creat_UserInit="void R_LVD_Creat_UserInit(void)" r_lvd_interrupt="__interrupt static void r_lvd_interrupt(void)" />
-          <R_LVD_Creat_UserInit UserName="" LibName="R_LVD_Creat_UserInit" InUse="" />
-          <r_lvd_interrupt UserName="" INTHandle="" LibName="r_lvd_interrupt" InUse="" />
+          <R_LVD_Creat_UserInit UserName="" LibName="R_LVD_Creat_UserInit" InUse="0" />
+          <r_lvd_interrupt UserName="" INTHandle="" LibName="r_lvd_interrupt" InUse="0" />
         </r_cg_lvd_user.c>
-        <r_cg_lvd.h UserName="" LibName=".h" InUse="" />
+        <r_cg_lvd.h UserName="" LibName=".h" InUse="0" />
       </LVD>
     </FUNC>
     <TAG>
@@ -1751,7 +1749,7 @@
         <cg_security9 Name="cg_security9" Value="00" />
         <cg_option Name="cg_option" Value="85" />
         <wdt_option Name="wdt_option" Value="EF" />
-        <lvi_option Name="lvi_option" Value="FF" />
+        <lvi_option Name="lvi_option" Value="7F" />
         <clock_option Name="clock_option" Value="F8" />
         <cg_crc_area Name="cg_crc_area" Value="00" />
         <cg_onchip Name="cg_onchip" Value="" />
@@ -1825,11 +1823,11 @@
     <DTC HelpID="dtc" SetFlag="False" NeedRefresh="False">
       <DTC SetFlag="False" />
     </DTC>
-    <ELC SetFlag="False" HelpID="elc" NeedRefresh="False">
-      <ELC Accelerate="No" MacroName="ELC" SetFlag="False" />
+    <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
+      <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
-    <LVD SetFlag="" Prepared="true" HelpID="lvi" NeedRefresh="False">
-      <LVD MacroName="LVD" />
+    <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
+      <LVD MacroName="LVD" SetFlag="True" />
     </LVD>
   </MACRO>
   <SETTING>
@@ -2820,43 +2818,15 @@
         <setting name="Source" value="0" />
       </DTCD23>
     </DTC>
-    <ELC>
-      <ELSELR0>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR0>
-      <ELSELR1>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR1>
-      <ELSELR2>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR2>
-      <ELSELR3>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR3>
-      <ELSELR4>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR4>
-      <ELSELR5>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR5>
-      <ELSELR6>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR6>
-      <ELSELR7>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR7>
-      <ELSELR8>
-        <setting name="OPERATION" value="unused" />
-        <setting name="EventSelection" value="0" />
-      </ELSELR8>
-    </ELC>
+    <LVD>
+      <setting name="Operation" value="used" />
+      <setting name="Reset_only_level" value="8" />
+      <setting name="InterruptReset_level" value="0" />
+      <setting name="Interrupt_level" value="0" />
+      <setting name="Interrupt_only_level" value="0" />
+      <setting name="operation_mode" value="reset" />
+      <setting name="Interrupt_priority" value="3" />
+      <setting name="Interrupt_only_priority" value="3" />
+    </LVD>
   </SETTING>
 </RL78G14>

@@ -395,6 +395,7 @@ static void r_uart3_callback_sendend(void);
 static void r_uart3_callback_softwareoverrun(uint16_t rx_data);
 
 /* Start user code for function. Do not edit comment generated here */
+
 #include "platform.h" /* for the TickType_t type in this header file */
 
 void U_UART3_Start(void);
@@ -415,5 +416,6 @@ void U_UART3_Receive_ClearError(void);
 /*#define MD_SEND_ERROR       MD_ERROR3*/
 /*#define MD_SEND_TIMEOUT     MD_ERROR4*/
 /*#define MD_SEND_BUSY        MD_ERROR5*/
+
 /* End user code. Do not edit comment generated here */
 #endif

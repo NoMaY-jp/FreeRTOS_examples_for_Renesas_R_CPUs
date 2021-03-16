@@ -50,7 +50,7 @@ Global variables and functions
 #pragma location = "OPTBYTE"
 __root const uint8_t opbyte0 = 0xEFU;
 #pragma location = "OPTBYTE"
-__root const uint8_t opbyte1 = 0xFFU;
+__root const uint8_t opbyte1 = 0x7FU;
 #pragma location = "OPTBYTE"
 __root const uint8_t opbyte2 = 0xF8U;
 #pragma location = "OPTBYTE"

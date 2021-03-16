@@ -21,6 +21,7 @@ Includes   <System Includes> , "Project Includes"
 ***********************************************************************************************************************/
 #include "task_function.h"
 /* Start user code for import. Do not edit comment generated here */
+
 #include "freertos_start.h"
 #include "platform.h"
 #include "r_cg_serial.h"
@@ -30,6 +31,10 @@ volatile bool g_task_CONIO_error = false;
 
 #define CON_START_MESSAGE  "\r\nEnter characters\r\n"
 #define CON_RECV_DEMO_SIZE 3
+
+static volatile uint8_t recv_buff[CON_RECV_DEMO_SIZE + 1];
+static volatile uint8_t recv_err_events;
+static uint8_t send_buff[CON_RECV_DEMO_SIZE + 1];
 
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Hardware or Renesas RL78 Simulator */
@@ -42,15 +47,13 @@ volatile bool g_task_CONIO_error = false;
 #define LED1_ERROR_BLINK_FREQUENCY_MS pdMS_TO_TICKS( 250 )
 #define CON_RECV_TIMEOUT_MS pdMS_TO_TICKS( 60 * 1000UL )
 #endif
+
 /* End user code. Do not edit comment generated here */
 
 void task_CONIO(void * pvParameters)
 {
 /* Start user code for function. Do not edit comment generated here */
 
-    volatile uint8_t recv_buff[CON_RECV_DEMO_SIZE + 1];
-    volatile uint8_t err_events;
-    uint8_t send_buff[CON_RECV_DEMO_SIZE + 1];
     MD_STATUS status;
     uint32_t cnt;
 
@@ -69,7 +72,7 @@ void task_CONIO(void * pvParameters)
 
         memset( (char *)recv_buff, 0, CON_RECV_DEMO_SIZE + 1 );
 
-        status = U_UART3_Receive_Wait( recv_buff, CON_RECV_DEMO_SIZE, &err_events, CON_RECV_TIMEOUT_MS );
+        status = U_UART3_Receive_Wait( recv_buff, CON_RECV_DEMO_SIZE, &recv_err_events, CON_RECV_TIMEOUT_MS );
 
         if (MD_OK == status)
         {
@@ -87,19 +90,19 @@ void task_CONIO(void * pvParameters)
             }
             else if (MD_RECV_ERROR == status)
             {
-                if (SCI_EVT_RXBUF_OVFL & err_events)
+                if (SCI_EVT_RXBUF_OVFL & recv_err_events)
                 {
                     vPrintString( "Ring Buffer Overflow Error\n" );
                 }
-                if (SCI_EVT_FRAMING_ERR & err_events)
+                if (SCI_EVT_FRAMING_ERR & recv_err_events)
                 {
                     vPrintString( "Framing Error\n" );
                 }
-                if (SCI_EVT_PARITY_ERR & err_events)
+                if (SCI_EVT_PARITY_ERR & recv_err_events)
                 {
                     vPrintString( "Parity Error\n" );
                 }
-                if (SCI_EVT_OVFL_ERR & err_events)
+                if (SCI_EVT_OVFL_ERR & recv_err_events)
                 {
                     vPrintString( "Overrun Error\n" );
                 }

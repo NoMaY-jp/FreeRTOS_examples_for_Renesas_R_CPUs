@@ -32,8 +32,9 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_serial.h"
 /* Start user code for include. Do not edit comment generated here */
+
 #include "freertos_start.h"
-#include "freertos_isr.h"
+
 #include "r_cg_userdefine.h"
 #if 0
 /* End user code. Do not edit comment generated here */
@@ -49,11 +50,13 @@ extern uint16_t  g_uart3_rx_count;            /* uart3 receive data number */
 extern uint16_t  g_uart3_rx_length;           /* uart3 receive data length */
 /* Start user code for global. Do not edit comment generated here */
 #endif /* #if 0 */
+
 extern volatile uint8_t * gp_uart3_tx_address;         /* uart3 send buffer address */
 extern volatile uint16_t  g_uart3_tx_count;            /* uart3 send data number */
 extern volatile uint8_t * gp_uart3_rx_address;         /* uart3 receive buffer address */
 extern volatile uint16_t  g_uart3_rx_count;            /* uart3 receive data number */
 extern volatile uint16_t  g_uart3_rx_length;           /* uart3 receive data length */
+
 extern TaskHandle_t       g_uart3_tx_task;             /* uart3 send task */
 extern volatile bool      g_uart3_tx_ready_flag;       /* uart3 send end flag */
 extern TaskHandle_t       g_uart3_rx_task;             /* uart3 receive task */
@@ -65,6 +68,7 @@ static void u_uart3_rx_callback_common(uint16_t stat); /* uart3 receive common c
 
 #define r_uart3_interrupt_receive R_CG_FREERTOS_INTERRUPT_EI(r_uart3_interrupt_receive)
 #define r_uart3_interrupt_send R_CG_FREERTOS_INTERRUPT_EI(r_uart3_interrupt_send)
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************

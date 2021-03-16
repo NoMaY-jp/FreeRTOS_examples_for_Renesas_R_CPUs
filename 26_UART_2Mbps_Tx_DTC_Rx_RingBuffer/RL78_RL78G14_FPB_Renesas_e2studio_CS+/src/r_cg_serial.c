@@ -32,9 +32,11 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_serial.h"
 /* Start user code for include. Do not edit comment generated here */
+
 #include "r_cg_dtc.h"
 #include "UART3.h"
 #include "freertos_start.h"
+
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 
@@ -53,6 +55,7 @@ volatile uint8_t * gp_uart3_rx_address;        /* uart3 receive buffer address *
 volatile uint16_t  g_uart3_rx_count;           /* uart3 receive data number */
 volatile uint16_t  g_uart3_rx_length;          /* uart3 receive data length */
 /* Start user code for global. Do not edit comment generated here */
+
 TaskHandle_t       g_uart3_tx_task;            /* uart3 send task */
 volatile bool      g_uart3_tx_ready_flag;      /* uart3 send end flag */
 TaskHandle_t       g_uart3_rx_task;            /* uart3 receive task */
@@ -64,6 +67,7 @@ void U_UART3_Send_Stop(void);                  /* for internal use */
 static void U_UART3_Receive(volatile uint8_t * rx_buf, uint16_t rx_num);
 static void U_UART3_Send_WaitForReady(void);
 static void U_UART3_Send(uint8_t * tx_buf, uint16_t tx_num);
+
 /* End user code. Do not edit comment generated here */
 
 /***********************************************************************************************************************
@@ -327,12 +331,9 @@ MD_STATUS U_UART3_Receive_Wait(volatile uint8_t * rx_buf, uint16_t rx_num, volat
             {
                 /* Timeout */
 
-                /* Abort reception */
+                /* Abort the interrupt/callback posting a notification */
                 U_UART3_Receive_Stop();
-                g_uart3_rx_task = NULL;
-
-                /* Clear an unhandled notification from timeout till stop */
-                ulTaskNotifyTake_R_Helper( 0 );
+                ulTaskNotifyTake_R_Abort_Helper( &g_uart3_rx_task );
 
                 status = MD_RECV_TIMEOUT;
                 err_events = SCI_EVT_RXWAIT_TMOT;
@@ -408,12 +409,8 @@ MD_STATUS U_UART3_Send_Wait(uint8_t * tx_buf, uint16_t tx_num)
     {
         U_UART3_Send_WaitForReady();
 
-       /* Set up the interrupt/callback ready to post a notification */
-        g_uart3_tx_task = xTaskGetCurrentTaskHandle_R_Helper();
-        U_UART3_Send( tx_buf, tx_num );
-
         /* Wait for a notification from the interrupt/callback */
-        ulTaskNotifyTake_R_Helper( portMAX_DELAY );
+        ulTaskNotifyTake_R_Helper_Ex( &g_uart3_tx_task, U_UART3_Send( tx_buf, tx_num ), portMAX_DELAY );
     }
 
     return status;
@@ -430,6 +427,8 @@ MD_STATUS U_UART3_Send_Start(uint8_t * tx_buf, uint16_t tx_num)
     else
     {
         U_UART3_Send_WaitForReady();
+
+        /* Not wait for a notification from the interrupt/callback */
         U_UART3_Send( tx_buf, tx_num );
     }
 

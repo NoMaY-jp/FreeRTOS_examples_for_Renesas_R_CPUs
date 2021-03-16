@@ -380,13 +380,13 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
+                    <state>$PROJ_DIR$\applilet3_src</state>
                     <state>$PROJ_DIR$\src\FreeRTOS\Source\portable\IAR\RL78</state>
                     <state>$PROJ_DIR$\src\FreeRTOS\Source\include</state>
                     <state>$PROJ_DIR$\src\frtos_skeleton</state>
                     <state>$PROJ_DIR$\src\frtos_startup</state>
                     <state>$PROJ_DIR$\src\frtos_config</state>
                     <state>$PROJ_DIR$\src</state>
-                    <state>$PROJ_DIR$\applilet3_src</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2208,10 +2208,16 @@
     <group>
         <name>frtos_startup</name>
         <file>
-            <name>$PROJ_DIR$\src\frtos_startup\freertos_isr.h</name>
+            <name>$PROJ_DIR$\src\frtos_startup\freertos_helper.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\frtos_startup\freertos_helper.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\frtos_startup\freertos_object_init.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\src\frtos_startup\freertos_stack.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\frtos_startup\freertos_start.c</name>
@@ -2277,7 +2283,7 @@
     <group>
         <name>Src</name>
         <file>
-            <name>$PROJ_DIR$\src\demo_specific_io.h</name>
+            <name>$PROJ_DIR$\src\demo_description.txt</name>
         </file>
         <file>
             <name>$PROJ_DIR$\src\platform.h</name>

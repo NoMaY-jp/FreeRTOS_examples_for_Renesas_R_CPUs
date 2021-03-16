@@ -21,6 +21,7 @@ Includes   <System Includes> , "Project Includes"
 ***********************************************************************************************************************/
 #include "task_function.h"
 /* Start user code for import. Do not edit comment generated here */
+
 #include "freertos_start.h"
 #include "platform.h"
 #include "rl78g14fpbdef.h"
@@ -32,6 +33,7 @@ Includes   <System Includes> , "Project Includes"
 /* Hardware only */
 #define LED0_BLINK_FREQUENCY_MS pdMS_TO_TICKS( 1000 )
 #endif
+
 /* End user code. Do not edit comment generated here */
 
 void task_LED0(void * pvParameters)

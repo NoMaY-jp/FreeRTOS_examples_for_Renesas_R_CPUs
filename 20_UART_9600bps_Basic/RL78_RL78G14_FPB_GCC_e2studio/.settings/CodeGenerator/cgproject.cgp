@@ -163,7 +163,7 @@
     <StartAddressOfOnChipDebugOptionBytes Name="GOStart" Text="7FF00" />
     <SizeOfOnChipDebugOptionBytesArea Name="GOSizeValue" Text="256" />
     <UserOptionBytes Name="GB" Text="1" />
-    <UserOptionBytesValue Name="GBValue" Text="EFFFF8" />
+    <UserOptionBytesValue Name="GBValue" Text="EF7FF8" />
     <RAMStartAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="RAMStartAddress" Fixed="" Text="000F3F00" />
     <RAMEndAddress Name="RAMEndAddress" Fixed="" Text="000FFEFF" />
     <ROMEndAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="ROMEndAddress" Fixed="" Text="0007FFFF" />
@@ -251,12 +251,10 @@
     <NO_CHAIN_23 Name="NO_CHAIN_23" Text="" />
     <CHAIN_HEAD_23 Name="CHAIN_HEAD_23" Text="" />
     <dtc_controldata_channels Name="dtc_controldata_channels" Text="" />
-    <DTCCHANNEL1 Name="DTCCHANNEL1" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
-    <ITEM_CHANNEL_1 Name="ITEM_CHANNEL_1" Text="18" />
-    <DTC_VECADDRESS Name="DTC_VECADDRESS" Text="0FFD00" />
-    <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
     <DTCCHANNEL0 Name="DTCCHANNEL0" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
     <ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="18" />
+    <DTC_VECADDRESS Name="DTC_VECADDRESS" Text="0FFD00" />
+    <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
     <ProductVersion Name="ProductVersion" Text="2.18.00.01" />
   </VAR>
   <DIR>
@@ -1752,7 +1750,7 @@
         <cg_security9 Name="cg_security9" Value="00" />
         <cg_option Name="cg_option" Value="85" />
         <wdt_option Name="wdt_option" Value="EF" />
-        <lvi_option Name="lvi_option" Value="FF" />
+        <lvi_option Name="lvi_option" Value="7F" />
         <clock_option Name="clock_option" Value="F8" />
         <cg_crc_area Name="cg_crc_area" Value="00" />
         <cg_onchip Name="cg_onchip" Value="" />
@@ -1830,8 +1828,8 @@
     <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
       <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
-    <LVD SetFlag="False" Prepared="true" HelpID="lvi" NeedRefresh="False">
-      <LVD MacroName="LVD" SetFlag="False" />
+    <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
+      <LVD MacroName="LVD" SetFlag="True" />
     </LVD>
   </MACRO>
   <SETTING>
@@ -2644,8 +2642,8 @@
       <setting name="Mode" value="Unused" />
     </IICA1>
     <LVD>
-      <setting name="Operation" value="unused" />
-      <setting name="Reset_only_level" value="0" />
+      <setting name="Operation" value="used" />
+      <setting name="Reset_only_level" value="8" />
       <setting name="InterruptReset_level" value="0" />
       <setting name="Interrupt_level" value="0" />
       <setting name="Interrupt_only_level" value="0" />

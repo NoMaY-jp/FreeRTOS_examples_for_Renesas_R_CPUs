@@ -163,7 +163,7 @@
     <StartAddressOfOnChipDebugOptionBytes Name="GOStart" Text="7FF00" />
     <SizeOfOnChipDebugOptionBytesArea Name="GOSizeValue" Text="256" />
     <UserOptionBytes Name="GB" Text="1" />
-    <UserOptionBytesValue Name="GBValue" Text="EFFFF8" />
+    <UserOptionBytesValue Name="GBValue" Text="EF7FF8" />
     <RAMStartAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="RAMStartAddress" Fixed="" Text="000F3F00" />
     <RAMEndAddress Name="RAMEndAddress" Fixed="" Text="000FFEFF" />
     <ROMEndAddress Chip="R5F104GL,R5F104JL,R5F104LL,R5F104ML,R5F104PL" Name="ROMEndAddress" Fixed="" Text="0007FFFF" />
@@ -200,7 +200,7 @@
     <HasRRMRam Name="HasRRMRam" Text="7FF00" />
     <HasTraceRam Name="HasTraceRam" Text="" />
     <PrjVersion Name="PrjVersion" Text="1.2.0.1" />
-    <ProductVersion Name="ProductVersion" Text="2.17.00.01" />
+    <ProductVersion Name="ProductVersion" Text="2.18.00.01" />
     <LinkFileName Name="LinkFileName" Text="" />
     <NO_CHAIN_0 Name="NO_CHAIN_0" Text="NO_CHAIN" />
     <CHAIN_HEAD_0 Name="CHAIN_HEAD_0" Text="" />
@@ -250,13 +250,11 @@
     <CHAIN_HEAD_22 Name="CHAIN_HEAD_22" Text="" />
     <NO_CHAIN_23 Name="NO_CHAIN_23" Text="" />
     <CHAIN_HEAD_23 Name="CHAIN_HEAD_23" Text="" />
-    <dtc_controldata_channels Name="dtc_controldata_channels" Text="0|" />
-    <DTCCHANNEL1 Name="DTCCHANNEL1" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
-    <ITEM_CHANNEL_1 Name="ITEM_CHANNEL_1" Text="18" />
-    <DTC_VECADDRESS Name="DTC_VECADDRESS" Text="0FFD00" />
-    <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
+    <dtc_controldata_channels Name="dtc_controldata_channels" Text="0" />
     <DTCCHANNEL0 Name="DTCCHANNEL0" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
     <ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="18" />
+    <DTC_VECADDRESS Name="DTC_VECADDRESS" Text="0FFD00" />
+    <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
   </VAR>
   <DIR>
     <PIN>
@@ -1724,17 +1722,17 @@
         <r_cg_elc.h UserName="" LibName=".h" InUse="" />
       </ELC>
       <LVD>
-        <r_cg_lvd.c UserName="" LibName=".c" InUse="">
+        <r_cg_lvd.c UserName="" LibName=".c" InUse="0">
           <Type R_LVD_Create="void R_LVD_Create(void)" R_LVD_InterruptMode_Start="void R_LVD_InterruptMode_Start(void)" />
-          <R_LVD_Create UserName="" LibName="R_LVD_Create" InUse="" Init="1" InitMode="" />
-          <R_LVD_InterruptMode_Start UserName="" LibName="R_LVD_InterruptMode_Start" InUse="" />
+          <R_LVD_Create UserName="" LibName="R_LVD_Create" InUse="0" Init="1" InitMode="" />
+          <R_LVD_InterruptMode_Start UserName="" LibName="R_LVD_InterruptMode_Start" InUse="0" />
         </r_cg_lvd.c>
-        <r_cg_lvd_user.c UserName="" LibName="_user.c" InUse="">
+        <r_cg_lvd_user.c UserName="" LibName="_user.c" InUse="0">
           <Type R_LVD_Creat_UserInit="void R_LVD_Creat_UserInit(void)" r_lvd_interrupt="__interrupt static void r_lvd_interrupt(void)" />
-          <R_LVD_Creat_UserInit UserName="" LibName="R_LVD_Creat_UserInit" InUse="" />
-          <r_lvd_interrupt UserName="" INTHandle="" LibName="r_lvd_interrupt" InUse="" />
+          <R_LVD_Creat_UserInit UserName="" LibName="R_LVD_Creat_UserInit" InUse="0" />
+          <r_lvd_interrupt UserName="" INTHandle="" LibName="r_lvd_interrupt" InUse="0" />
         </r_cg_lvd_user.c>
-        <r_cg_lvd.h UserName="" LibName=".h" InUse="" />
+        <r_cg_lvd.h UserName="" LibName=".h" InUse="0" />
       </LVD>
     </FUNC>
     <TAG>
@@ -1751,7 +1749,7 @@
         <cg_security9 Name="cg_security9" Value="00" />
         <cg_option Name="cg_option" Value="85" />
         <wdt_option Name="wdt_option" Value="EF" />
-        <lvi_option Name="lvi_option" Value="FF" />
+        <lvi_option Name="lvi_option" Value="7F" />
         <clock_option Name="clock_option" Value="F8" />
         <cg_crc_area Name="cg_crc_area" Value="00" />
         <cg_onchip Name="cg_onchip" Value="" />
@@ -1828,8 +1826,8 @@
     <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
       <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
-    <LVD SetFlag="" Prepared="true" HelpID="lvi" NeedRefresh="False">
-      <LVD MacroName="LVD" />
+    <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
+      <LVD MacroName="LVD" SetFlag="True" />
     </LVD>
   </MACRO>
   <SETTING>
@@ -2704,18 +2702,6 @@
         <setting name="ChainTransfer" value="false" />
         <setting name="Source" value="17" />
       </DTCD0>
-      <DTCITEM1>
-        <setting name="Mode" value="Normal" />
-        <setting name="TransferByteCount" value="1" />
-        <setting name="SourceAddress" value="0xFEDF" />
-        <setting name="DestinationAddress" value="0xFFFF" />
-        <setting name="AREA" value="Destination" />
-        <setting name="SourceAddressStyle" value="1" />
-        <setting name="DestinationAddressStyle" value="0" />
-        <setting name="BlockSize" value="1" />
-        <setting name="INT" value="Disable" />
-        <setting name="DATA" value="8bits" />
-      </DTCITEM1>
       <DTCD1>
         <setting name="DTCChannel" value="false" />
         <setting name="ChainTransfer" value="false" />
@@ -2832,5 +2818,15 @@
         <setting name="Source" value="0" />
       </DTCD23>
     </DTC>
+    <LVD>
+      <setting name="Operation" value="used" />
+      <setting name="Reset_only_level" value="8" />
+      <setting name="InterruptReset_level" value="0" />
+      <setting name="Interrupt_level" value="0" />
+      <setting name="Interrupt_only_level" value="0" />
+      <setting name="operation_mode" value="reset" />
+      <setting name="Interrupt_priority" value="3" />
+      <setting name="Interrupt_only_priority" value="3" />
+    </LVD>
   </SETTING>
 </RL78G14>
