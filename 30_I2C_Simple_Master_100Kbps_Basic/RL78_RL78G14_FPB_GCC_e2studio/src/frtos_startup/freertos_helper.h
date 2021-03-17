@@ -391,6 +391,8 @@ __asm \
 extern void vTaskNotifyGiveFromISR_R_Helper(TaskHandle_t *pxTask);
 extern void xTaskNotifyFromISR_R_Helper(TaskHandle_t *pxTask, uint32_t ulValue);
 extern uint32_t ulTaskNotifyTake_R_Helper(TickType_t xTicksToWait);
+extern uint32_t ulTaskNotifyTake_R_Helper_Ex2__helper(TaskHandle_t *pxTask, MD_STATUS xStatus, TickType_t xTicksToWait);
+extern void ulTaskNotifyTake_R_Abort_Helper(TaskHandle_t *pxTask);
 extern TaskHandle_t xTaskGetCurrentTaskHandle_R_Helper(void);
 
 #define xTaskCreateStatic_R_Helper(pxTaskCode, pcName, usStackDepth, pvParameters, uxPriority, pxCreatedTask) \
@@ -416,16 +418,37 @@ do{ \
     } \
 }while (0)
 
-uint32_t ulTaskNotifyTake_R_Helper_Ex__helper(TaskHandle_t *pxTask, MD_STATUS xStatus);
-#define ulTaskNotifyTake_R_Helper_Ex(pxTask, vStartFunc) \
-    ulTaskNotifyTake_R_Helper_Ex__helper( \
-        pxTask, \
-        /* Setup the interrupt/callback ready to post a notification */ \
+#define ulTaskNotifyTake_R_Helper_Ex(pxTask, vStartFunc, xTicksToWait) \
+( \
+    /* Setup the interrupt/callback ready to post a notification */ \
+    (*(pxTask) = xTaskGetCurrentTaskHandle_R_Helper()), \
+    /* Wait for a notification from the interrupt/callback */ \
+    ulTaskNotifyTake_R_Helper( \
         ( \
-            (*(pxTask) = xTaskGetCurrentTaskHandle_R_Helper()), \
-            (vStartFunc) \
+            (vStartFunc), \
+            (xTicksToWait) \
         ) \
-    )
+    ) \
+)
+
+#define ulTaskNotifyTake_R_Helper_Ex2(pxTask, xStartFunc, xTicksToWait) \
+( \
+    /* Setup the interrupt/callback ready to post a notification */ \
+    (*(pxTask) = xTaskGetCurrentTaskHandle_R_Helper()), \
+    /* Wait for a notification from the interrupt/callback */ \
+    ulTaskNotifyTake_R_Helper_Ex2__helper( \
+        (pxTask), \
+        (xStartFunc), \
+        (xTicksToWait) \
+    ) \
+)
+
+#define ulTaskNotifyTake_R_Abort_Helper_Ex(pxTask, vAbortFunc) \
+do{ \
+    /* Abort the interrupt/callback posting a notification */ \
+    (vAbortFunc); \
+    ulTaskNotifyTake_R_Abort_Helper(pxTask); \
+}while (0)
 
 #ifdef __cplusplus
 }

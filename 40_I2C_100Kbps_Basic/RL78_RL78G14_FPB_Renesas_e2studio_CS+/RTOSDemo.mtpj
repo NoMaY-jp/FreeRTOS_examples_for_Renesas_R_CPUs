@@ -443,18 +443,18 @@
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
     </Instance>
-    <Instance Guid="10ec1776-44bd-480f-b7e8-11fdcb7c2505">
-      <Name>task_DEMO_SLAVE.c</Name>
-      <Type>File</Type>
-      <RelativePath>src\frtos_skeleton\task_DEMO_SLAVE.c</RelativePath>
-      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
-      <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
-    </Instance>
     <Instance Guid="8ce2a0bd-e656-4166-89ac-f529365d183b">
       <Name>task_function.h</Name>
       <Type>File</Type>
       <RelativePath>src\frtos_skeleton\task_function.h</RelativePath>
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
+    </Instance>
+    <Instance Guid="b38d4282-c799-4f0f-9c39-18acc20f63f8">
+      <Name>task_DEMO_SLAVE.c</Name>
+      <Type>File</Type>
+      <RelativePath>src\frtos_skeleton\task_DEMO_SLAVE.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
     </Instance>
     <Instance Guid="d9e199fe-1659-44b6-876a-f8148032a77e">
@@ -471,18 +471,18 @@
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
     </Instance>
-    <Instance Guid="1461a7d2-6cee-4ba6-8457-6241388f4427">
-      <Name>freertos_helper.h</Name>
-      <Type>File</Type>
-      <RelativePath>src\frtos_startup\freertos_helper.h</RelativePath>
-      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
-      <ParentItem>fca860ba-2a98-4f3a-a2a6-2aba8deeaee5</ParentItem>
-    </Instance>
     <Instance Guid="fe8f3e6a-0a2c-4941-9961-ba9673d11b8e">
       <Name>freertos_helper.c</Name>
       <Type>File</Type>
       <RelativePath>src\frtos_startup\freertos_helper.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>fca860ba-2a98-4f3a-a2a6-2aba8deeaee5</ParentItem>
+    </Instance>
+    <Instance Guid="1461a7d2-6cee-4ba6-8457-6241388f4427">
+      <Name>freertos_helper.h</Name>
+      <Type>File</Type>
+      <RelativePath>src\frtos_startup\freertos_helper.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>fca860ba-2a98-4f3a-a2a6-2aba8deeaee5</ParentItem>
     </Instance>
     <Instance Guid="4e6fb9a2-20a2-467b-9cb3-9074f04499a1">
@@ -757,7 +757,7 @@
       <SourceItemType15>AsmSource</SourceItemType15>
       <SourceItemGuid16>147211b8-70c6-47f7-bb64-7004de0faa09</SourceItemGuid16>
       <SourceItemType16>CSource</SourceItemType16>
-      <SourceItemGuid17>10ec1776-44bd-480f-b7e8-11fdcb7c2505</SourceItemGuid17>
+      <SourceItemGuid17>b38d4282-c799-4f0f-9c39-18acc20f63f8</SourceItemGuid17>
       <SourceItemType17>CSource</SourceItemType17>
       <SourceItemGuid18>d9e199fe-1659-44b6-876a-f8148032a77e</SourceItemGuid18>
       <SourceItemType18>CSource</SourceItemType18>
@@ -1571,10 +1571,10 @@ src
       <ItemAddTime>636532015732967472</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
-    <Instance Guid="10ec1776-44bd-480f-b7e8-11fdcb7c2505">
+    <Instance Guid="b38d4282-c799-4f0f-9c39-18acc20f63f8">
       <LinkOrder-0>26</LinkOrder-0>
-      <ItemAddTime>637497927890601881</ItemAddTime>
-      <ItemAddTimeCount>1</ItemAddTimeCount>
+      <ItemAddTime>637515864656492382</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
     <Instance Guid="d9e199fe-1659-44b6-876a-f8148032a77e">
       <LinkOrder-0>27</LinkOrder-0>
@@ -1585,6 +1585,10 @@ src
       <LinkOrder-0>28</LinkOrder-0>
       <ItemAddTime>637503084646937285</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="10ec1776-44bd-480f-b7e8-11fdcb7c2505">
+      <ItemAddTime>637497927890601881</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
     </Instance>
     <Instance Guid="731134e6-c676-4212-8faf-bd58efba6ac7">
       <ItemAddTime>637500342193973676</ItemAddTime>
@@ -2489,7 +2493,7 @@ src
       <SourceItem16-IsLockedByUser>False</SourceItem16-IsLockedByUser>
       <SourceItem16-BuildingTarget-0>False</SourceItem16-BuildingTarget-0>
       <SourceItem16-IndividualCompileOption-0>False</SourceItem16-IndividualCompileOption-0>
-      <TimeTagModified-SourceItem17--0>-8585869398695183350</TimeTagModified-SourceItem17--0>
+      <TimeTagModified-SourceItem17--0>-8585856496198283426</TimeTagModified-SourceItem17--0>
       <SourceItem17-IsLockedByUser>False</SourceItem17-IsLockedByUser>
       <SourceItem17-BuildingTarget-0>True</SourceItem17-BuildingTarget-0>
       <SourceItem17-IndividualCompileOption-0>False</SourceItem17-IndividualCompileOption-0>
@@ -7781,18 +7785,6 @@ src
       &lt;DTCBA&gt;
         &lt;setting name="BaseAddress" value="0xffd00" /&gt;
       &lt;/DTCBA&gt;
-      &lt;DTCITEM0&gt;
-        &lt;setting name="Mode" value="Normal" /&gt;
-        &lt;setting name="TransferByteCount" value="1" /&gt;
-        &lt;setting name="SourceAddress" value="0xFEDF" /&gt;
-        &lt;setting name="DestinationAddress" value="0xFFFF" /&gt;
-        &lt;setting name="AREA" value="Destination" /&gt;
-        &lt;setting name="SourceAddressStyle" value="1" /&gt;
-        &lt;setting name="DestinationAddressStyle" value="0" /&gt;
-        &lt;setting name="BlockSize" value="1" /&gt;
-        &lt;setting name="INT" value="Disable" /&gt;
-        &lt;setting name="DATA" value="8bits" /&gt;
-      &lt;/DTCITEM0&gt;
       &lt;DTCD0&gt;
         &lt;setting name="DTCChannel" value="false" /&gt;
         &lt;setting name="ChainTransfer" value="false" /&gt;

@@ -60,6 +60,8 @@ __interrupt static void r_intc0_interrupt(void)
 {
     /* Start user code. Do not edit comment generated here */
 
+    R_INTC0_Stop();
+
     vTaskNotifyGiveFromISR_R_Helper( &g_intc0_task );
 
     /* End user code. Do not edit comment generated here */

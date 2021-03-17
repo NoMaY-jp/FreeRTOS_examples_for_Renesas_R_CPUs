@@ -464,18 +464,18 @@
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
     </Instance>
-    <Instance Guid="10ec1776-44bd-480f-b7e8-11fdcb7c2505">
-      <Name>task_DEMO_SLAVE.c</Name>
-      <Type>File</Type>
-      <RelativePath>src\frtos_skeleton\task_DEMO_SLAVE.c</RelativePath>
-      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
-      <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
-    </Instance>
     <Instance Guid="8ce2a0bd-e656-4166-89ac-f529365d183b">
       <Name>task_function.h</Name>
       <Type>File</Type>
       <RelativePath>src\frtos_skeleton\task_function.h</RelativePath>
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
+    </Instance>
+    <Instance Guid="b38d4282-c799-4f0f-9c39-18acc20f63f8">
+      <Name>task_DEMO_SLAVE.c</Name>
+      <Type>File</Type>
+      <RelativePath>src\frtos_skeleton\task_DEMO_SLAVE.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
     </Instance>
     <Instance Guid="d9e199fe-1659-44b6-876a-f8148032a77e">
@@ -492,18 +492,18 @@
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>a364b29f-a3e0-4280-9edb-9e22cfb19acd</ParentItem>
     </Instance>
-    <Instance Guid="1461a7d2-6cee-4ba6-8457-6241388f4427">
-      <Name>freertos_helper.h</Name>
-      <Type>File</Type>
-      <RelativePath>src\frtos_startup\freertos_helper.h</RelativePath>
-      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
-      <ParentItem>fca860ba-2a98-4f3a-a2a6-2aba8deeaee5</ParentItem>
-    </Instance>
     <Instance Guid="fe8f3e6a-0a2c-4941-9961-ba9673d11b8e">
       <Name>freertos_helper.c</Name>
       <Type>File</Type>
       <RelativePath>src\frtos_startup\freertos_helper.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>fca860ba-2a98-4f3a-a2a6-2aba8deeaee5</ParentItem>
+    </Instance>
+    <Instance Guid="1461a7d2-6cee-4ba6-8457-6241388f4427">
+      <Name>freertos_helper.h</Name>
+      <Type>File</Type>
+      <RelativePath>src\frtos_startup\freertos_helper.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>fca860ba-2a98-4f3a-a2a6-2aba8deeaee5</ParentItem>
     </Instance>
     <Instance Guid="4e6fb9a2-20a2-467b-9cb3-9074f04499a1">
@@ -801,7 +801,7 @@
       <SourceItemType16>AsmSource</SourceItemType16>
       <SourceItemGuid17>147211b8-70c6-47f7-bb64-7004de0faa09</SourceItemGuid17>
       <SourceItemType17>CSource</SourceItemType17>
-      <SourceItemGuid18>10ec1776-44bd-480f-b7e8-11fdcb7c2505</SourceItemGuid18>
+      <SourceItemGuid18>b38d4282-c799-4f0f-9c39-18acc20f63f8</SourceItemGuid18>
       <SourceItemType18>CSource</SourceItemType18>
       <SourceItemGuid19>d9e199fe-1659-44b6-876a-f8148032a77e</SourceItemGuid19>
       <SourceItemType19>CSource</SourceItemType19>
@@ -1629,10 +1629,10 @@ src
       <ItemAddTime>636532015732967472</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
-    <Instance Guid="10ec1776-44bd-480f-b7e8-11fdcb7c2505">
+    <Instance Guid="b38d4282-c799-4f0f-9c39-18acc20f63f8">
       <LinkOrder-0>28</LinkOrder-0>
-      <ItemAddTime>637497927890601881</ItemAddTime>
-      <ItemAddTimeCount>1</ItemAddTimeCount>
+      <ItemAddTime>637515863907742286</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
     <Instance Guid="d9e199fe-1659-44b6-876a-f8148032a77e">
       <LinkOrder-0>29</LinkOrder-0>
@@ -1648,6 +1648,10 @@ src
       <LinkOrder-0>31</LinkOrder-0>
       <ItemAddTime>637511653527254100</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="10ec1776-44bd-480f-b7e8-11fdcb7c2505">
+      <ItemAddTime>637497927890601881</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
     </Instance>
     <Instance Guid="731134e6-c676-4212-8faf-bd58efba6ac7">
       <ItemAddTime>637500342193973676</ItemAddTime>
@@ -2580,7 +2584,7 @@ src
       <SourceItem17-IsLockedByUser>False</SourceItem17-IsLockedByUser>
       <SourceItem17-BuildingTarget-0>False</SourceItem17-BuildingTarget-0>
       <SourceItem17-IndividualCompileOption-0>False</SourceItem17-IndividualCompileOption-0>
-      <TimeTagModified-SourceItem18--0>-8585869398695183350</TimeTagModified-SourceItem18--0>
+      <TimeTagModified-SourceItem18--0>-8585856496947033522</TimeTagModified-SourceItem18--0>
       <SourceItem18-IsLockedByUser>False</SourceItem18-IsLockedByUser>
       <SourceItem18-BuildingTarget-0>True</SourceItem18-BuildingTarget-0>
       <SourceItem18-IndividualCompileOption-0>False</SourceItem18-IndividualCompileOption-0>
@@ -3186,6 +3190,7 @@ src
       <DebuggerProperty-EssentialProperty-Clock-SubClockForOCD>0</DebuggerProperty-EssentialProperty-Clock-SubClockForOCD>
       <DebuggerProperty-EssentialProperty-Clock-MonitorClock>System</DebuggerProperty-EssentialProperty-Clock-MonitorClock>
       <DebuggerProperty-EssentialProperty-TargetConnect-TargetSupplyPower>No</DebuggerProperty-EssentialProperty-TargetConnect-TargetSupplyPower>
+      <DebuggerProperty-EssentialProperty-EmulatorConnect-SerialNumber />
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-Length>1</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-Length>
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DebuggerGuid />
       <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>
@@ -3242,7 +3247,6 @@ src
       <DebuggerProperty-HookProperty-HookTransaction-Broke-Length>0</DebuggerProperty-HookProperty-HookTransaction-Broke-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Connected-Length>0</DebuggerProperty-HookProperty-HookTransaction-Connected-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>0</DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>
-      <DebuggerProperty-EssentialProperty-EmulatorConnect-SerialNumber />
     </Instance>
   </Class>
   <Class Guid="9f7af90c-526c-4f28-af29-524df208b9e0">
@@ -7867,50 +7871,14 @@ src
         &lt;setting name="SLAVE_WAKEUP_MODE_ON" value="false" /&gt;
         &lt;setting name="SLAVE_WAKEUP_MODE_OFF" value="true" /&gt;
       &lt;/Slave0&gt;
-      &lt;Master0&gt;
-        &lt;setting name="ClockSetting" value="fCLKHalf" /&gt;
-        &lt;setting name="SlaveAddress" value="16" /&gt;
-        &lt;setting name="Transfer_speed" value="standard" /&gt;
-        &lt;setting name="Transfer_rate" value="100000" /&gt;
-        &lt;setting name="Digital_filter" value="unused" /&gt;
-        &lt;setting name="Interrupt_Priority" value="3" /&gt;
-        &lt;setting name="Master_receive_end_callback_function" value="generated" /&gt;
-        &lt;setting name="Master_transmit_end_callback_function" value="generated" /&gt;
-        &lt;setting name="Master_error_end_callback_function" value="generated" /&gt;
-        &lt;setting name="StopBit" value="generated" /&gt;
-      &lt;/Master0&gt;
     &lt;/IICA0&gt;
     &lt;IICA1&gt;
       &lt;setting name="Mode" value="Unused" /&gt;
-      &lt;Slave1&gt;
-        &lt;setting name="ClockSetting" value="fCLKHalf" /&gt;
-        &lt;setting name="SlaveAddress" value="18" /&gt;
-        &lt;setting name="Transfer_speed" value="standard" /&gt;
-        &lt;setting name="Digital_filter" value="unused" /&gt;
-        &lt;setting name="Interrupt_Priority" value="3" /&gt;
-        &lt;setting name="CallSlaveReceptionEnd" value="Checked" /&gt;
-        &lt;setting name="CallSlaveTransmitEnd" value="Checked" /&gt;
-        &lt;setting name="CallSlaveError" value="Checked" /&gt;
-        &lt;setting name="SLAVE_WAKEUP_MODE_ON" value="false" /&gt;
-        &lt;setting name="SLAVE_WAKEUP_MODE_OFF" value="true" /&gt;
-      &lt;/Slave1&gt;
     &lt;/IICA1&gt;
     &lt;DTC&gt;
       &lt;DTCBA&gt;
         &lt;setting name="BaseAddress" value="0xffd00" /&gt;
       &lt;/DTCBA&gt;
-      &lt;DTCITEM0&gt;
-        &lt;setting name="Mode" value="Normal" /&gt;
-        &lt;setting name="TransferByteCount" value="1" /&gt;
-        &lt;setting name="SourceAddress" value="0xFEDF" /&gt;
-        &lt;setting name="DestinationAddress" value="0xFFFF" /&gt;
-        &lt;setting name="AREA" value="Destination" /&gt;
-        &lt;setting name="SourceAddressStyle" value="1" /&gt;
-        &lt;setting name="DestinationAddressStyle" value="0" /&gt;
-        &lt;setting name="BlockSize" value="1" /&gt;
-        &lt;setting name="INT" value="Disable" /&gt;
-        &lt;setting name="DATA" value="8bits" /&gt;
-      &lt;/DTCITEM0&gt;
       &lt;DTCD0&gt;
         &lt;setting name="DTCChannel" value="false" /&gt;
         &lt;setting name="ChainTransfer" value="false" /&gt;
@@ -8241,6 +8209,7 @@ src
 &lt;/RL78G14&gt;</CodeGenerator>
       <FormatVersion>1.0</FormatVersion>
       <ToolGUID>29290ca7-5d9c-4574-bf4f-4cf32eb33554</ToolGUID>
+      <CodeGeneratorItem>3da029ce-f32f-4b28-a2b1-2e15c31ead31</CodeGeneratorItem>
     </Instance>
   </Class>
   <Class Guid="6750ad11-a84e-4756-9db4-04c15ef09e7a">

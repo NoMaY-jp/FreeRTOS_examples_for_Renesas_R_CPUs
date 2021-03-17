@@ -124,16 +124,16 @@
 									<listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source/stream_buffer.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source/tasks.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/FreeRTOS/Source/timers.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_main.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_systeminit.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_cgc.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_cgc_user.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_port.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_port_user.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_intc.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_intc_user.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_serial.obj&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;.\src\r_cg_serial_user.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_main.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_systeminit.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_cgc.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_cgc_user.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_port.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_port_user.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_intc.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_intc_user.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_serial.obj&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;.\src/r_cg_serial_user.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/rl78g14_fpb_main.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/frtos_skeleton/task_DEMO_SLAVE.obj&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;.\src/frtos_skeleton/task_LED0.obj&quot;"/>

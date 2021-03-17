@@ -82,9 +82,9 @@ static QueueHandle_t g_iica0_master_mutex;     /* iica0 master mutex */
 
 void U_IICA1_Slave_Send_Receive_Stop(void);    /* for internal use */
 
-static MD_STATUS U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
-static MD_STATUS U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
-static MD_STATUS U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
+static void U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num);
+static void U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num);
+static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num);
 
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 /* Workaround for the limitation that the Renesas RL78 simulator doesn't support
@@ -439,7 +439,7 @@ MD_STATUS U_IICA0_Master_Send_Wait(uint8_t adr7, const uint8_t *tx_buf, uint16_t
     uint32_t value;
 
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_master_task, status = R_IIC_Master_Send( (adr7 << 1), (uint8_t *)tx_buf, tx_num ) );
+    value = ulTaskNotifyTake_R_Helper_Ex2( &g_iica0_master_task, status = R_IIC_Master_Send( (adr7 << 1), (uint8_t *)tx_buf, tx_num ), portMAX_DELAY );
     if (MD_OK == status)
     {
         R_IIC_StopCondition();
@@ -468,7 +468,7 @@ MD_STATUS U_IICA0_Master_Receive_Wait(uint8_t adr7, uint8_t *rx_buf, uint16_t rx
     uint32_t value;
 
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica0_master_task, status = R_IIC_Master_Receive( (adr7 << 1), rx_buf, rx_num ) );
+    value = ulTaskNotifyTake_R_Helper_Ex2( &g_iica0_master_task, status = R_IIC_Master_Receive( (adr7 << 1), rx_buf, rx_num ), portMAX_DELAY );
     if (MD_OK == status)
     {
         R_IIC_StopCondition();
@@ -494,18 +494,16 @@ MD_STATUS U_IICA1_Slave_Send_Wait(const uint8_t *tx_buf, uint16_t tx_num)
     uint32_t value;
 
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Send( tx_buf, tx_num ) );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Send( tx_buf, tx_num ), portMAX_DELAY );
 
     return value & 0xFFFFU;
 }
 
-static MD_STATUS  U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num)
+static void U_IICA1_Slave_Send(const uint8_t *tx_buf, uint16_t tx_num)
 {
     /* This function should be called in IICAMK1==1 */
     R_IICA1_Slave_Send( (uint8_t *)tx_buf, tx_num );
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
-
-    return MD_OK;
 }
 
 /******************************************************************************
@@ -523,18 +521,16 @@ MD_STATUS U_IICA1_Slave_Receive_Wait(uint8_t *rx_buf, uint16_t rx_num)
     uint32_t value;
 
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Receive( rx_buf, rx_num ) );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Receive( rx_buf, rx_num ), portMAX_DELAY );
 
     return value & 0xFFFFU;
 }
 
-static MD_STATUS U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
+static void U_IICA1_Slave_Receive(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     /* This function should be called in IICAMK1==1 */
     R_IICA1_Slave_Receive( (uint8_t *)rx_buf, rx_num );
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
-
-    return MD_OK;
 }
 
 /******************************************************************************
@@ -552,12 +548,12 @@ MD_STATUS U_IICA1_Slave_Receive2_Wait(uint8_t *rx_buf, uint16_t rx_num)
     uint32_t value;
 
     /* Wait for a notification from the interrupt/callback */
-    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Receive2( rx_buf, rx_num ) );
+    value = ulTaskNotifyTake_R_Helper_Ex( &g_iica1_slave_task, U_IICA1_Slave_Receive2( rx_buf, rx_num ), portMAX_DELAY );
 
     return value & 0xFFFFU;
 }
 
-static MD_STATUS U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
+static void U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_num)
 {
     uint8_t t_iica1_slave_status_flag;
 
@@ -566,8 +562,6 @@ static MD_STATUS U_IICA1_Slave_Receive2(volatile uint8_t *rx_buf, uint16_t rx_nu
     R_IICA1_Slave_Receive( (uint8_t *)rx_buf, rx_num );
     g_iica1_slave_status_flag = t_iica1_slave_status_flag;
     IICAMK1 = 0U; /* enable INTIICA1 interrupt */
-
-    return MD_OK;
 }
 
 /******************************************************************************
