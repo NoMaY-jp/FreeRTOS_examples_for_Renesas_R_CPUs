@@ -118,8 +118,8 @@ void R_INTC0_Stop(void)
 /* Start user code for adding. Do not edit comment generated here */
 
 /******************************************************************************
-* Function Name: U_INTC0_Start_Wait
-* Description  : This function clears INTP0 interrupt flag and enables interrupt.
+* Function Name: U_INTC0_Wait
+* Description  : This function waits for INTP0 interrupt.
 * Arguments    : None
 * Return Value : None
 ******************************************************************************/

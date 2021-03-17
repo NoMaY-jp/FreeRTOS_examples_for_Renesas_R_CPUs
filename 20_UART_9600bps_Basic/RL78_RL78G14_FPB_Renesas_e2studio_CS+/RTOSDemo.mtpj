@@ -7738,18 +7738,6 @@ src
       &lt;DTCBA&gt;
         &lt;setting name="BaseAddress" value="0xffd00" /&gt;
       &lt;/DTCBA&gt;
-      &lt;DTCITEM0&gt;
-        &lt;setting name="Mode" value="Normal" /&gt;
-        &lt;setting name="TransferByteCount" value="1" /&gt;
-        &lt;setting name="SourceAddress" value="0xFEDF" /&gt;
-        &lt;setting name="DestinationAddress" value="0xFFFF" /&gt;
-        &lt;setting name="AREA" value="Destination" /&gt;
-        &lt;setting name="SourceAddressStyle" value="1" /&gt;
-        &lt;setting name="DestinationAddressStyle" value="0" /&gt;
-        &lt;setting name="BlockSize" value="1" /&gt;
-        &lt;setting name="INT" value="Disable" /&gt;
-        &lt;setting name="DATA" value="8bits" /&gt;
-      &lt;/DTCITEM0&gt;
       &lt;DTCD0&gt;
         &lt;setting name="DTCChannel" value="false" /&gt;
         &lt;setting name="ChainTransfer" value="false" /&gt;
@@ -8069,6 +8057,7 @@ src
 &lt;/RL78G14&gt;</CodeGenerator>
       <FormatVersion>1.0</FormatVersion>
       <ToolGUID>29290ca7-5d9c-4574-bf4f-4cf32eb33554</ToolGUID>
+      <CodeGeneratorItem>3da029ce-f32f-4b28-a2b1-2e15c31ead31</CodeGeneratorItem>
     </Instance>
   </Class>
   <Class Guid="6750ad11-a84e-4756-9db4-04c15ef09e7a">

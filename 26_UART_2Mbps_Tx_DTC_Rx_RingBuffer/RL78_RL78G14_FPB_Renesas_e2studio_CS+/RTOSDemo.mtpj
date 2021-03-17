@@ -8156,6 +8156,7 @@ src
 &lt;/RL78G14&gt;</CodeGenerator>
       <FormatVersion>1.0</FormatVersion>
       <ToolGUID>29290ca7-5d9c-4574-bf4f-4cf32eb33554</ToolGUID>
+      <CodeGeneratorItem>3da029ce-f32f-4b28-a2b1-2e15c31ead31</CodeGeneratorItem>
     </Instance>
   </Class>
   <Class Guid="6750ad11-a84e-4756-9db4-04c15ef09e7a">
