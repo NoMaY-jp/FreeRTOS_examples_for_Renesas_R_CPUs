@@ -6481,11 +6481,11 @@ src
           &lt;IICA0 InUse=""&gt;
             &lt;R_IICA0_Create_UserInit UserName="R_IICA0_Create_UserInit" LibName="R_IICAn_Create_UserInit" InUse="0" /&gt;
             &lt;r_iica0_interrupt UserName="r_iica0_interrupt" INTHandle="" LibName="r_iican_interrupt" InUse="1" /&gt;
-            &lt;r_iica0_callback_master_sendend UserName="r_iica0_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="1" /&gt;
-            &lt;r_iica0_callback_master_receiveend UserName="r_iica0_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="1" /&gt;
+            &lt;r_iica0_callback_master_sendend UserName="r_iica0_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="0" /&gt;
+            &lt;r_iica0_callback_master_receiveend UserName="r_iica0_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="0" /&gt;
             &lt;r_iica0_callback_slave_sendend UserName="r_iica0_callback_slave_sendend" LibName="r_iican_callback_slave_sendend" InUse="0" /&gt;
             &lt;r_iica0_callback_slave_receiveend UserName="r_iica0_callback_slave_receiveend" LibName="r_iican_callback_slave_receiveend" InUse="0" /&gt;
-            &lt;r_iica0_callback_master_error UserName="r_iica0_callback_master_error" LibName="r_iican_callback_master_error" InUse="1" /&gt;
+            &lt;r_iica0_callback_master_error UserName="r_iica0_callback_master_error" LibName="r_iican_callback_master_error" InUse="0" /&gt;
             &lt;r_iica0_callback_slave_error UserName="r_iica0_callback_slave_error" LibName="r_iican_callback_slave_error" InUse="0" /&gt;
             &lt;r_iica0_callback_getstopcondition UserName="r_iica0_callback_getstopcondition" LibName="r_iican_callback_getstopcondition" InUse="0" /&gt;
           &lt;/IICA0&gt;
@@ -7859,9 +7859,9 @@ src
         &lt;setting name="Transfer_rate" value="100000" /&gt;
         &lt;setting name="Digital_filter" value="unused" /&gt;
         &lt;setting name="Interrupt_Priority" value="3" /&gt;
-        &lt;setting name="Master_receive_end_callback_function" value="generated" /&gt;
-        &lt;setting name="Master_transmit_end_callback_function" value="generated" /&gt;
-        &lt;setting name="Master_error_end_callback_function" value="generated" /&gt;
+        &lt;setting name="Master_receive_end_callback_function" value="not generated" /&gt;
+        &lt;setting name="Master_transmit_end_callback_function" value="not generated" /&gt;
+        &lt;setting name="Master_error_end_callback_function" value="not generated" /&gt;
         &lt;setting name="StopBit" value="generated" /&gt;
       &lt;/Master0&gt;
     &lt;/IICA0&gt;

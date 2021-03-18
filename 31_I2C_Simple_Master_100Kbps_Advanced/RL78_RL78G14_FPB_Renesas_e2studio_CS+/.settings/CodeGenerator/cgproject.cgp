@@ -175,6 +175,8 @@
     </TRDCLKUSE1>
     <dtc_vectortable Name="dtc_vectortable" Value="0" />
     <dtc_controldata_0 Name="dtc_controldata_0" Value="0" />
+    <TRDCLKTag Name="TRDCLKTag" Value="-1" />
+    <TRDCLKUSE0 Name="TRDCLKUSE0" Value="0" />
     <CodePath Name="CodePath" Text=".\" />
     <ReportType Name="ReportType" Text="Html" />
     <CreationDateType Name="CreationDateType" Text="NoDate" />
@@ -257,8 +259,6 @@
     <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
     <DTCCHANNEL0 Name="DTCCHANNEL0" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
     <ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="18" />
-    <TRDCLKTag Name="TRDCLKTag" Value="-1" />
-    <TRDCLKUSE0 Name="TRDCLKUSE0" Value="0" />
     <TO02_PWM Name="TO02_PWM" Text="false" />
     <TO03_PWM Name="TO03_PWM" Text="false" />
     <INPT0USE0 Name="INPT0USE0" Text="false" />
@@ -1185,9 +1185,9 @@
             </CSI11>
             <IIC00 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" PIOR1="0" InUse="">
               <r_iic00_interrupt UserName="r_iic00_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="1" />
-              <r_iic00_callback_master_receiveend UserName="" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="1" />
-              <r_iic00_callback_master_sendend UserName="" LibName="R_IICn_Callback_Master_SendEnd" InUse="1" />
-              <r_iic00_callback_master_error UserName="" LibName="R_IICn_Callback_Master_Error" InUse="1" />
+              <r_iic00_callback_master_receiveend UserName="" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="0" />
+              <r_iic00_callback_master_sendend UserName="" LibName="R_IICn_Callback_Master_SendEnd" InUse="0" />
+              <r_iic00_callback_master_error UserName="" LibName="R_IICn_Callback_Master_Error" InUse="0" />
             </IIC00>
             <IIC01 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
               <r_iic01_interrupt UserName="" INTHandle="" LibName="R_IICn_Interrupt" InUse="0" />
@@ -1220,9 +1220,9 @@
               <r_uart2_callback_softwareoverrun UserName="" LibName="R_UARTn_Callback_SoftwareOverRun" InUse="0" />
             </UART2>
             <UART3 Chip="RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
-              <r_uart3_interrupt_receive UserName="r_uart3_interrupt_receive" INTHandle="" LibName="R_UARTn_Interrupt_Receive" InUse="0" />
-              <r_uart3_interrupt_error UserName="r_uart3_interrupt_error" INTHandle="" LibName="R_UARTn_Interrupt_Error" InUse="0" />
-              <r_uart3_interrupt_send UserName="r_uart3_interrupt_send" INTHandle="" LibName="R_UARTn_Interrupt_Send" InUse="0" />
+              <r_uart3_interrupt_receive UserName="" INTHandle="" LibName="R_UARTn_Interrupt_Receive" InUse="0" />
+              <r_uart3_interrupt_error UserName="" INTHandle="" LibName="R_UARTn_Interrupt_Error" InUse="0" />
+              <r_uart3_interrupt_send UserName="" INTHandle="" LibName="R_UARTn_Interrupt_Send" InUse="0" />
               <r_uart3_callback_receiveend UserName="" LibName="R_UARTn_Callback_ReceiveEnd" InUse="0" />
               <r_uart3_callback_sendend UserName="" LibName="R_UARTn_Callback_SendEnd" InUse="0" />
               <r_uart3_callback_error UserName="" LibName="R_UARTn_Callback_Error" InUse="0" />
@@ -1722,16 +1722,16 @@
         <r_cg_dtc.h UserName="r_cg_dtc.h" LibName=".h" InUse="0" />
       </DTC>
       <ELC>
-        <r_cg_elc.c UserName="" LibName=".c" InUse="0">
+        <r_cg_elc.c UserName="" LibName=".c" InUse="">
           <Type R_ELC_Create="void R_ELC_Create(void)" R_ELC_Stop="void R_ELC_Stop(uint32_t event)" />
-          <R_ELC_Create UserName="R_ELC_Create" LibName="R_ELC_Create" InUse="0" Init="2" InitMode="" />
-          <R_ELC_Stop UserName="R_ELC_Stop" LibName="R_ELC_Stop" InUse="0" />
+          <R_ELC_Create UserName="R_ELC_Create" LibName="R_ELC_Create" InUse="" Init="2" InitMode="" />
+          <R_ELC_Stop UserName="R_ELC_Stop" LibName="R_ELC_Stop" InUse="" />
         </r_cg_elc.c>
-        <r_cg_elc_user.c UserName="" LibName="_user.c" InUse="0">
+        <r_cg_elc_user.c UserName="" LibName="_user.c" InUse="">
           <Type R_ELC_Create_UserInit="void R_ELC_Create_UserInit(void)" />
-          <R_ELC_Create_UserInit UserName="R_ELC_Create_UserInit" LibName="R_ELC_Create_UserInit" InUse="0" />
+          <R_ELC_Create_UserInit UserName="R_ELC_Create_UserInit" LibName="R_ELC_Create_UserInit" InUse="" />
         </r_cg_elc_user.c>
-        <r_cg_elc.h UserName="" LibName=".h" InUse="0" />
+        <r_cg_elc.h UserName="" LibName=".h" InUse="" />
       </ELC>
       <LVD>
         <r_cg_lvd.c UserName="" LibName=".c" InUse="0">
@@ -1835,8 +1835,8 @@
     <DTC HelpID="dtc" SetFlag="False" NeedRefresh="False">
       <DTC SetFlag="False" />
     </DTC>
-    <ELC SetFlag="False" HelpID="elc" NeedRefresh="False">
-      <ELC Accelerate="No" MacroName="ELC" SetFlag="False" />
+    <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
+      <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
     <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
       <LVD MacroName="LVD" SetFlag="True" />
@@ -2464,9 +2464,9 @@
         <IIC00>
           <setting name="TransferSpeed" value="100000" />
           <setting name="Interrupt_priority" value="3" />
-          <setting name="Master_receive_end_callback_function" value="generated" />
-          <setting name="Master_transmit_end_callback_function" value="generated" />
-          <setting name="Master_error_callback_function" value="generated" />
+          <setting name="Master_receive_end_callback_function" value="not generated" />
+          <setting name="Master_transmit_end_callback_function" value="not generated" />
+          <setting name="Master_error_callback_function" value="not generated" />
         </IIC00>
       </Channel0>
       <IIC01 />

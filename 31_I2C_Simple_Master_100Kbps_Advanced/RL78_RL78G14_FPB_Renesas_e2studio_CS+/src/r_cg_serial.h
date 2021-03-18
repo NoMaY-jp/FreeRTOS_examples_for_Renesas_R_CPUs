@@ -394,9 +394,6 @@ void R_IIC00_Master_Receive(uint8_t adr, uint8_t * const rx_buf, uint16_t rx_num
 void R_IIC00_Stop(void);
 void R_IIC00_StartCondition(void);
 void R_IIC00_StopCondition(void);
-static void r_iic00_callback_master_error(MD_STATUS flag);
-static void r_iic00_callback_master_receiveend(void);
-static void r_iic00_callback_master_sendend(void);
 void R_IICA0_Create(void);
 void R_IICA0_Slave_Send(uint8_t * const tx_buf, uint16_t tx_num);
 void R_IICA0_Slave_Receive(uint8_t * const rx_buf, uint16_t rx_num);

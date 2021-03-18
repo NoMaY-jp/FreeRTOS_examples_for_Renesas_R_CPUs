@@ -73,8 +73,8 @@
       </Effect>
     </VDDValue>
     <VDD Name="VDD" Text="false" Comment="used" />
-    <AD_ADPC_USEDPIN Name="AD_ADPC_USEDPIN" Text="" />
-    <ADC_ADS_VALUE Name="ADC_ADS_VALUE" Text="" />
+    <AD_ADPC_USEDPIN Name="AD_ADPC_USEDPIN" Text="false" />
+    <ADC_ADS_VALUE Name="ADC_ADS_VALUE" Text="false" />
     <ADPC_DA_PIN Name="ADPC_DA_PIN" Text="false" />
     <ADPC_AD Name="ADPC_AD" Value="-1" />
     <ADPC_DA Name="ADPC_DA" Value="0" />
@@ -175,6 +175,8 @@
     </TRDCLKUSE1>
     <dtc_vectortable Name="dtc_vectortable" Value="0" />
     <dtc_controldata_0 Name="dtc_controldata_0" Value="0" />
+    <TRDCLKTag Name="TRDCLKTag" Value="-1" />
+    <TRDCLKUSE0 Name="TRDCLKUSE0" Value="0" />
     <CodePath Name="CodePath" Text=".\" />
     <ReportType Name="ReportType" Text="Html" />
     <CreationDateType Name="CreationDateType" Text="NoDate" />
@@ -257,8 +259,6 @@
     <DTC_BASEADDRESS Name="DTC_BASEADDRESS" Text="FD" />
     <DTCCHANNEL0 Name="DTCCHANNEL0" Text="DTC_CHAIN_TRANSFER,_00_DTC_CHAIN_TRANSFER_DISABLE" />
     <ITEM_CHANNEL_0 Name="ITEM_CHANNEL_0" Text="18" />
-    <TRDCLKTag Name="TRDCLKTag" Value="-1" />
-    <TRDCLKUSE0 Name="TRDCLKUSE0" Value="0" />
     <TO02_PWM Name="TO02_PWM" Text="false" />
     <TO03_PWM Name="TO03_PWM" Text="false" />
     <INPT0USE0 Name="INPT0USE0" Text="false" />
@@ -1220,9 +1220,9 @@
               <r_uart2_callback_softwareoverrun UserName="" LibName="R_UARTn_Callback_SoftwareOverRun" InUse="0" />
             </UART2>
             <UART3 Chip="RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
-              <r_uart3_interrupt_receive UserName="r_uart3_interrupt_receive" INTHandle="" LibName="R_UARTn_Interrupt_Receive" InUse="0" />
-              <r_uart3_interrupt_error UserName="r_uart3_interrupt_error" INTHandle="" LibName="R_UARTn_Interrupt_Error" InUse="0" />
-              <r_uart3_interrupt_send UserName="r_uart3_interrupt_send" INTHandle="" LibName="R_UARTn_Interrupt_Send" InUse="0" />
+              <r_uart3_interrupt_receive UserName="" INTHandle="" LibName="R_UARTn_Interrupt_Receive" InUse="0" />
+              <r_uart3_interrupt_error UserName="" INTHandle="" LibName="R_UARTn_Interrupt_Error" InUse="0" />
+              <r_uart3_interrupt_send UserName="" INTHandle="" LibName="R_UARTn_Interrupt_Send" InUse="0" />
               <r_uart3_callback_receiveend UserName="" LibName="R_UARTn_Callback_ReceiveEnd" InUse="0" />
               <r_uart3_callback_sendend UserName="" LibName="R_UARTn_Callback_SendEnd" InUse="0" />
               <r_uart3_callback_error UserName="" LibName="R_UARTn_Callback_Error" InUse="0" />
@@ -1280,11 +1280,11 @@
           <IICA0 InUse="">
             <R_IICA0_Create_UserInit UserName="" LibName="R_IICAn_Create_UserInit" InUse="0" />
             <r_iica0_interrupt UserName="r_iica0_interrupt" INTHandle="" LibName="r_iican_interrupt" InUse="1" />
-            <r_iica0_callback_master_sendend UserName="" LibName="r_iican_callback_master_sendend" InUse="1" />
-            <r_iica0_callback_master_receiveend UserName="" LibName="r_iican_callback_master_receiveend" InUse="1" />
+            <r_iica0_callback_master_sendend UserName="" LibName="r_iican_callback_master_sendend" InUse="0" />
+            <r_iica0_callback_master_receiveend UserName="" LibName="r_iican_callback_master_receiveend" InUse="0" />
             <r_iica0_callback_slave_sendend UserName="" LibName="r_iican_callback_slave_sendend" InUse="0" />
             <r_iica0_callback_slave_receiveend UserName="" LibName="r_iican_callback_slave_receiveend" InUse="0" />
-            <r_iica0_callback_master_error UserName="" LibName="r_iican_callback_master_error" InUse="1" />
+            <r_iica0_callback_master_error UserName="" LibName="r_iican_callback_master_error" InUse="0" />
             <r_iica0_callback_slave_error UserName="" LibName="r_iican_callback_slave_error" InUse="0" />
             <r_iica0_callback_getstopcondition UserName="" LibName="r_iican_callback_getstopcondition" InUse="0" />
           </IICA0>
@@ -1303,27 +1303,27 @@
         <r_cg_serial.h UserName="r_cg_serial.h" LibName=".h" InUse="1" />
       </Serial>
       <ADC>
-        <r_cg_adc.c UserName="r_cg_adc.c" LibName=".c" InUse="0">
+        <r_cg_adc.c UserName="r_cg_adc.c" LibName=".c" InUse="">
           <Type R_ADC_Create="void R_ADC_Create(void)" R_ADC_Start="void R_ADC_Start(void)" R_ADC_Stop="void R_ADC_Stop(void)" R_ADC_Set_OperationOn="void R_ADC_Set_OperationOn(void)" R_ADC_Set_OperationOff="void R_ADC_Set_OperationOff(void)" R_ADC_Get_Result="void R_ADC_Get_Result(uint16_t * const buffer)" R_ADC_Get_Result_8bit="void R_ADC_Get_Result_8bit(uint8_t * const buffer)" R_ADC_Set_ADChannel="MD_STATUS R_ADC_Set_ADChannel(ad_channel_t channel)" R_ADC_Set_SnoozeOn="void R_ADC_Set_SnoozeOn(void)" R_ADC_Set_SnoozeOff="void R_ADC_Set_SnoozeOff(void)" R_ADC_Set_TestChannel="MD_STATUS R_ADC_Set_TestChannel(test_channel_t channel)" R_ADC_Set_PowerOff="void R_ADC_Set_PowerOff(void)" />
-          <R_ADC_Create UserName="" LibName="R_ADC_Create" InUse="0" Init="1" InitMode="" />
-          <R_ADC_Start UserName="" LibName="R_ADC_Start" InUse="0" />
-          <R_ADC_Stop UserName="" LibName="R_ADC_Stop" InUse="0" />
-          <R_ADC_Set_OperationOn UserName="" LibName="R_ADC_Set_OperationOn" InUse="0" />
-          <R_ADC_Set_OperationOff UserName="" LibName="R_ADC_Set_OperationOff" InUse="0" />
-          <R_ADC_Get_Result UserName="" LibName="R_ADC_Get_Result" InUse="0" />
-          <R_ADC_Get_Result_8bit UserName="" LibName="R_ADC_Get_Result_8bit" InUse="0" />
-          <R_ADC_Set_ADChannel UserName="" LibName="R_ADC_Set_ADChannel" InUse="0" />
-          <R_ADC_Set_SnoozeOn UserName="" LibName="R_ADC_Set_SnoozeOn" InUse="0" />
-          <R_ADC_Set_SnoozeOff UserName="" LibName="R_ADC_Set_SnoozeOff" InUse="0" />
-          <R_ADC_Set_TestChannel UserName="" LibName="R_ADC_Set_TestChannel" InUse="0" />
-          <R_ADC_Set_PowerOff UserName="" LibName="R_ADC_Set_PowerOff" InUse="0" />
+          <R_ADC_Create UserName="" LibName="R_ADC_Create" InUse="" Init="1" InitMode="" />
+          <R_ADC_Start UserName="" LibName="R_ADC_Start" InUse="" />
+          <R_ADC_Stop UserName="" LibName="R_ADC_Stop" InUse="" />
+          <R_ADC_Set_OperationOn UserName="" LibName="R_ADC_Set_OperationOn" InUse="" />
+          <R_ADC_Set_OperationOff UserName="" LibName="R_ADC_Set_OperationOff" InUse="" />
+          <R_ADC_Get_Result UserName="" LibName="R_ADC_Get_Result" InUse="" />
+          <R_ADC_Get_Result_8bit UserName="" LibName="R_ADC_Get_Result_8bit" InUse="" />
+          <R_ADC_Set_ADChannel UserName="" LibName="R_ADC_Set_ADChannel" InUse="" />
+          <R_ADC_Set_SnoozeOn UserName="" LibName="R_ADC_Set_SnoozeOn" InUse="" />
+          <R_ADC_Set_SnoozeOff UserName="" LibName="R_ADC_Set_SnoozeOff" InUse="" />
+          <R_ADC_Set_TestChannel UserName="" LibName="R_ADC_Set_TestChannel" InUse="" />
+          <R_ADC_Set_PowerOff UserName="" LibName="R_ADC_Set_PowerOff" InUse="" />
         </r_cg_adc.c>
-        <r_cg_adc_user.c UserName="" LibName="_user.c" InUse="0">
+        <r_cg_adc_user.c UserName="" LibName="_user.c" InUse="">
           <Type R_ADC_Create_UserInit="void R_ADC_Create_UserInit(void)" r_adc_interrupt="__interrupt static void r_adc_interrupt(void)" />
-          <R_ADC_Create_UserInit UserName="" LibName="R_ADC_Create_UserInit" InUse="0" />
-          <r_adc_interrupt UserName="" INTHandle="" LibName="r_adc_interrupt" InUse="0" />
+          <R_ADC_Create_UserInit UserName="" LibName="R_ADC_Create_UserInit" InUse="" />
+          <r_adc_interrupt UserName="" INTHandle="" LibName="r_adc_interrupt" InUse="" />
         </r_cg_adc_user.c>
-        <r_cg_adc.h UserName="" LibName=".h" InUse="0" />
+        <r_cg_adc.h UserName="" LibName=".h" InUse="" />
       </ADC>
       <DAC Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104HF,R5F104HG,R5F104HH,R5F104HJ,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104GK,R5F104GL,R5F104JK,R5F104JL,R5F104LK,R5F104LL,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
         <r_cg_dac.c UserName="" LibName=".c" InUse="">
@@ -1722,16 +1722,16 @@
         <r_cg_dtc.h UserName="r_cg_dtc.h" LibName=".h" InUse="0" />
       </DTC>
       <ELC>
-        <r_cg_elc.c UserName="" LibName=".c" InUse="0">
+        <r_cg_elc.c UserName="" LibName=".c" InUse="">
           <Type R_ELC_Create="void R_ELC_Create(void)" R_ELC_Stop="void R_ELC_Stop(uint32_t event)" />
-          <R_ELC_Create UserName="R_ELC_Create" LibName="R_ELC_Create" InUse="0" Init="2" InitMode="" />
-          <R_ELC_Stop UserName="R_ELC_Stop" LibName="R_ELC_Stop" InUse="0" />
+          <R_ELC_Create UserName="R_ELC_Create" LibName="R_ELC_Create" InUse="" Init="2" InitMode="" />
+          <R_ELC_Stop UserName="R_ELC_Stop" LibName="R_ELC_Stop" InUse="" />
         </r_cg_elc.c>
-        <r_cg_elc_user.c UserName="" LibName="_user.c" InUse="0">
+        <r_cg_elc_user.c UserName="" LibName="_user.c" InUse="">
           <Type R_ELC_Create_UserInit="void R_ELC_Create_UserInit(void)" />
-          <R_ELC_Create_UserInit UserName="R_ELC_Create_UserInit" LibName="R_ELC_Create_UserInit" InUse="0" />
+          <R_ELC_Create_UserInit UserName="R_ELC_Create_UserInit" LibName="R_ELC_Create_UserInit" InUse="" />
         </r_cg_elc_user.c>
-        <r_cg_elc.h UserName="" LibName=".h" InUse="0" />
+        <r_cg_elc.h UserName="" LibName=".h" InUse="" />
       </ELC>
       <LVD>
         <r_cg_lvd.c UserName="" LibName=".c" InUse="0">
@@ -1802,8 +1802,8 @@
       <IICA0 Accelerate="No" MacroName="IICA" Channel="0" SetFlag="True" TabEnable="True" />
       <IICA1 Accelerate="No" Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" MacroName="IICA" Channel="1" SetFlag="True" TabEnable="True" />
     </Serial>
-    <ADC SetFlag="False" HelpID="adc" NeedRefresh="False">
-      <ADC SetFlag="False" MacroName="ADC" />
+    <ADC SetFlag="" HelpID="adc" NeedRefresh="False">
+      <ADC SetFlag="" MacroName="ADC" />
     </ADC>
     <DAC Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104HF,R5F104HG,R5F104HH,R5F104HJ,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104GK,R5F104GL,R5F104JK,R5F104JL,R5F104LK,R5F104LL,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" HelpID="dac" SetFlag="" NeedRefresh="False">
       <DAC SetFlag="" MacroName="DAC" />
@@ -1835,8 +1835,8 @@
     <DTC HelpID="dtc" SetFlag="False" NeedRefresh="False">
       <DTC SetFlag="False" />
     </DTC>
-    <ELC SetFlag="False" HelpID="elc" NeedRefresh="False">
-      <ELC Accelerate="No" MacroName="ELC" SetFlag="False" />
+    <ELC SetFlag="" HelpID="elc" NeedRefresh="False">
+      <ELC Accelerate="No" MacroName="ELC" />
     </ELC>
     <LVD SetFlag="True" Prepared="true" HelpID="lvi" NeedRefresh="False">
       <LVD MacroName="LVD" SetFlag="True" />
@@ -2496,6 +2496,7 @@
         <setting name="Channel_function_-i" value="0" />
         <setting name="Detail_function_-i" value="-1" />
       </Channel2>
+      <UART3 />
       <Channel3>
         <setting name="Channel_function_-i" value="0" />
         <setting name="Detail_function_-i" value="-1" />
@@ -2518,9 +2519,9 @@
         <setting name="Transfer_rate" value="100000" />
         <setting name="Digital_filter" value="unused" />
         <setting name="Interrupt_Priority" value="3" />
-        <setting name="Master_receive_end_callback_function" value="generated" />
-        <setting name="Master_transmit_end_callback_function" value="generated" />
-        <setting name="Master_error_end_callback_function" value="generated" />
+        <setting name="Master_receive_end_callback_function" value="not generated" />
+        <setting name="Master_transmit_end_callback_function" value="not generated" />
+        <setting name="Master_error_end_callback_function" value="not generated" />
         <setting name="StopBit" value="generated" />
       </Master0>
     </IICA0>

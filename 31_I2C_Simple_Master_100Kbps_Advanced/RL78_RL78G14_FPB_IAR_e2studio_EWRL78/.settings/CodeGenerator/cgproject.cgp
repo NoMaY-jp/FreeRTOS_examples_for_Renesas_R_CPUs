@@ -73,8 +73,8 @@
       </Effect>
     </VDDValue>
     <VDD Name="VDD" Text="false" Comment="used" />
-    <AD_ADPC_USEDPIN Name="AD_ADPC_USEDPIN" Text="" />
-    <ADC_ADS_VALUE Name="ADC_ADS_VALUE" Text="" />
+    <AD_ADPC_USEDPIN Name="AD_ADPC_USEDPIN" Text="false" />
+    <ADC_ADS_VALUE Name="ADC_ADS_VALUE" Text="false" />
     <ADPC_DA_PIN Name="ADPC_DA_PIN" Text="false" />
     <ADPC_AD Name="ADPC_AD" Value="-1" />
     <ADPC_DA Name="ADPC_DA" Value="0" />
@@ -1184,9 +1184,9 @@
             </CSI11>
             <IIC00 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" PIOR1="0" InUse="">
               <r_iic00_interrupt UserName="r_iic00_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="1" />
-              <r_iic00_callback_master_receiveend UserName="r_iic00_callback_master_receiveend" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="1" />
-              <r_iic00_callback_master_sendend UserName="r_iic00_callback_master_sendend" LibName="R_IICn_Callback_Master_SendEnd" InUse="1" />
-              <r_iic00_callback_master_error UserName="r_iic00_callback_master_error" LibName="R_IICn_Callback_Master_Error" InUse="1" />
+              <r_iic00_callback_master_receiveend UserName="r_iic00_callback_master_receiveend" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="0" />
+              <r_iic00_callback_master_sendend UserName="r_iic00_callback_master_sendend" LibName="R_IICn_Callback_Master_SendEnd" InUse="0" />
+              <r_iic00_callback_master_error UserName="r_iic00_callback_master_error" LibName="R_IICn_Callback_Master_Error" InUse="0" />
             </IIC00>
             <IIC01 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
               <r_iic01_interrupt UserName="r_iic01_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="0" />
@@ -1302,27 +1302,27 @@
         <r_cg_serial.h UserName="r_cg_serial.h" LibName=".h" InUse="1" />
       </Serial>
       <ADC>
-        <r_cg_adc.c UserName="r_cg_adc.c" LibName=".c" InUse="0">
+        <r_cg_adc.c UserName="r_cg_adc.c" LibName=".c" InUse="">
           <Type R_ADC_Create="void R_ADC_Create(void)" R_ADC_Start="void R_ADC_Start(void)" R_ADC_Stop="void R_ADC_Stop(void)" R_ADC_Set_OperationOn="void R_ADC_Set_OperationOn(void)" R_ADC_Set_OperationOff="void R_ADC_Set_OperationOff(void)" R_ADC_Get_Result="void R_ADC_Get_Result(uint16_t * const buffer)" R_ADC_Get_Result_8bit="void R_ADC_Get_Result_8bit(uint8_t * const buffer)" R_ADC_Set_ADChannel="MD_STATUS R_ADC_Set_ADChannel(ad_channel_t channel)" R_ADC_Set_SnoozeOn="void R_ADC_Set_SnoozeOn(void)" R_ADC_Set_SnoozeOff="void R_ADC_Set_SnoozeOff(void)" R_ADC_Set_TestChannel="MD_STATUS R_ADC_Set_TestChannel(test_channel_t channel)" R_ADC_Set_PowerOff="void R_ADC_Set_PowerOff(void)" />
-          <R_ADC_Create UserName="R_ADC_Create" LibName="R_ADC_Create" InUse="0" Init="1" InitMode="" />
-          <R_ADC_Start UserName="R_ADC_Start" LibName="R_ADC_Start" InUse="0" />
-          <R_ADC_Stop UserName="R_ADC_Stop" LibName="R_ADC_Stop" InUse="0" />
-          <R_ADC_Set_OperationOn UserName="R_ADC_Set_OperationOn" LibName="R_ADC_Set_OperationOn" InUse="0" />
-          <R_ADC_Set_OperationOff UserName="R_ADC_Set_OperationOff" LibName="R_ADC_Set_OperationOff" InUse="0" />
-          <R_ADC_Get_Result UserName="R_ADC_Get_Result" LibName="R_ADC_Get_Result" InUse="0" />
-          <R_ADC_Get_Result_8bit UserName="R_ADC_Get_Result_8bit" LibName="R_ADC_Get_Result_8bit" InUse="0" />
-          <R_ADC_Set_ADChannel UserName="R_ADC_Set_ADChannel" LibName="R_ADC_Set_ADChannel" InUse="0" />
-          <R_ADC_Set_SnoozeOn UserName="R_ADC_Set_SnoozeOn" LibName="R_ADC_Set_SnoozeOn" InUse="0" />
-          <R_ADC_Set_SnoozeOff UserName="R_ADC_Set_SnoozeOff" LibName="R_ADC_Set_SnoozeOff" InUse="0" />
-          <R_ADC_Set_TestChannel UserName="R_ADC_Set_TestChannel" LibName="R_ADC_Set_TestChannel" InUse="0" />
-          <R_ADC_Set_PowerOff UserName="R_ADC_Set_PowerOff" LibName="R_ADC_Set_PowerOff" InUse="0" />
+          <R_ADC_Create UserName="R_ADC_Create" LibName="R_ADC_Create" InUse="" Init="1" InitMode="" />
+          <R_ADC_Start UserName="R_ADC_Start" LibName="R_ADC_Start" InUse="" />
+          <R_ADC_Stop UserName="R_ADC_Stop" LibName="R_ADC_Stop" InUse="" />
+          <R_ADC_Set_OperationOn UserName="R_ADC_Set_OperationOn" LibName="R_ADC_Set_OperationOn" InUse="" />
+          <R_ADC_Set_OperationOff UserName="R_ADC_Set_OperationOff" LibName="R_ADC_Set_OperationOff" InUse="" />
+          <R_ADC_Get_Result UserName="R_ADC_Get_Result" LibName="R_ADC_Get_Result" InUse="" />
+          <R_ADC_Get_Result_8bit UserName="R_ADC_Get_Result_8bit" LibName="R_ADC_Get_Result_8bit" InUse="" />
+          <R_ADC_Set_ADChannel UserName="R_ADC_Set_ADChannel" LibName="R_ADC_Set_ADChannel" InUse="" />
+          <R_ADC_Set_SnoozeOn UserName="R_ADC_Set_SnoozeOn" LibName="R_ADC_Set_SnoozeOn" InUse="" />
+          <R_ADC_Set_SnoozeOff UserName="R_ADC_Set_SnoozeOff" LibName="R_ADC_Set_SnoozeOff" InUse="" />
+          <R_ADC_Set_TestChannel UserName="R_ADC_Set_TestChannel" LibName="R_ADC_Set_TestChannel" InUse="" />
+          <R_ADC_Set_PowerOff UserName="R_ADC_Set_PowerOff" LibName="R_ADC_Set_PowerOff" InUse="" />
         </r_cg_adc.c>
-        <r_cg_adc_user.c UserName="r_cg_adc_user.c" LibName="_user.c" InUse="0">
+        <r_cg_adc_user.c UserName="r_cg_adc_user.c" LibName="_user.c" InUse="">
           <Type R_ADC_Create_UserInit="void R_ADC_Create_UserInit(void)" r_adc_interrupt="__interrupt static void r_adc_interrupt(void)" />
-          <R_ADC_Create_UserInit UserName="R_ADC_Create_UserInit" LibName="R_ADC_Create_UserInit" InUse="0" />
-          <r_adc_interrupt UserName="r_adc_interrupt" INTHandle="" LibName="r_adc_interrupt" InUse="0" />
+          <R_ADC_Create_UserInit UserName="R_ADC_Create_UserInit" LibName="R_ADC_Create_UserInit" InUse="" />
+          <r_adc_interrupt UserName="r_adc_interrupt" INTHandle="" LibName="r_adc_interrupt" InUse="" />
         </r_cg_adc_user.c>
-        <r_cg_adc.h UserName="r_cg_adc.h" LibName=".h" InUse="0" />
+        <r_cg_adc.h UserName="r_cg_adc.h" LibName=".h" InUse="" />
       </ADC>
       <DAC Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104HF,R5F104HG,R5F104HH,R5F104HJ,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104GK,R5F104GL,R5F104JK,R5F104JL,R5F104LK,R5F104LL,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
         <r_cg_dac.c UserName="r_cg_dac.c" LibName=".c" InUse="">
@@ -1801,8 +1801,8 @@
       <IICA0 Accelerate="No" MacroName="IICA" Channel="0" SetFlag="True" TabEnable="True" />
       <IICA1 Accelerate="No" Chip="R5F104MF,R5F104MG,R5F104MH,R5F104MJ,R5F104PF,R5F104PG,R5F104PH,R5F104PJ,R5F104MK, R5F104ML,R5F104PK,R5F104PL" MacroName="IICA" Channel="1" SetFlag="False" TabEnable="True" />
     </Serial>
-    <ADC SetFlag="False" HelpID="adc" NeedRefresh="False">
-      <ADC SetFlag="False" MacroName="ADC" />
+    <ADC SetFlag="" HelpID="adc" NeedRefresh="False">
+      <ADC SetFlag="" MacroName="ADC" />
     </ADC>
     <DAC Chip="R5F104AF,R5F104AG,R5F104BF,R5F104BG,R5F104CF,R5F104CG,R5F104EF,R5F104EG,R5F104EH,R5F104FF,R5F104FG,R5F104FH,R5F104FJ,R5F104GF,R5F104GG,R5F104GH,R5F104GJ,R5F104HF,R5F104HG,R5F104HH,R5F104HJ,R5F104JF,R5F104JG,R5F104JH,R5F104JJ,R5F104LF,R5F104LG,R5F104LH,R5F104LJ,R5F104GK,R5F104GL,R5F104JK,R5F104JL,R5F104LK,R5F104LL,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" HelpID="dac" SetFlag="" NeedRefresh="False">
       <DAC SetFlag="" MacroName="DAC" />
@@ -2675,9 +2675,9 @@
         <IIC00>
           <setting name="TransferSpeed" value="100000" />
           <setting name="Interrupt_priority" value="3" />
-          <setting name="Master_receive_end_callback_function" value="generated" />
-          <setting name="Master_transmit_end_callback_function" value="generated" />
-          <setting name="Master_error_callback_function" value="generated" />
+          <setting name="Master_receive_end_callback_function" value="not generated" />
+          <setting name="Master_transmit_end_callback_function" value="not generated" />
+          <setting name="Master_error_callback_function" value="not generated" />
         </IIC00>
       </Channel0>
       <IIC01 />
@@ -2885,38 +2885,6 @@
       <setting name="KR6" value="unused" />
       <setting name="KR7" value="unused" />
     </KEY>
-    <ADC>
-      <setting name="AD_convertion" value="unused" />
-      <setting name="Comparator_operation" value="stop" />
-      <setting name="Resolution" value="10bit" />
-      <setting name="AD_Positive" value="VDD" />
-      <setting name="AD_Negative" value="VSS" />
-      <setting name="AD_Trigger" value="softtri" />
-      <setting name="AD_Trigger_Timer" value="0" />
-      <setting name="Mode" value="CONSELECT" />
-      <setting name="InputPins" value="0" />
-      <setting name="InputPinsAttach" value="ANI0 - ANI11" />
-      <setting name="AD_Inputpin16" value="used" />
-      <setting name="AD_Inputpin17" value="used" />
-      <setting name="AD_Inputpin18" value="used" />
-      <setting name="AD_Inputpin19" value="used" />
-      <setting name="AD_Inputpin20" value="used" />
-      <setting name="AD_Inputpin21" value="unused" />
-      <setting name="AD_Inputpin22" value="unused" />
-      <setting name="AD_Inputpin23" value="unused" />
-      <setting name="AD_Inputpin24" value="unused" />
-      <setting name="AD_Inputpin25" value="unused" />
-      <setting name="AD_Inputpin26" value="unused" />
-      <setting name="SelectedChannel" value="0" />
-      <setting name="SelectedChannelAttach" value="ANI0" />
-      <setting name="ConvTimeMode" value="0" />
-      <setting name="ConversionTime" value="0" />
-      <setting name="AREAFunction" value="AREA1" />
-      <setting name="AREAValue_ADUL" value="255" />
-      <setting name="AREAValue_ADLL" value="0" />
-      <setting name="Interrput_priority" value="3" />
-      <setting name="AD_interrupt" value="used" />
-    </ADC>
     <LVD>
       <setting name="Operation" value="used" />
       <setting name="Reset_only_level" value="8" />

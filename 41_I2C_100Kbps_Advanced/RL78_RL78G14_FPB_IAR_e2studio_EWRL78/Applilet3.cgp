@@ -1279,11 +1279,11 @@
           <IICA0 InUse="">
             <R_IICA0_Create_UserInit UserName="R_IICA0_Create_UserInit" LibName="R_IICAn_Create_UserInit" InUse="0" />
             <r_iica0_interrupt UserName="r_iica0_interrupt" INTHandle="" LibName="r_iican_interrupt" InUse="1" />
-            <r_iica0_callback_master_sendend UserName="r_iica0_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="1" />
-            <r_iica0_callback_master_receiveend UserName="r_iica0_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="1" />
+            <r_iica0_callback_master_sendend UserName="r_iica0_callback_master_sendend" LibName="r_iican_callback_master_sendend" InUse="0" />
+            <r_iica0_callback_master_receiveend UserName="r_iica0_callback_master_receiveend" LibName="r_iican_callback_master_receiveend" InUse="0" />
             <r_iica0_callback_slave_sendend UserName="r_iica0_callback_slave_sendend" LibName="r_iican_callback_slave_sendend" InUse="0" />
             <r_iica0_callback_slave_receiveend UserName="r_iica0_callback_slave_receiveend" LibName="r_iican_callback_slave_receiveend" InUse="0" />
-            <r_iica0_callback_master_error UserName="r_iica0_callback_master_error" LibName="r_iican_callback_master_error" InUse="1" />
+            <r_iica0_callback_master_error UserName="r_iica0_callback_master_error" LibName="r_iican_callback_master_error" InUse="0" />
             <r_iica0_callback_slave_error UserName="r_iica0_callback_slave_error" LibName="r_iican_callback_slave_error" InUse="0" />
             <r_iica0_callback_getstopcondition UserName="r_iica0_callback_getstopcondition" LibName="r_iican_callback_getstopcondition" InUse="0" />
           </IICA0>
@@ -2772,9 +2772,9 @@
         <setting name="Transfer_rate" value="100000" />
         <setting name="Digital_filter" value="unused" />
         <setting name="Interrupt_Priority" value="3" />
-        <setting name="Master_receive_end_callback_function" value="generated" />
-        <setting name="Master_transmit_end_callback_function" value="generated" />
-        <setting name="Master_error_end_callback_function" value="generated" />
+        <setting name="Master_receive_end_callback_function" value="not generated" />
+        <setting name="Master_transmit_end_callback_function" value="not generated" />
+        <setting name="Master_error_end_callback_function" value="not generated" />
         <setting name="StopBit" value="generated" />
       </Master0>
     </IICA0>

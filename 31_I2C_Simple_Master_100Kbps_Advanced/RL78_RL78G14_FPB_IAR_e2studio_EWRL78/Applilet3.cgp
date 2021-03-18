@@ -1184,9 +1184,9 @@
             </CSI11>
             <IIC00 Chip="RL78G14_30pin,RL78G14_32pin,RL78G14_36pin,RL78G14_40pin,RL78G14_44pin,RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" PIOR1="0" InUse="">
               <r_iic00_interrupt UserName="r_iic00_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="1" />
-              <r_iic00_callback_master_receiveend UserName="r_iic00_callback_master_receiveend" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="1" />
-              <r_iic00_callback_master_sendend UserName="r_iic00_callback_master_sendend" LibName="R_IICn_Callback_Master_SendEnd" InUse="1" />
-              <r_iic00_callback_master_error UserName="r_iic00_callback_master_error" LibName="R_IICn_Callback_Master_Error" InUse="1" />
+              <r_iic00_callback_master_receiveend UserName="r_iic00_callback_master_receiveend" LibName="R_IICn_Callback_Master_ReceiveEnd" InUse="0" />
+              <r_iic00_callback_master_sendend UserName="r_iic00_callback_master_sendend" LibName="R_IICn_Callback_Master_SendEnd" InUse="0" />
+              <r_iic00_callback_master_error UserName="r_iic00_callback_master_error" LibName="R_IICn_Callback_Master_Error" InUse="0" />
             </IIC00>
             <IIC01 Chip="RL78G14_48pin,RL78G14_49pin,RL78G14_52pin,RL78G14_64pin,RL78G14_80pin,RL78G14_81pin,RL78G14_100pin" InUse="">
               <r_iic01_interrupt UserName="r_iic01_interrupt" INTHandle="" LibName="R_IICn_Interrupt" InUse="0" />
@@ -2675,9 +2675,9 @@
         <IIC00>
           <setting name="TransferSpeed" value="100000" />
           <setting name="Interrupt_priority" value="3" />
-          <setting name="Master_receive_end_callback_function" value="generated" />
-          <setting name="Master_transmit_end_callback_function" value="generated" />
-          <setting name="Master_error_callback_function" value="generated" />
+          <setting name="Master_receive_end_callback_function" value="not generated" />
+          <setting name="Master_transmit_end_callback_function" value="not generated" />
+          <setting name="Master_error_callback_function" value="not generated" />
         </IIC00>
       </Channel0>
       <IIC01 />

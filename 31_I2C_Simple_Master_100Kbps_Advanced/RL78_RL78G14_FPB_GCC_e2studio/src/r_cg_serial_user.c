@@ -100,15 +100,7 @@ void r_iic00_interrupt(void)
         NOP();
     }
 
-    if (((SSR00 & _0002_SAU_PARITY_ERROR) == 0x0002U) && (g_iic00_tx_count != 0U))
-    {
-        r_iic00_callback_master_error(MD_NACK);
-    }
-    else if(((SSR00 & _0001_SAU_OVERRUN_ERROR) == 0x0001U) && (g_iic00_tx_count != 0U))
-    {
-        r_iic00_callback_master_error(MD_OVERRUN);
-    }
-    else
+    if (((SSR00 & _0002_SAU_PARITY_ERROR) == 0U) && ((SSR00 & _0001_SAU_OVERRUN_ERROR) == 0U))
     {
         /* Control for master send */
         if ((g_iic00_master_status_flag & _01_SAU_IIC_SEND_FLAG) == 1U)
@@ -122,7 +114,6 @@ void r_iic00_interrupt(void)
             else
             {
                 /* IIC master transmission finishes and a callback function can be called here. */
-                r_iic00_callback_master_sendend();
             }
         }
         /* Control for master receive */
@@ -159,7 +150,6 @@ void r_iic00_interrupt(void)
                     else if (g_iic00_rx_count == g_iic00_rx_length)
                     {
                         /* IIC master reception finishes and a callback function can be called here. */
-                        r_iic00_callback_master_receiveend();
                     }
                     else
                     {
@@ -169,52 +159,6 @@ void r_iic00_interrupt(void)
             }
         }
     }
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic00_callback_master_error
-* Description  : This function is a callback function when IIC00 master error occurs.
-* Arguments    : flag -
-*                    status flag
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iic00_callback_master_error(MD_STATUS flag)
-{
-    /* Start user code. Do not edit comment generated here */
-
-    u_iic00_callback_master_common( flag );
-
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic00_callback_master_receiveend
-* Description  : This function is a callback function when IIC00 finishes master reception.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iic00_callback_master_receiveend(void)
-{
-    /* Start user code. Do not edit comment generated here */
-
-    u_iic00_callback_master_common( MD_OK );
-
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iic00_callback_master_sendend
-* Description  : This function is a callback function when IIC00 finishes master transmission.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iic00_callback_master_sendend(void)
-{
-    /* Start user code. Do not edit comment generated here */
-
-    u_iic00_callback_master_common( MD_OK );
-
-    /* End user code. Do not edit comment generated here */
 }
 
 /***********************************************************************************************************************

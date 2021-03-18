@@ -108,13 +108,7 @@ void r_iica0_interrupt(void)
 ***********************************************************************************************************************/
 static void iica0_master_handler(void)
 {
-    /* Control for communication */
-    if ((0U == IICBSY0) && (g_iica0_tx_cnt != 0U))
-    {
-        r_iica0_callback_master_error(MD_SPT);
-    }
-    /* Control for sended address */
-    else
+    if (!((0U == IICBSY0) && (g_iica0_tx_cnt != 0U)))
     {
         if ((g_iica0_master_status_flag & _80_IICA_ADDRESS_COMPLETE) == 0U)
         {
@@ -132,10 +126,6 @@ static void iica0_master_handler(void)
                         gp_iica0_tx_address++;
                         g_iica0_tx_cnt--;
                     }
-                    else
-                    {
-                        r_iica0_callback_master_sendend();
-                    }
                 }
                 else
                 {
@@ -144,31 +134,19 @@ static void iica0_master_handler(void)
                     WREL0 = 1U;
                 }
             }
-            else
-            {
-                r_iica0_callback_master_error(MD_NACK);
-            }
         }
         else
         {
             /* Master send control */
             if (1U == TRC0)
             {
-                if ((0U == ACKD0) && (g_iica0_tx_cnt != 0U))
-                {
-                    r_iica0_callback_master_error(MD_NACK);
-                }
-                else
+                if (!((0U == ACKD0) && (g_iica0_tx_cnt != 0U)))
                 {
                     if (g_iica0_tx_cnt > 0U)
                     {
                         IICA0 = *gp_iica0_tx_address;
                         gp_iica0_tx_address++;
                         g_iica0_tx_cnt--;
-                    }
-                    else
-                    {
-                        r_iica0_callback_master_sendend();
                     }
                 }
             }
@@ -192,60 +170,9 @@ static void iica0_master_handler(void)
                         WREL0 = 1U;
                     }
                 }
-                else
-                {
-                    r_iica0_callback_master_receiveend();
-                }
             }
         }
     }
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iica0_callback_master_error
-* Description  : This function is a callback function when IICA0 master error occurs.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iica0_callback_master_error(MD_STATUS flag)
-{
-    /* Start user code. Do not edit comment generated here */
-
-    u_iica0_callback_master_common( flag );
-
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iica0_callback_master_receiveend
-* Description  : This function is a callback function when IICA0 finishes master reception.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iica0_callback_master_receiveend(void)
-{
-    SPT0 = 1U;
-    /* Start user code. Do not edit comment generated here */
-
-    u_iica0_callback_master_common( MD_OK );
-
-    /* End user code. Do not edit comment generated here */
-}
-
-/***********************************************************************************************************************
-* Function Name: r_iica0_callback_master_sendend
-* Description  : This function is a callback function when IICA0 finishes master transmission.
-* Arguments    : None
-* Return Value : None
-***********************************************************************************************************************/
-static void r_iica0_callback_master_sendend(void)
-{
-    SPT0 = 1U;
-    /* Start user code. Do not edit comment generated here */
-
-    u_iica0_callback_master_common( MD_OK );
-
-    /* End user code. Do not edit comment generated here */
 }
 
 /***********************************************************************************************************************
