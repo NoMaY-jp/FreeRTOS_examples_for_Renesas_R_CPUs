@@ -361,6 +361,7 @@ void U_IIC00_Master_init(void)
 {
     xSemaphoreCreateMutexStatic_R_Helper(&g_iic00_master_mutex);
 }
+
 /******************************************************************************
 * Function Name: U_IIC00_Master_Lock
 * Description  : This function locks IIC00 module for exclusive operation.

@@ -241,23 +241,48 @@ extern "C" {
 #define nop90000() NOP90000()
 
 #define INTERNAL_NOT_USED(p)        ((void)(p))
+#define R_CG_PRAGMA(...)            _Pragma(#__VA_ARGS__)
 
 #if defined(__CCRL__)
 
-#define R_CG_DEFAULT_ISR_UNUSED(name)\
-    static void __near name##_UNUSED(void);\
-    void _##name##_UNUSED(void){name##_UNUSED();}
+#define R_CG_ISR_UNUSED(function, dummy_vect) \
+    function##_UNUSED(void); \
+    void function##__UNUSED(void); \
+    void function##__UNUSED(void){function##_UNUSED();} \
+    static void __near function##_UNUSED
 
-#define R_CG_REDEFINE_ISR(name)\
-    static void __near name(void);
+#define R_CG_API_UNUSED(function) \
+    function
+
+#define R_CG_API_DO_NOT_USE(function) \
+    function
 
 #elif defined(__GNUC__)
 
-#define R_CG_DEFAULT_ISR_UNUSED(name)\
-    void name##_UNUSED(void) __attribute__ ((unused));
+#define R_CG_ISR_UNUSED(function, dummy_vect) \
+    function##_UNUSED(void) __attribute__ ((unused)); \
+    __attribute__ ((unused)) void function##_UNUSED
 
-#define R_CG_REDEFINE_ISR(name)\
-    void name(void) __attribute__ ((interrupt));
+#define R_CG_API_UNUSED(function) \
+    function
+
+#define R_CG_API_DO_NOT_USE(function) \
+    function
+
+#elif defined(__ICCRL78__)
+
+#define R_CG_ISR_UNUSED(function, dummy_vect) \
+    function##___UNUSED(void); \
+    R_CG_PRAGMA(vector = dummy_vect) \
+    __interrupt static void function##__UNUSED(void); \
+    __interrupt static void function##__UNUSED(void){} \
+    static void function##_UNUSED
+
+#define R_CG_API_UNUSED(function) \
+    function
+
+#define R_CG_API_DO_NOT_USE(function) \
+    function
 
 #endif
 
