@@ -1,0 +1,6 @@
+I2C Simple Master implementation of r_iic_lib.c and r_iic_lib.h is based on 
+the following famous Japanese sample program of RL78 Code Generator.
+
+IIC通信のマスタ側（RL78/G13の簡易IIC版)改 2C
+https://japan.renesasrulz.com/cafe_rene/m/sample_program/408
+

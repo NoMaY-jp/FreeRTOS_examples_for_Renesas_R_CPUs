@@ -1,0 +1,26 @@
+Demo:
+
+(1)   Toggle LED0 every 1000ms.
+(2)   Toggle LED1 when SW_USER is pushed.
+
+Wiring:
+
+P14/RxD2/SI20/SDA20/TRDIOD0/(SCLA0) - PMOD2-3:MISO    -    J1-23 - P62/SSI00/SCLA1
+P15/SCK20/SCL20/TRDIOB0/(SDAA0)     - PMOD2-4:SCK     -    J1-24 - P63/SDAA1
+
+or
+
+P14/RxD2/SI20/SDA20/TRDIOD0/(SCLA0) - J2-50           -    J1-23 - P62/SSI00/SCLA1
+P15/SCK20/SCL20/TRDIOB0/(SDAA0)     - J2-49           -    J1-24 - P63/SDAA1
+
+Pull up:
+
+P14/RxD2/SI20/SDA20/TRDIOD0/(SCLA0) - PMOD2-3:MISO    -    1K ohm    - PMOD2-12:VCC
+P15/SCK20/SCL20/TRDIOB0/(SDAA0)     - PMOD2-4:SCK     -    1K ohm    - PMOD2-6:VCC
+
+or
+
+P14/RxD2/SI20/SDA20/TRDIOD0/(SCLA0) - PMOD2-3:MISO    -    1K ohm    - PMOD1-6:VCC
+P15/SCK20/SCL20/TRDIOB0/(SDAA0)     - PMOD2-4:SCK     -    1K ohm    - PMOD1-12:VCC
+
+etc
