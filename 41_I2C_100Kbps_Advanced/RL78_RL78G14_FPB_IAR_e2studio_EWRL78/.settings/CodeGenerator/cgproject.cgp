@@ -2706,48 +2706,6 @@
       <Channel2>
         <setting name="Channel_function_-i" value="0" />
         <setting name="Detail_function_-i" value="-1" />
-        <Both_UART3>
-          <setting name="Receive_data_direction" value="LSB" />
-          <setting name="Receive_data_length" value="8 bits" />
-          <setting name="Receive_parity" value="none" />
-          <setting name="RecBaudrate" value="9600" />
-          <setting name="Receive_end_callback_function" value="generated" />
-          <setting name="Receive_error_callback_function" value="generated" />
-          <setting name="Transfer_mode" value="single" />
-          <setting name="Transmit_data_direction" value="LSB" />
-          <setting name="Transmit_data_level" value="normal" />
-          <setting name="Transmit_data_length" value="8 bits" />
-          <setting name="Transmit_parity" value="none" />
-          <setting name="Transmit_stop_length" value="1 bit" />
-          <setting name="TranBaudrate" value="9600" />
-          <setting name="Transmit_end_callback_function" value="generated" />
-          <setting name="Transmit_end_interrupt_priority" value="3" />
-          <setting name="Receive_error_interrupt_priority" value="3" />
-          <setting name="Receive_end_interrupt_priority" value="3" />
-          <setting name="Reveive_Data_Level" value="Normal" />
-          <setting name="Receive_error_interrupt" value="not used" />
-        </Both_UART3>
-        <Receive_UART3>
-          <setting name="Receive_data_direction" value="LSB" />
-          <setting name="Receive_data_length" value="8 bits" />
-          <setting name="Receive_parity" value="none" />
-          <setting name="RecBaudrate" value="9600" />
-          <setting name="Receive_end_callback_function" value="generated" />
-          <setting name="Receive_error_callback_function" value="generated" />
-          <setting name="Transfer_mode" value="single" />
-          <setting name="Transmit_data_direction" value="LSB" />
-          <setting name="Transmit_data_level" value="normal" />
-          <setting name="Transmit_data_length" value="8 bits" />
-          <setting name="Transmit_parity" value="none" />
-          <setting name="Transmit_stop_length" value="1 bit" />
-          <setting name="TranBaudrate" value="9600" />
-          <setting name="Transmit_end_callback_function" value="generated" />
-          <setting name="Transmit_end_interrupt_priority" value="3" />
-          <setting name="Receive_error_interrupt_priority" value="3" />
-          <setting name="Receive_end_interrupt_priority" value="3" />
-          <setting name="Reveive_Data_Level" value="Normal" />
-          <setting name="Receive_error_interrupt" value="not used" />
-        </Receive_UART3>
       </Channel2>
       <UART3 />
       <Channel3>
