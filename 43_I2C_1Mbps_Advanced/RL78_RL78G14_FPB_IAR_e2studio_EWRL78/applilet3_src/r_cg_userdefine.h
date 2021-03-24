@@ -34,6 +34,10 @@ User definitions
 ***********************************************************************************************************************/
 
 /* Start user code for function. Do not edit comment generated here */
+
 #include "platform.h"
+#include "freertos_start.h"
+#include "freertos_helper.h"
+
 /* End user code. Do not edit comment generated here */
 #endif

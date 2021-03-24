@@ -32,9 +32,6 @@ Includes
 #include "r_cg_macrodriver.h"
 #include "r_cg_serial.h"
 /* Start user code for include. Do not edit comment generated here */
-
-#include "freertos_start.h"
-
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"
 

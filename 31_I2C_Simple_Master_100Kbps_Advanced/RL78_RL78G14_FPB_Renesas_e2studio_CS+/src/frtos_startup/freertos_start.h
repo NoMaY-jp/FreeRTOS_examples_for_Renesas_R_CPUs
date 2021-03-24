@@ -38,8 +38,6 @@ extern "C" {
 #endif
 
 #include "platform.h"
-#include "freertos_stack.h"
-#include "freertos_helper.h"
 
 /******************************************************************************
 Macro definitions

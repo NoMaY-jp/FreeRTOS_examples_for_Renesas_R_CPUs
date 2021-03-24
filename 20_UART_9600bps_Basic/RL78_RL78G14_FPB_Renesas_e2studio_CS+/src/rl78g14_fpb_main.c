@@ -8,7 +8,6 @@
 *
 ***********************************************************************/
 #include "task_function.h"
-#include "freertos_start.h"
 #include "platform.h"
 
 void main_task(void *pvParameters)

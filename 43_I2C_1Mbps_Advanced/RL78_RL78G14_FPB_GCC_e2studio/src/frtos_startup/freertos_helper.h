@@ -5,8 +5,6 @@
 extern "C" {
 #endif
 
-#include "platform.h"
-
 #if defined(__CCRL__)
 
 #ifndef __CDT_PARSER__

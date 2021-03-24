@@ -35,7 +35,6 @@ Includes
 
 #include "r_cg_dtc.h"
 #include "UART3.h"
-#include "freertos_start.h"
 
 /* End user code. Do not edit comment generated here */
 #include "r_cg_userdefine.h"

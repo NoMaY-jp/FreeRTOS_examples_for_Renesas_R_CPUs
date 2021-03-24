@@ -22,7 +22,6 @@ Includes   <System Includes> , "Project Includes"
 #include "task_function.h"
 /* Start user code for import. Do not edit comment generated here */
 
-#include "freertos_start.h"
 #include "platform.h"
 #include "rl78g14fpbdef.h"
 

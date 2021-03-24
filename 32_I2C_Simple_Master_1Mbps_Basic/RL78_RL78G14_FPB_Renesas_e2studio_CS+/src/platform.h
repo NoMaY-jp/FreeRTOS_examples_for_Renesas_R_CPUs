@@ -47,8 +47,6 @@ extern "C" {
 #undef asm
 #endif
 
-#include "r_cg_userdefine.h"
-
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
@@ -289,6 +287,8 @@ extern "C" {
 #if defined(RENESAS_SIMULATOR_DEBUGGING)
 #include "RenesasSimDebug/sim_debug_mode_hook.h"
 #endif
+
+#include "r_cg_userdefine.h"
 
 #ifdef __cplusplus
 }

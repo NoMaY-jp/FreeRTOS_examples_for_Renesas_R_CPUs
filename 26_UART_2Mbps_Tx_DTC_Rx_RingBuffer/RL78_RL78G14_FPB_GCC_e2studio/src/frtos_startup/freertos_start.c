@@ -34,6 +34,7 @@
 Includes   <System Includes> , "Project Includes"
 ******************************************************************************/
 #include "freertos_start.h"
+#include "freertos_stack.h"
 
 /******************************************************************************
 Macro definitions
