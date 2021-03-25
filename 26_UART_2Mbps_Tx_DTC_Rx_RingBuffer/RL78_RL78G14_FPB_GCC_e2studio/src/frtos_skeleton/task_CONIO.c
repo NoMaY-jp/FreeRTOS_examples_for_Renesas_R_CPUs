@@ -31,8 +31,8 @@ volatile bool g_task_CONIO_error = false;
 #define CON_START_MESSAGE  "\r\nEnter characters\r\n"
 #define CON_RECV_DEMO_SIZE 3
 
-static volatile uint8_t recv_buff[CON_RECV_DEMO_SIZE + 1];
-static volatile uint8_t recv_err_events;
+static uint8_t recv_buff[CON_RECV_DEMO_SIZE + 1];
+static uint8_t recv_err_events;
 static uint8_t send_buff[CON_RECV_DEMO_SIZE + 1];
 
 #if defined(RENESAS_SIMULATOR_DEBUGGING)

@@ -253,7 +253,7 @@ void U_UART3_Start(void)
 * Return Value : status -
 *                    MD_OK or MD_ARGERROR or MD_RECV_ERROR or MD_RECV_TIMEOUT
 ******************************************************************************/
-MD_STATUS U_UART3_Receive_Wait(volatile uint8_t * rx_buf, uint16_t rx_num, volatile uint8_t * p_err_events, TickType_t rx_wait)
+MD_STATUS U_UART3_Receive_Wait(uint8_t * rx_buf, uint16_t rx_num, uint8_t * p_err_events, TickType_t rx_wait)
 {
     MD_STATUS status = MD_OK;
     uint8_t err_events = 0U;
