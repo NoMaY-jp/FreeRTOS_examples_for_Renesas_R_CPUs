@@ -1,0 +1,31 @@
+# Ignore build results and unnecessary setting/working files by/for e2 studio
+HardwareDebug/
+e2studio_project.prefs
+language.settings.xml
+cgprojectDatas.datas
+com.renesas.smc.e2studio.qe.xml
+CoverageSetting.xml
+IORegisterSetting.xml
+*.rcpc
+
+# Ignore build results and unnecessary setting/working files by/for EWRX
+Debug/
+*.custom_argvars
+*.dep
+*.ewt
+*.crun
+*.dbgdt
+*.Debug.cspy.bat
+*.Debug.cspy.ps1
+*.Debug.driver.xcl
+*.Debug.general.xcl
+*.wsdt
+
+# Ignore build results and unnecessary setting/working files by/for CS+
+DefaultBuild/
+*.*.mtud
+*.rcpe
+*.mtls
+
+# Ignore PDF documents of Renesas API
+r01an*.pdf

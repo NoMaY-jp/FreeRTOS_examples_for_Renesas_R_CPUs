@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<smc>
+<general version="2.0.0.0">
+<configuration active="true" id="com.renesas.smc.toolchain.iccrx.configuration.release">
+<property id="com.renesas.smc.service.project.buildArtefactType" values="com.renesas.smc.service.project.buildArtefactType.exe"/>
+<property id="com.renesas.smc.service.project.buildType" values="com.renesas.smc.service.project.buildType.release"/>
+<toolchain id="com.renesas.smc.toolchain.iccrx.toolchain.iccrx">
+<option id="com.renesas.smc.toolchain.option.buildArtefactType" key="com.renesas.smc.toolchain.option.buildArtefactType.exe"/>
+</toolchain>
+</configuration>
+<platform id="R5F52318AxFP"/>
+<option id="board" value="Custom User Board"/>
+</general>
+<tool id="Clock">
+<option enabled="true" id="vccinput" selection="textinputitem">
+<item enabled="true" id="textinputitem" input="3.3" value="3.300"/>
+</option>
+<option enabled="true" id="mainclockenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="false" id="mainsourcebox" selection="srcR">
+<item enabled="true" id="srcR"/>
+<item enabled="true" id="srcEOI"/>
+</option>
+<option enabled="false" id="mainfrequency" selection="textinputitem">
+<item enabled="true" id="textinputitem" input="8" value="8.000000"/>
+</option>
+<option enabled="false" id="mainwaitcycle" selection="sBox8192">
+<item enabled="true" id="sBox2"/>
+<item enabled="true" id="sBox1024"/>
+<item enabled="true" id="sBox2048"/>
+<item enabled="true" id="sBox4096"/>
+<item enabled="true" id="sBox8192"/>
+<item enabled="true" id="sBox16384"/>
+<item enabled="true" id="sBox32768"/>
+<item enabled="true" id="sBox65536"/>
+</option>
+<option enabled="false" id="mainwaittime" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="2048"/>
+</option>
+<option enabled="true" id="subclockenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="false" id="subfrequency" selection="textinputitem">
+<item enabled="true" id="textinputitem" input="" value="32.768"/>
+</option>
+<option enabled="false" id="subdrivecap" selection="standardCL">
+<item enabled="true" id="standardCL"/>
+<item enabled="true" id="lowCL"/>
+</option>
+<option enabled="true" id="hococlockenable" selection="check">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="true" id="hocofrequency" selection="frq54">
+<item enabled="true" id="frq32"/>
+<item enabled="true" id="frq54"/>
+</option>
+<option enabled="true" id="hocooscenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="true" id="lococlockenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="false" id="locofrequency" selection="textinputitem">
+<item enabled="true" id="textinputitem" input="" value="4"/>
+</option>
+<option enabled="true" id="iwdtclockenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="false" id="iwdtfrequency" selection="textinputitem">
+<item enabled="true" id="textinputitem" input="" value="15"/>
+</option>
+<option enabled="false" id="plldivider" selection="div1-2">
+<item enabled="true" id="div1-1"/>
+<item enabled="true" id="div1-2"/>
+<item enabled="false" id="div1-4"/>
+</option>
+<option enabled="false" id="pllmul" selection="mul13_5-1">
+<item enabled="false" id="mul4-1"/>
+<item enabled="false" id="mul4_5-1"/>
+<item enabled="false" id="mul5-1"/>
+<item enabled="false" id="mul5_5-1"/>
+<item enabled="true" id="mul6-1"/>
+<item enabled="true" id="mul6_5-1"/>
+<item enabled="true" id="mul7-1"/>
+<item enabled="true" id="mul7_5-1"/>
+<item enabled="true" id="mul8-1"/>
+<item enabled="true" id="mul8_5-1"/>
+<item enabled="true" id="mul9-1"/>
+<item enabled="true" id="mul9_5-1"/>
+<item enabled="true" id="mul10-1"/>
+<item enabled="true" id="mul10_5-1"/>
+<item enabled="true" id="mul11-1"/>
+<item enabled="true" id="mul11_5-1"/>
+<item enabled="true" id="mul12-1"/>
+<item enabled="true" id="mul12_5-1"/>
+<item enabled="true" id="mul13-1"/>
+<item enabled="true" id="mul13_5-1"/>
+</option>
+<option enabled="false" id="usbplldivider" selection="div1-2">
+<item enabled="true" id="div1-1"/>
+<item enabled="true" id="div1-2"/>
+<item enabled="false" id="div1-4"/>
+</option>
+<option enabled="false" id="usbpllmul" selection="mul12-1">
+<item enabled="false" id="mul4-1"/>
+<item enabled="false" id="mul6-1"/>
+<item enabled="false" id="mul8-1"/>
+<item enabled="true" id="mul12-1"/>
+</option>
+<option enabled="true" id="usbswitcher" selection="usbsck">
+<item enabled="false" id="usbupll" input="" value="4.8E7"/>
+<item enabled="true" id="usbsck" input="" value="54000000"/>
+</option>
+<option enabled="true" id="sckswitcher" selection="hoco">
+<item enabled="false" id="pll" input="" value="5.4E7"/>
+<item enabled="false" id="main" input="" value="8000000.0"/>
+<item enabled="false" id="sub" input="" value="32768.0"/>
+<item enabled="true" id="hoco" input="" value="54000000"/>
+<item enabled="false" id="loco" input="" value="4000000"/>
+</option>
+<option enabled="true" id="lptswitcher" selection="lptsub">
+<item enabled="false" id="lptsub" input="" value="32.768"/>
+<item enabled="false" id="lptiwdt" input="" value="15"/>
+</option>
+<option enabled="true" id="fclkdivider" selection="comboBox1-2">
+<item enabled="false" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+<item enabled="true" id="comboBox1-4"/>
+<item enabled="true" id="comboBox1-8"/>
+<item enabled="true" id="comboBox1-16"/>
+<item enabled="true" id="comboBox1-32"/>
+<item enabled="true" id="comboBox1-64"/>
+</option>
+<option enabled="true" id="iclkdivider" selection="comboBox1-1">
+<item enabled="true" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+<item enabled="true" id="comboBox1-4"/>
+<item enabled="true" id="comboBox1-8"/>
+<item enabled="true" id="comboBox1-16"/>
+<item enabled="true" id="comboBox1-32"/>
+<item enabled="true" id="comboBox1-64"/>
+</option>
+<option enabled="true" id="pclkadivider" selection="comboBox1-1">
+<item enabled="true" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+<item enabled="true" id="comboBox1-4"/>
+<item enabled="true" id="comboBox1-8"/>
+<item enabled="true" id="comboBox1-16"/>
+<item enabled="true" id="comboBox1-32"/>
+<item enabled="true" id="comboBox1-64"/>
+</option>
+<option enabled="true" id="pclkbdivider" selection="comboBox1-2">
+<item enabled="false" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+<item enabled="true" id="comboBox1-4"/>
+<item enabled="true" id="comboBox1-8"/>
+<item enabled="true" id="comboBox1-16"/>
+<item enabled="true" id="comboBox1-32"/>
+<item enabled="true" id="comboBox1-64"/>
+</option>
+<option enabled="true" id="pclkddivider" selection="comboBox1-1">
+<item enabled="true" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+<item enabled="true" id="comboBox1-4"/>
+<item enabled="true" id="comboBox1-8"/>
+<item enabled="true" id="comboBox1-16"/>
+<item enabled="false" id="comboBox1-32"/>
+<item enabled="false" id="comboBox1-64"/>
+</option>
+<option enabled="true" id="bckdivider" selection="comboBox1-2">
+<item enabled="false" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+<item enabled="true" id="comboBox1-4"/>
+<item enabled="true" id="comboBox1-8"/>
+<item enabled="true" id="comboBox1-16"/>
+<item enabled="true" id="comboBox1-32"/>
+<item enabled="true" id="comboBox1-64"/>
+</option>
+<option enabled="true" id="bckselectorenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="false" id="bckselector" selection="comboBox1-2">
+<item enabled="false" id="comboBox1-1"/>
+<item enabled="true" id="comboBox1-2"/>
+</option>
+<option enabled="true" id="uclk" selection="textoutputitem">
+<item enabled="false" id="textoutputitem" input="" value="54"/>
+</option>
+<option enabled="false" id="bckpin" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="13.5"/>
+</option>
+<option enabled="true" id="bck" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="27"/>
+</option>
+<option enabled="true" id="fclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="27"/>
+</option>
+<option enabled="true" id="iclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="54"/>
+</option>
+<option enabled="true" id="pclka" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="54"/>
+</option>
+<option enabled="true" id="pclkb" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="27"/>
+</option>
+<option enabled="true" id="pclkd" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="54"/>
+</option>
+<option enabled="true" id="cachclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="54"/>
+</option>
+<option enabled="false" id="cacmclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="8.0"/>
+</option>
+<option enabled="false" id="caclclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="4"/>
+</option>
+<option enabled="false" id="cacsclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="32.768"/>
+</option>
+<option enabled="false" id="lptclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="32.768"/>
+</option>
+<option enabled="false" id="cacilclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="15"/>
+</option>
+<option enabled="false" id="rtcsclkenable" selection="uncheck">
+<item enabled="true" id="check"/>
+<item enabled="true" id="uncheck"/>
+</option>
+<option enabled="false" id="rtcsclk" selection="textoutputitem">
+<item enabled="true" id="textoutputitem" input="" value="32.768"/>
+</option>
+<option enabled="true" id="bspversion" selection="textinputitem">
+<item enabled="true" id="textinputitem" input="3.40" value="5.61"/>
+</option>
+</tool>
+<tool id="Interrupt">
+<Item currentVect="16" id="BSC_BUSERR" priority="15" usedState="Not Use"/>
+<Item currentVect="23" id="FCU_FRDYI" priority="15" usedState="Not Use"/>
+<Item currentVect="27" id="ICU_SWINT" priority="15" usedState="Not Use"/>
+<Item currentVect="28" id="CMT0_CMI0" priority="15" usedState="Not Use"/>
+<Item currentVect="29" id="CMT1_CMI1" priority="15" usedState="Not Use"/>
+<Item currentVect="30" id="CMT2_CMI2" priority="15" usedState="Not Use"/>
+<Item currentVect="31" id="CMT3_CMI3" priority="15" usedState="Not Use"/>
+<Item currentVect="32" id="CAC_FERRF" priority="15" usedState="Not Use"/>
+<Item currentVect="33" id="CAC_MENDF" priority="15" usedState="Not Use"/>
+<Item currentVect="34" id="CAC_OVFF" priority="15" usedState="Not Use"/>
+<Item currentVect="36" id="USB0_D0FIFO0" priority="15" usedState="Not Use"/>
+<Item currentVect="37" id="USB0_D1FIFO0" priority="15" usedState="Not Use"/>
+<Item currentVect="38" id="USB0_USBI0" priority="15" usedState="Not Use"/>
+<Item currentVect="40" id="SDHI_SBFAI" priority="15" usedState="Not Use"/>
+<Item currentVect="41" id="SDHI_CDETI" priority="15" usedState="Not Use"/>
+<Item currentVect="42" id="SDHI_CACI" priority="15" usedState="Not Use"/>
+<Item currentVect="43" id="SDHI_SDACI" priority="15" usedState="Not Use"/>
+<Item currentVect="44" id="RSPI0_SPEI0" priority="15" usedState="Not Use"/>
+<Item currentVect="45" id="RSPI0_SPRI0" priority="15" usedState="Not Use"/>
+<Item currentVect="46" id="RSPI0_SPTI0" priority="15" usedState="Not Use"/>
+<Item currentVect="47" id="RSPI0_SPII0" priority="15" usedState="Not Use"/>
+<Item currentVect="52" id="CAN_COMFRXINT" priority="15" usedState="Not Use"/>
+<Item currentVect="53" id="CAN_RXFINT" priority="15" usedState="Not Use"/>
+<Item currentVect="54" id="CAN_TXINT" priority="15" usedState="Not Use"/>
+<Item currentVect="55" id="CAN_CHERRINT" priority="15" usedState="Not Use"/>
+<Item currentVect="56" id="CAN_GLERRINT" priority="15" usedState="Not Use"/>
+<Item currentVect="57" id="DOC_DOPCF" priority="15" usedState="Not Use"/>
+<Item currentVect="58" id="CMPB_CMPB0" priority="15" usedState="Not Use"/>
+<Item currentVect="59" id="CMPB_CMPB1" priority="15" usedState="Not Use"/>
+<Item currentVect="60" id="CTSU_CTSUWR" priority="15" usedState="Not Use"/>
+<Item currentVect="61" id="CTSU_CTSURD" priority="15" usedState="Not Use"/>
+<Item currentVect="62" id="CTSU_CTSUFN" priority="15" usedState="Not Use"/>
+<Item currentVect="63" id="RTC_CUP" priority="15" usedState="Not Use"/>
+<Item currentVect="64" id="ICU_IRQ0" priority="15" usedState="Not Use"/>
+<Item currentVect="65" id="ICU_IRQ1" priority="15" usedState="Not Use"/>
+<Item currentVect="66" id="ICU_IRQ2" priority="15" usedState="Not Use"/>
+<Item currentVect="67" id="ICU_IRQ3" priority="15" usedState="Not Use"/>
+<Item currentVect="68" id="ICU_IRQ4" priority="15" usedState="Not Use"/>
+<Item currentVect="69" id="ICU_IRQ5" priority="15" usedState="Not Use"/>
+<Item currentVect="70" id="ICU_IRQ6" priority="15" usedState="Not Use"/>
+<Item currentVect="71" id="ICU_IRQ7" priority="15" usedState="Not Use"/>
+<Item currentVect="80" id="ELC_ELSR8I" priority="15" usedState="Not Use"/>
+<Item currentVect="88" id="LVD_LVD1" priority="15" usedState="Not Use"/>
+<Item currentVect="89" id="LVD_LVD2" priority="15" usedState="Not Use"/>
+<Item currentVect="90" id="USB0_USBR0" priority="15" usedState="Not Use"/>
+<Item currentVect="91" id="VBATT_VBTLVDI" priority="15" usedState="Not Use"/>
+<Item currentVect="92" id="RTC_ALM" priority="15" usedState="Not Use"/>
+<Item currentVect="93" id="RTC_PRD" priority="15" usedState="Not Use"/>
+<Item currentVect="102" id="S12AD_S12ADI0" priority="15" usedState="Not Use"/>
+<Item currentVect="103" id="S12AD_GBADI" priority="15" usedState="Not Use"/>
+<Item currentVect="104" id="CMPB1_CMPB2" priority="15" usedState="Not Use"/>
+<Item currentVect="105" id="CMPB1_CMPB3" priority="15" usedState="Not Use"/>
+<Item currentVect="106" id="ELC_ELSR18I" priority="15" usedState="Not Use"/>
+<Item currentVect="107" id="ELC_ELSR19I" priority="15" usedState="Not Use"/>
+<Item currentVect="108" id="SSI0_SSIF0" priority="15" usedState="Not Use"/>
+<Item currentVect="109" id="SSI0_SSIRXI0" priority="15" usedState="Not Use"/>
+<Item currentVect="110" id="SSI0_SSITXI0" priority="15" usedState="Not Use"/>
+<Item currentVect="111" id="Security_RD" priority="15" usedState="Not Use"/>
+<Item currentVect="112" id="Security_WR" priority="15" usedState="Not Use"/>
+<Item currentVect="113" id="Security_Error" priority="15" usedState="Not Use"/>
+<Item currentVect="114" id="MTU0_TGIA0" priority="15" usedState="Not Use"/>
+<Item currentVect="115" id="MTU0_TGIB0" priority="15" usedState="Not Use"/>
+<Item currentVect="116" id="MTU0_TGIC0" priority="15" usedState="Not Use"/>
+<Item currentVect="117" id="MTU0_TGID0" priority="15" usedState="Not Use"/>
+<Item currentVect="118" id="MTU0_TCIV0" priority="15" usedState="Not Use"/>
+<Item currentVect="119" id="MTU0_TGIE0" priority="15" usedState="Not Use"/>
+<Item currentVect="120" id="MTU0_TGIF0" priority="15" usedState="Not Use"/>
+<Item currentVect="121" id="MTU1_TGIA1" priority="15" usedState="Not Use"/>
+<Item currentVect="122" id="MTU1_TGIB1" priority="15" usedState="Not Use"/>
+<Item currentVect="123" id="MTU1_TCIV1" priority="15" usedState="Not Use"/>
+<Item currentVect="124" id="MTU1_TCIU1" priority="15" usedState="Not Use"/>
+<Item currentVect="125" id="MTU2_TGIA2" priority="15" usedState="Not Use"/>
+<Item currentVect="126" id="MTU2_TGIB2" priority="15" usedState="Not Use"/>
+<Item currentVect="127" id="MTU2_TCIV2" priority="15" usedState="Not Use"/>
+<Item currentVect="128" id="MTU2_TCIU2" priority="15" usedState="Not Use"/>
+<Item currentVect="129" id="MTU3_TGIA3" priority="15" usedState="Not Use"/>
+<Item currentVect="130" id="MTU3_TGIB3" priority="15" usedState="Not Use"/>
+<Item currentVect="131" id="MTU3_TGIC3" priority="15" usedState="Not Use"/>
+<Item currentVect="132" id="MTU3_TGID3" priority="15" usedState="Not Use"/>
+<Item currentVect="133" id="MTU3_TCIV3" priority="15" usedState="Not Use"/>
+<Item currentVect="134" id="MTU4_TGIA4" priority="15" usedState="Not Use"/>
+<Item currentVect="135" id="MTU4_TGIB4" priority="15" usedState="Not Use"/>
+<Item currentVect="136" id="MTU4_TGIC4" priority="15" usedState="Not Use"/>
+<Item currentVect="137" id="MTU4_TGID4" priority="15" usedState="Not Use"/>
+<Item currentVect="138" id="MTU4_TCIV4" priority="15" usedState="Not Use"/>
+<Item currentVect="139" id="MTU5_TGIU5" priority="15" usedState="Not Use"/>
+<Item currentVect="140" id="MTU5_TGIV5" priority="15" usedState="Not Use"/>
+<Item currentVect="141" id="MTU5_TGIW5" priority="15" usedState="Not Use"/>
+<Item currentVect="142" id="TPU0_TGI0A" priority="15" usedState="Not Use"/>
+<Item currentVect="143" id="TPU0_TGI0B" priority="15" usedState="Not Use"/>
+<Item currentVect="144" id="TPU0_TGI0C" priority="15" usedState="Not Use"/>
+<Item currentVect="145" id="TPU0_TGI0D" priority="15" usedState="Not Use"/>
+<Item currentVect="146" id="TPU0_TCI0V" priority="15" usedState="Not Use"/>
+<Item currentVect="147" id="TPU1_TGI1A" priority="15" usedState="Not Use"/>
+<Item currentVect="148" id="TPU1_TGI1B" priority="15" usedState="Not Use"/>
+<Item currentVect="149" id="TPU1_TCI1V" priority="15" usedState="Not Use"/>
+<Item currentVect="150" id="TPU1_TCI1U" priority="15" usedState="Not Use"/>
+<Item currentVect="151" id="TPU2_TGI2A" priority="15" usedState="Not Use"/>
+<Item currentVect="152" id="TPU2_TGI2B" priority="15" usedState="Not Use"/>
+<Item currentVect="153" id="TPU2_TCI2V" priority="15" usedState="Not Use"/>
+<Item currentVect="154" id="TPU2_TCI2U" priority="15" usedState="Not Use"/>
+<Item currentVect="155" id="TPU3_TGI3A" priority="15" usedState="Not Use"/>
+<Item currentVect="156" id="TPU3_TGI3B" priority="15" usedState="Not Use"/>
+<Item currentVect="157" id="TPU3_TGI3C" priority="15" usedState="Not Use"/>
+<Item currentVect="158" id="TPU3_TGI3D" priority="15" usedState="Not Use"/>
+<Item currentVect="159" id="TPU3_TCI3V" priority="15" usedState="Not Use"/>
+<Item currentVect="160" id="TPU4_TGI4A" priority="15" usedState="Not Use"/>
+<Item currentVect="161" id="TPU4_TGI4B" priority="15" usedState="Not Use"/>
+<Item currentVect="162" id="TPU4_TCI4V" priority="15" usedState="Not Use"/>
+<Item currentVect="163" id="TPU4_TCI4U" priority="15" usedState="Not Use"/>
+<Item currentVect="164" id="TPU5_TGI5A" priority="15" usedState="Not Use"/>
+<Item currentVect="165" id="TPU5_TGI5B" priority="15" usedState="Not Use"/>
+<Item currentVect="166" id="TPU5_TCI5V" priority="15" usedState="Not Use"/>
+<Item currentVect="167" id="TPU5_TCI5U" priority="15" usedState="Not Use"/>
+<Item currentVect="170" id="POE_OEI1" priority="15" usedState="Not Use"/>
+<Item currentVect="171" id="POE_OEI2" priority="15" usedState="Not Use"/>
+<Item currentVect="174" id="TMR0_CMIA0" priority="15" usedState="Not Use"/>
+<Item currentVect="175" id="TMR0_CMIB0" priority="15" usedState="Not Use"/>
+<Item currentVect="176" id="TMR0_OVI0" priority="15" usedState="Not Use"/>
+<Item currentVect="177" id="TMR1_CMIA1" priority="15" usedState="Not Use"/>
+<Item currentVect="178" id="TMR1_CMIB1" priority="15" usedState="Not Use"/>
+<Item currentVect="179" id="TMR1_OVI1" priority="15" usedState="Not Use"/>
+<Item currentVect="180" id="TMR2_CMIA2" priority="15" usedState="Not Use"/>
+<Item currentVect="181" id="TMR2_CMIB2" priority="15" usedState="Not Use"/>
+<Item currentVect="182" id="TMR2_OVI2" priority="15" usedState="Not Use"/>
+<Item currentVect="183" id="TMR3_CMIA3" priority="15" usedState="Not Use"/>
+<Item currentVect="184" id="TMR3_CMIB3" priority="15" usedState="Not Use"/>
+<Item currentVect="185" id="TMR3_OVI3" priority="15" usedState="Not Use"/>
+<Item currentVect="198" id="DMAC_DMAC0I" priority="15" usedState="Not Use"/>
+<Item currentVect="199" id="DMAC_DMAC1I" priority="15" usedState="Not Use"/>
+<Item currentVect="200" id="DMAC_DMAC2I" priority="15" usedState="Not Use"/>
+<Item currentVect="201" id="DMAC_DMAC3I" priority="15" usedState="Not Use"/>
+<Item currentVect="214" id="SCI0_ERI0" priority="15" usedState="Not Use"/>
+<Item currentVect="215" id="SCI0_RXI0" priority="15" usedState="Not Use"/>
+<Item currentVect="216" id="SCI0_TXI0" priority="15" usedState="Not Use"/>
+<Item currentVect="217" id="SCI0_TEI0" priority="15" usedState="Not Use"/>
+<Item currentVect="218" id="SCI1_ERI1" priority="15" usedState="Not Use"/>
+<Item currentVect="219" id="SCI1_RXI1" priority="15" usedState="Not Use"/>
+<Item currentVect="220" id="SCI1_TXI1" priority="15" usedState="Not Use"/>
+<Item currentVect="221" id="SCI1_TEI1" priority="15" usedState="Not Use"/>
+<Item currentVect="222" id="SCI5_ERI5" priority="15" usedState="Not Use"/>
+<Item currentVect="223" id="SCI5_RXI5" priority="15" usedState="Not Use"/>
+<Item currentVect="224" id="SCI5_TXI5" priority="15" usedState="Not Use"/>
+<Item currentVect="225" id="SCI5_TEI5" priority="15" usedState="Not Use"/>
+<Item currentVect="226" id="SCI6_ERI6" priority="15" usedState="Not Use"/>
+<Item currentVect="227" id="SCI6_RXI6" priority="15" usedState="Not Use"/>
+<Item currentVect="228" id="SCI6_TXI6" priority="15" usedState="Not Use"/>
+<Item currentVect="229" id="SCI6_TEI6" priority="15" usedState="Not Use"/>
+<Item currentVect="230" id="SCI8_ERI8" priority="15" usedState="Not Use"/>
+<Item currentVect="231" id="SCI8_RXI8" priority="15" usedState="Not Use"/>
+<Item currentVect="232" id="SCI8_TXI8" priority="15" usedState="Not Use"/>
+<Item currentVect="233" id="SCI8_TEI8" priority="15" usedState="Not Use"/>
+<Item currentVect="234" id="SCI9_ERI9" priority="15" usedState="Not Use"/>
+<Item currentVect="235" id="SCI9_RXI9" priority="15" usedState="Not Use"/>
+<Item currentVect="236" id="SCI9_TXI9" priority="15" usedState="Not Use"/>
+<Item currentVect="237" id="SCI9_TEI9" priority="15" usedState="Not Use"/>
+<Item currentVect="238" id="SCI12_ERI12" priority="15" usedState="Not Use"/>
+<Item currentVect="239" id="SCI12_RXI12" priority="15" usedState="Not Use"/>
+<Item currentVect="240" id="SCI12_TXI12" priority="15" usedState="Not Use"/>
+<Item currentVect="241" id="SCI12_TEI12" priority="15" usedState="Not Use"/>
+<Item currentVect="242" id="SCI12_SCIX0" priority="15" usedState="Not Use"/>
+<Item currentVect="243" id="SCI12_SCIX1" priority="15" usedState="Not Use"/>
+<Item currentVect="244" id="SCI12_SCIX2" priority="15" usedState="Not Use"/>
+<Item currentVect="245" id="SCI12_SCIX3" priority="15" usedState="Not Use"/>
+<Item currentVect="246" id="RIIC0_EEI0" priority="15" usedState="Not Use"/>
+<Item currentVect="247" id="RIIC0_RXI0" priority="15" usedState="Not Use"/>
+<Item currentVect="248" id="RIIC0_TXI0" priority="15" usedState="Not Use"/>
+<Item currentVect="249" id="RIIC0_TEI0" priority="15" usedState="Not Use"/>
+</tool>
+<tool id="Pins" version="1.0.1.0">
+<pinItem allocation="67" comments="" direction="None" id="RXD5" isUsedBySoftware="true" locked="false" status="0"/>
+<pinItem allocation="20" comments="" direction="None" id="RXD1" isUsedBySoftware="true" locked="false" status="0"/>
+<pinItem allocation="66" comments="" direction="None" id="TXD5" isUsedBySoftware="true" locked="false" status="0"/>
+<pinItem allocation="22" comments="" direction="None" id="TXD1" isUsedBySoftware="true" locked="false" status="0"/>
+</tool>
+<tool id="SWComponent" version="1.0.0.0">
+<configuration inuse="true" name="r_byteq">
+<component description="Dependency : r_bsp version(s) 3.10&#10;This module allocates a queue control block in an Open() call to handle indexing for buffers provided by the user application. Additional functions are provided to put and get data from the buffer queue, inspect the number of bytes available or in use, and to flush the queue. There is no limit to the number of queues supported, and queue control blocks can be allocated statically at build time or dynamically at run time." detailDescription="Byte-based circular buffer library." display="r_byteq" id="r_byteq1.80" version="1.80">
+<gridItem id="BYTEQ_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
+<gridItem id="BYTEQ_CFG_USE_HEAP_FOR_CTRL_BLKS" selectedIndex="0"/>
+<gridItem id="BYTEQ_CFG_MAX_CTRL_BLKS" selectedIndex="32"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration inuse="true" name="r_gpio_rx">
+<component description="Dependency : r_bsp version(s) 5.52&#10;This code implements a General Purpose Input/Output driver. Common features such as reading, writing, and setting the direction of ports and pins is supported. Enabling features such as open-drain outputs and internal pull-ups are also supported." detailDescription="General Purpose Input/Output Driver" display="r_gpio_rx" id="r_gpio_rx3.50" version="3.50">
+<gridItem id="GPIO_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration inuse="true" name="r_sci_rx">
+<component description="Dependency : r_bsp version(s) 5.52&#10;Dependency : r_byteq version(s) 1.40, 1.50, 1.60, 1.70, 1.71, 1.80&#10;This module allows any number of SCI channels on the MCU to run in full duplex Asynchronous mode, single master Simple SPI mode, or master Synchronous mode simultaneously. The driver is interrupt driven and non-blocking. Transmit and receive buffer queues are used in Asynchronous mode and their sizes may be configured independently for each channel. Resources for unused channels or modes may be removed via settings in the driver's config.h file." detailDescription="Multi-Channel Multi-Mode SCI Driver." display="r_sci_rx" id="r_sci_rx3.50" version="3.50">
+<gridItem id="SCK0" selectedIndex="0"/>
+<gridItem id="RXD0/SMISO0" selectedIndex="0"/>
+<gridItem id="TXD0/SMOSI0" selectedIndex="0"/>
+<gridItem id="CTS0#/RTS0#/SS0#" selectedIndex="0"/>
+<gridItem id="SCI0" selectedIndex="0"/>
+<gridItem id="SCK1" selectedIndex="0"/>
+<gridItem id="RXD1/SMISO1" selectedIndex="1"/>
+<gridItem id="TXD1/SMOSI1" selectedIndex="1"/>
+<gridItem id="CTS1#/RTS1#/SS1#" selectedIndex="0"/>
+<gridItem id="SCI1" selectedIndex="1"/>
+<gridItem id="SCK2" selectedIndex="0"/>
+<gridItem id="RXD2/SMISO2" selectedIndex="0"/>
+<gridItem id="TXD2/SMOSI2" selectedIndex="0"/>
+<gridItem id="CTS2#/RTS2#/SS2#" selectedIndex="0"/>
+<gridItem id="SCI2" selectedIndex="0"/>
+<gridItem id="SCK3" selectedIndex="0"/>
+<gridItem id="RXD3/SMISO3" selectedIndex="0"/>
+<gridItem id="TXD3/SMOSI3" selectedIndex="0"/>
+<gridItem id="CTS3#/RTS3#/SS3#" selectedIndex="0"/>
+<gridItem id="SCI3" selectedIndex="0"/>
+<gridItem id="SCK4" selectedIndex="0"/>
+<gridItem id="RXD4/SMISO4" selectedIndex="0"/>
+<gridItem id="TXD4/SMOSI4" selectedIndex="0"/>
+<gridItem id="CTS4#/RTS4#/SS4#" selectedIndex="0"/>
+<gridItem id="SCI4" selectedIndex="0"/>
+<gridItem id="SCK5" selectedIndex="0"/>
+<gridItem id="RXD5/SMISO5" selectedIndex="1"/>
+<gridItem id="TXD5/SMOSI5" selectedIndex="1"/>
+<gridItem id="CTS5#/RTS5#/SS5#" selectedIndex="0"/>
+<gridItem id="SCI5" selectedIndex="1"/>
+<gridItem id="SCK6" selectedIndex="0"/>
+<gridItem id="RXD6/SMISO6" selectedIndex="0"/>
+<gridItem id="TXD6/SMOSI6" selectedIndex="0"/>
+<gridItem id="CTS6#/RTS6#/SS6#" selectedIndex="0"/>
+<gridItem id="SCI6" selectedIndex="0"/>
+<gridItem id="SCK7" selectedIndex="0"/>
+<gridItem id="RXD7/SMISO7" selectedIndex="0"/>
+<gridItem id="TXD7/SMOSI7" selectedIndex="0"/>
+<gridItem id="CTS7#/RTS7#/SS7#" selectedIndex="0"/>
+<gridItem id="SCI7" selectedIndex="0"/>
+<gridItem id="SCK8" selectedIndex="0"/>
+<gridItem id="RXD8/SMISO8/SSCL8" selectedIndex="0"/>
+<gridItem id="TXD8/SMOSI8/SSDA8" selectedIndex="0"/>
+<gridItem id="CTS8#/RTS8#/SS8#" selectedIndex="0"/>
+<gridItem id="SCI8" selectedIndex="0"/>
+<gridItem id="SCK9" selectedIndex="0"/>
+<gridItem id="RXD9/SMISO9/SSCL9" selectedIndex="0"/>
+<gridItem id="TXD9/SMOSI9/SSDA9" selectedIndex="0"/>
+<gridItem id="CTS9#/RTS9#/SS9#" selectedIndex="0"/>
+<gridItem id="SCI9" selectedIndex="0"/>
+<gridItem id="SCK10" selectedIndex="0"/>
+<gridItem id="RXD10/SMISO10/SSCL10" selectedIndex="0"/>
+<gridItem id="TXD10/SMOSI10/SSDA10" selectedIndex="0"/>
+<gridItem id="CTS10#/RTS10#/SS10#" selectedIndex="0"/>
+<gridItem id="SCI10" selectedIndex="0"/>
+<gridItem id="SCK11" selectedIndex="0"/>
+<gridItem id="RXD11/SMISO11" selectedIndex="0"/>
+<gridItem id="TXD11/SMOSI11" selectedIndex="0"/>
+<gridItem id="CTS11#/RTS11#/SS11#" selectedIndex="0"/>
+<gridItem id="SCI11" selectedIndex="0"/>
+<gridItem id="SCK12" selectedIndex="0"/>
+<gridItem id="RXD12/SMISO12" selectedIndex="0"/>
+<gridItem id="TXD12/SMOSI12" selectedIndex="0"/>
+<gridItem id="CTS12#/RTS12#/SS12#" selectedIndex="0"/>
+<gridItem id="SCI12" selectedIndex="0"/>
+<gridItem id="SCI_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
+<gridItem id="SCI_CFG_ASYNC_INCLUDED" selectedIndex="1"/>
+<gridItem id="SCI_CFG_SYNC_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_SSPI_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_DUMMY_TX_BYTE" selectedIndex="0xFF"/>
+<gridItem id="SCI_CFG_CH0_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH1_INCLUDED" selectedIndex="1"/>
+<gridItem id="SCI_CFG_CH2_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH3_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH4_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH5_INCLUDED" selectedIndex="1"/>
+<gridItem id="SCI_CFG_CH6_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH7_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH8_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH9_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH10_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH11_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH12_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH0_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH1_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH2_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH3_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH4_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH5_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH6_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH7_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH8_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH9_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH10_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH11_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH12_TX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH0_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH1_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH2_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH3_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH4_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH5_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH6_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH7_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH8_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH9_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH10_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH11_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_CH12_RX_BUFSIZ" selectedIndex="80"/>
+<gridItem id="SCI_CFG_TEI_INCLUDED" selectedIndex="1"/>
+<gridItem id="SCI_CFG_ERI_TEI_PRIORITY" selectedIndex="3"/>
+<gridItem id="SCI_CFG_CH7_FIFO_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH8_FIFO_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH9_FIFO_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH10_FIFO_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH11_FIFO_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH7_TX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH8_TX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH9_TX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH10_TX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH11_TX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH7_RX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH8_RX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH9_RX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH10_RX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH11_RX_FIFO_THRESH" selectedIndex="8"/>
+<gridItem id="SCI_CFG_CH0_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH1_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH2_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH3_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH4_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH5_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH6_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH7_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH8_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH9_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH10_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+<gridItem id="SCI_CFG_CH11_DATA_MATCH_INCLUDED" selectedIndex="0"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration inuse="true" name="r_dtc_rx">
+<component description="Dependency : r_bsp version(s) 5.52&#10;This driver gives the user an easy API to control the MCU's DTC. DTC module transfers the data corresponding to an interrupt when it signals to DTC. Each module can register its transfer settings with DTC driver such as: interrupt number, destination and source address, data counter, transfer mode (3 modes: normal, repeat, block), enable or disable chain transfer." detailDescription="DTC driver" display="r_dtc_rx" id="r_dtc_rx3.50" version="3.50">
+<gridItem id="DTC_CFG_PARAM_CHECKING_ENABLE" selectedIndex="0"/>
+<gridItem id="DTC_CFG_DISABLE_ALL_ACT_SOURCE" selectedIndex="1"/>
+<gridItem id="DTC_CFG_SHORT_ADDRESS_MODE" selectedIndex="0"/>
+<gridItem id="DTC_CFG_TRANSFER_DATA_READ_SKIP_EN" selectedIndex="1"/>
+<gridItem id="DTC_CFG_USE_DMAC_FIT_MODULE" selectedIndex="1"/>
+<gridItem id="DTC_CFG_USE_SEQUENCE_TRANSFER" selectedIndex="0"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+<configuration inuse="true" name="r_bsp">
+<component description="Dependencies : None&#10;The r_bsp package provides a foundation for code to be built on top of. It provides startup code, iodefines, and MCU information for different boards. There are 2 folders that make up the r_bsp package. The 'mcu' folder contains files that are common to a MCU group. These files provide functionality such as easy register access, CPU functions, and a file named 'mcu_info.h' for each MCU group. The 'mcu_info.h' file has information about the MCU on the board and is configured based on the information given in r_bsp_config.h. The information in 'mcu_info.h' is used to help configure Renesas middleware that uses the r_bsp package. The 'board' folder has a folder with startup code for each supported board.  Which MCU and board is chosen is decided by the settings in 'platform.h'. The user can choose which board they are using by uncommenting the include path that applies to their board. For example, if you are using the RSK+RX64M then you would uncomment the #include &quot;./board/generic_rx64m/r_bsp.h&quot; include path. Users are encouraged to add their own boards to the 'board' directory. BSPs are configured by using the r_bsp_config.h file. Each board will have a reference configuration file named r_bsp_config_reference.h. The user should copy this file to their project, rename it to r_bsp_config.h, and use the options inside the file to configure the BSP for their project." detailDescription="Board Support Packages." display="r_bsp" id="r_bsp5.61" version="5.61">
+<gridItem id="BSP_CFG_STARTUP_DISABLE" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USER_STACK_ENABLE" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USTACK_BYTES" selectedIndex="0x0"/>
+<gridItem id="BSP_CFG_ISTACK_BYTES" selectedIndex="0x400"/>
+<gridItem id="BSP_CFG_HEAP_BYTES" selectedIndex="0x0"/>
+<gridItem id="BSP_CFG_IO_LIB_ENABLE" selectedIndex="1"/>
+<gridItem id="BSP_CFG_USER_CHARGET_ENABLED" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USER_CHARGET_FUNCTION" selectedIndex="my_sw_charget_function"/>
+<gridItem id="BSP_CFG_USER_CHARPUT_ENABLED" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USER_CHARPUT_FUNCTION" selectedIndex="my_sw_charput_function"/>
+<gridItem id="BSP_CFG_RUN_IN_USER_MODE" selectedIndex="0"/>
+<gridItem id="BSP_CFG_ID_CODE_LONG_1" selectedIndex="0xFFFFFFFF"/>
+<gridItem id="BSP_CFG_ID_CODE_LONG_2" selectedIndex="0xFFFFFFFF"/>
+<gridItem id="BSP_CFG_ID_CODE_LONG_3" selectedIndex="0xFFFFFFFF"/>
+<gridItem id="BSP_CFG_ID_CODE_LONG_4" selectedIndex="0xFFFFFFFF"/>
+<gridItem id="BSP_CFG_ROM_CODE_PROTECT_VALUE" selectedIndex="0xFFFFFFFF"/>
+<gridItem id="BSP_CFG_USER_LOCKING_ENABLED" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USER_LOCKING_TYPE" selectedIndex="bsp_lock_t"/>
+<gridItem id="BSP_CFG_USER_LOCKING_HW_LOCK_FUNCTION" selectedIndex="my_hw_locking_function"/>
+<gridItem id="BSP_CFG_USER_LOCKING_HW_UNLOCK_FUNCTION" selectedIndex="my_hw_unlocking_function"/>
+<gridItem id="BSP_CFG_USER_LOCKING_SW_LOCK_FUNCTION" selectedIndex="my_sw_locking_function"/>
+<gridItem id="BSP_CFG_USER_LOCKING_SW_UNLOCK_FUNCTION" selectedIndex="my_sw_unlocking_function"/>
+<gridItem id="BSP_CFG_USER_WARM_START_CALLBACK_PRE_INITC_ENABLED" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USER_WARM_START_PRE_C_FUNCTION" selectedIndex="my_sw_warmstart_prec_function"/>
+<gridItem id="BSP_CFG_USER_WARM_START_CALLBACK_POST_INITC_ENABLED" selectedIndex="0"/>
+<gridItem id="BSP_CFG_USER_WARM_START_POST_C_FUNCTION" selectedIndex="my_sw_warmstart_postc_function"/>
+<gridItem id="BSP_CFG_PARAM_CHECKING_ENABLE" selectedIndex="1"/>
+<gridItem id="BSP_CFG_FIT_IPL_MAX" selectedIndex="15"/>
+<gridItem id="BSP_CFG_VBATT_ENABLE" selectedIndex="0"/>
+<gridItem id="BSP_CFG_SWINT_UNIT1_ENABLE" selectedIndex="0"/>
+<gridItem id="BSP_CFG_SWINT_TASK_BUFFER_NUMBER" selectedIndex="8"/>
+<gridItem id="BSP_CFG_SWINT_IPR_INITIAL_VALUE" selectedIndex="1"/>
+</component>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+<source description="Components supporting Firmware Integration Technology" display="Firmware Integration Technology" id="com.renesas.smc.tools.swcomponent.fit.source"/>
+</configuration>
+</tool>
+</smc>
