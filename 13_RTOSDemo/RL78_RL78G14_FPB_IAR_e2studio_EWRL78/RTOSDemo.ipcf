@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- IAR Project Connection File -->
+<iarProjectConnection version="1.0" name="Renesas_AP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="IarProjectConnection_1.0.xsd">
+	<files>
+		<group name="cg_src"><path>./src\r_main.c</path><path>./src\r_systeminit.c</path><path>./src\r_cg_cgc.c</path><path>./src\r_cg_cgc_user.c</path><path>./src\r_cg_port.c</path><path>./src\r_cg_port_user.c</path><path>./src\r_cg_intc.c</path><path>./src\r_cg_intc_user.c</path><path>./src\r_cg_serial.c</path><path>./src\r_cg_serial_user.c</path><path>./src\r_cg_dtc.c</path><path>./src\r_cg_dtc_user.c</path></group>
+	</files>
+</iarProjectConnection>
+
+

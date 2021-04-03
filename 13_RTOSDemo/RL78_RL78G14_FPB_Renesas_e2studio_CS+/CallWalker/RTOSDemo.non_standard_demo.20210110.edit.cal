@@ -1,0 +1,338 @@
+Call Walker V250
+RL78 (MUL/DIV/MAC instructions & double - 4 bytes)
+RL78 engine C/C++ Compiler Ver. 2
+219
+1	 	0	RTOSDemo.non_standard_demo.20210110.edit.cal	0	0	4294967295	11	92	93	149	150	156	158	159	166	177	217	218
+0	 	0	 	0	0	0	0
+1	0x00005696|task_LED0.obj|_task_LED0|4	1	_task_LED0	4	0	0	1	3
+1	0x00004552|tasks.obj|_vTaskDelay|6	1	_vTaskDelay	6	0	2	4	4	11	12	16
+1	0x00003a5f|freertos_start.obj|_vAssertCalled|8	1	_vAssertCalled	8	0	3	3	5	7	9
+1	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	1	_vPortENTER_CRITICAL	4	0	4	1	6
+1	0x00003c7f|port.obj|_vPortDISABLE_SYSCALL_INTERRUPT|4	1	_vPortDISABLE_SYSCALL_INTERRUPT	4	0	5	0
+1	0x00003ac5|freertos_start.obj|_vPrintString|6	1	_vPrintString	6	0	4	3	5	8	9
+1	0x00003997|sim_debugger_console.obj|_sim_debugger_console|4	1	_sim_debugger_console	4	0	7	0
+1	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	1	_vPortEXIT_CRITICAL	4	0	7	1	10
+1	0x00003c77|port.obj|_vPortENABLE_SYSCALL_INTERRUPT|4	1	_vPortENABLE_SYSCALL_INTERRUPT	4	0	9	0
+1	0x000045e9|tasks.obj|_vTaskSuspendAll|4	1	_vTaskSuspendAll	4	0	3	0
+1	0x00004d04|tasks.obj|_prvAddCurrentTaskToDelayedList@1|10	1	_prvAddCurrentTaskToDelayedList@1	10	0	3	3	13	14	15
+1	0x00003d47|list.obj|_uxListRemove|6	1	_uxListRemove	6	0	12	0
+1	0x00003cf6|list.obj|_vListInsert|12	1	_vListInsert	12	0	12	0
+1	0x00003cd0|list.obj|_vListInsertEnd|10	1	_vListInsertEnd	10	0	12	0
+1	0x000045ed|tasks.obj|_xTaskResumeAll|8	1	_xTaskResumeAll	8	0	3	7	4	5	13	15	17	18	9
+1	0x000049f2|tasks.obj|_prvResetNextTaskUnblockTime@1|4	1	_prvResetNextTaskUnblockTime@1	4	0	16	0
+1	0x000046b1|tasks.obj|_xTaskIncrementTick|12	1	_xTaskIncrementTick	12	0	16	5	4	17	13	15	19
+1	0x00003a89|freertos_start.obj|_vApplicationTickHook|4	1	_vApplicationTickHook	4	0	18	0
+1	0x000003be|r_cg_intc_user.obj|__r_intc0_interrupt@1|4	1	__r_intc0_interrupt@1	4	0	0	1	21
+1	0x00003ad5|freertos_start.obj|_vTaskNotifyGiveFromISR_R_Helper|8	1	_vTaskNotifyGiveFromISR_R_Helper	8	0	20	2	22	24
+1	0x00004c58|tasks.obj|_vTaskGenericNotifyGiveFromISR|12	1	_vTaskGenericNotifyGiveFromISR	12	0	21	4	4	23	13	15
+1	0x00003c92|port.obj|_vPortASSERT_IF_SYSCALL_INTERRUPT_PRIORITY_INVALID|4	1	_vPortASSERT_IF_SYSCALL_INTERRUPT_PRIORITY_INVALID	4	0	22	1	4
+1	0x000047a1|tasks.obj|_vTaskSwitchContext|14	1	_vTaskSwitchContext	14	0	21	2	25	4
+1	0x00003a8a|freertos_start.obj|_vApplicationStackOverflowHook|4	1	_vApplicationStackOverflowHook	4	0	24	3	5	7	4
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x00000382|portasm.obj|_vPortInterruptCommonHandler_C|4294967295	2	_vPortInterruptCommonHandler_C	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x000003da|r_cg_serial_user.obj|__r_uart3_interrupt_receive@1|6	1	__r_uart3_interrupt_receive@1	6	0	0	2	89	91
+1	0x00005566|r_cg_serial_user.obj|_r_uart3_callback_error@1|4	1	_r_uart3_callback_error@1	4	0	88	1	90
+1	0x000054fc|r_cg_serial.obj|_U_UART3_Receive_Stop|4	1	_U_UART3_Receive_Stop	4	0	89	0
+1	0x00005792|UART3.obj|_u_uart3_callback_receivedata|6	1	_u_uart3_callback_receivedata	6	0	88	0
+1	0x000008ca|_REL_f_inf.obj|__REL_f_inf|4294967295	2	__REL_f_inf	4294967295	0	0	0
+1	0x000008f5|_REL_ltof.obj|__REL_ltof|4294967295	2	__REL_ltof	4294967295	0	0	0
+1	0x000002bf|portasm.obj|_vPortYield|4294967295	2	_vPortYield	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+1	0x00000497|r_cg_serial_user.obj|__u_wdt_interrupt@1|4	1	__u_wdt_interrupt@1	4	0	0	1	97
+1	0x00003afa|freertos_start.obj|_xTaskNotifyFromISR_R_Helper|8	1	_xTaskNotifyFromISR_R_Helper	8	0	96	2	98	24
+1	0x00004b2f|tasks.obj|_xTaskGenericNotifyFromISR|18	1	_xTaskGenericNotifyFromISR	18	0	97	4	4	23	13	15
+0	 	0	 	0	0	0	0
+1	0x00000317|portasm.obj|_vPortTickISR|4294967295	2	_vPortTickISR	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x000048c0|tasks.obj|_xTaskRemoveFromEventList|8	1	_xTaskRemoveFromEventList	8	0	113	3	4	13	15
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x00003b37|heap_4.obj|_vPortFree|10	1	_vPortFree	10	0	103	4	4	11	128	16
+1	0x00003baa|heap_4.obj|_prvInsertBlockIntoFreeList@1|10	1	_prvInsertBlockIntoFreeList@1	10	0	127	0
+0	 	0	 	0	0	0	0
+1	0x00005573|task_CONIO.obj|_task_CONIO|20	1	_task_CONIO	20	0	0	9	131	135	136	144	5	7	9	3	133
+1	0x00005420|r_cg_serial.obj|_U_UART3_Start|4	1	_U_UART3_Start	4	0	130	3	132	90	133
+1	0x000053d1|r_cg_serial.obj|_R_UART3_Start|4	1	_R_UART3_Start	4	0	131	0
+1	0x00005503|r_cg_serial.obj|_U_UART3_Receive_ClearError|4	1	_U_UART3_Receive_ClearError	4	0	131	1	134
+1	0x0000570e|UART3.obj|_u_uart3_init_bf|4	1	_u_uart3_init_bf	4	0	133	2	5	9
+1	0x000004d5|memset.obj|_memset|6	2	_memset	6	0	130	0
+1	0x00005521|r_cg_serial.obj|_U_UART3_Send_Wait|8	1	_U_UART3_Send_Wait	8	0	130	5	137	140	141	142	143
+1	0x00003b2d|freertos_start.obj|_xTaskGetCurrentTaskHandle_R_Helper|4	1	_xTaskGetCurrentTaskHandle_R_Helper	4	0	136	2	138	139
+1	0x00004a8f|tasks.obj|_ulTaskGenericNotifyTake|14	1	_ulTaskGenericNotifyTake	14	0	137	4	4	5	12	9
+1	0x00004a0b|tasks.obj|_xTaskGetCurrentTaskHandle|4	1	_xTaskGetCurrentTaskHandle	4	0	137	0
+1	0x000052bf|r_cg_dtc.obj|_U_DTCD0_UserInit|4	1	_U_DTCD0_UserInit	4	0	136	0
+1	0x000052af|r_cg_dtc.obj|_R_DTCD0_Start|4	1	_R_DTCD0_Start	4	0	136	0
+1	0x000053f7|r_cg_serial.obj|_R_UART3_Send|4	1	_R_UART3_Send	4	0	136	0
+1	0x00003b27|freertos_start.obj|_ulTaskNotifyTake_R_Helper|4	1	_ulTaskNotifyTake_R_Helper	4	0	136	1	138
+1	0x00005429|r_cg_serial.obj|_U_UART3_Receive_Wait|12	1	_U_UART3_Receive_Wait	12	0	130	7	137	5	145	9	143	90	146
+1	0x00005720|UART3.obj|_u_uart3_chk_status|6	1	_u_uart3_chk_status	6	0	144	2	5	9
+1	0x00005736|UART3.obj|_u_uart3_get_blk|12	1	_u_uart3_get_blk	12	0	144	2	5	9
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x00000c90|_REL_llrem.obj|__REL_llrem|4294967295	2	__REL_llrem	4294967295	0	0	0
+1	0x000008e2|_REL_f_round.obj|__REL_f_round|4294967295	2	__REL_f_round	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+1	0x000003c4|r_cg_serial_user.obj|_r_uart3_interrupt_receive@1|14	1	_r_uart3_interrupt_receive@1	14	0	0	0
+1	0x00004998|tasks.obj|_prvIdleTask@1|6	1	_prvIdleTask@1	6	0	0	5	5	13	9	154	155
+1	0x000049ce|tasks.obj|_prvDeleteTCB@1|6	1	_prvDeleteTCB@1	6	0	153	2	127	4
+1	0x00003a88|freertos_start.obj|_vApplicationIdleHook|4	1	_vApplicationIdleHook	4	0	153	0
+1	0x00000a37|_REL_ftol.obj|__REL_ftol|4294967295	2	__REL_ftol	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+1	0x00000876|_REL_fcmp.obj|__REL_fcmp|4294967295	2	__REL_fcmp	4294967295	0	0	0
+1	0x00000e7c|_REL_ltosl.obj|__REL_ltosl|4294967295	2	__REL_ltosl	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x00000444|r_cg_serial_user.obj|_r_uart3_interrupt_send@1|14	1	_r_uart3_interrupt_send@1	14	0	0	0
+1	0x00000a88|_REL_lldiv.obj|__REL_lldiv|4294967295	2	__REL_lldiv	4294967295	0	0	0
+0	 	0	 	0	0	0	0
+0	 	0	 	0	0	0	0
+1	0x000003a8|r_cg_intc_user.obj|_r_intc0_interrupt@1|14	1	_r_intc0_interrupt@1	14	0	0	0
+1	0x00000357|portasm.obj|_vPortFreeRTOSInterruptCommonHandler_C|4294967295	2	_vPortFreeRTOSInterruptCommonHandler_C	4294967295	0	0	0
+1	0x000056c8|task_LED1.obj|_task_LED1|4	1	_task_LED1	4	0	0	3	172	173	3
+1	0x0000533d|r_cg_intc.obj|_R_INTC0_Start|4	1	_R_INTC0_Start	4	0	171	0
+1	0x00005344|r_cg_intc.obj|_U_INTC0_Wait|4	1	_U_INTC0_Wait	4	0	171	2	137	143
+0	 	0	 	0	0	0	0
+1	0x00005570|rl78g14_fpb_main.obj|_main_task|4	1	_main_task	4	0	0	0
+0	 	0	 	0	0	0	0
+1	0x000008ae|_REL_fordered_core.obj|__REL_fordered_core|4294967295	2	__REL_fordered_core	4294967295	0	0	0
+1	0x00000481|r_cg_serial_user.obj|_u_wdt_interrupt@1|14	1	_u_wdt_interrupt@1	14	0	0	0
+1	0x0000045a|r_cg_serial_user.obj|__r_uart3_interrupt_send@1|4	1	__r_uart3_interrupt_send@1	4	0	0	2	180	21
+1	0x00005560|r_cg_serial.obj|_U_UART3_Send_Stop|4	1	_U_UART3_Send_Stop	4	0	179	1	181
+1	0x000052b7|r_cg_dtc.obj|_R_DTCD0_Stop|4	1	_R_DTCD0_Stop	4	0	180	0
+0	 	0	 	0	0	0	0
+1	0x00003988|resetprg.obj|_PowerON_Reset_PC|4	1	_PowerON_Reset_PC	4	0	0	5	184	194	195	196	216
+1	0x00005260|r_systeminit.obj|_hdwinit|4	1	_hdwinit	4	0	183	1	185
+1	0x00005246|r_systeminit.obj|_R_Systeminit|4	1	_R_Systeminit	4	0	184	5	186	187	190	192	193
+1	0x00005265|r_cg_cgc.obj|_R_CGC_Create|4	1	_R_CGC_Create	4	0	185	0
+1	0x000052ce|r_cg_port.obj|_R_PORT_Create|4	1	_R_PORT_Create	4	0	185	2	188	189
+1	0x000052d3|r_cg_port.obj|_R_PORT_Create_org|4	1	_R_PORT_Create_org	4	0	187	0
+1	0x000052de|r_cg_port.obj|_R_PORT_Create_simulator_patch|4	1	_R_PORT_Create_simulator_patch	4	0	187	0
+1	0x0000534f|r_cg_serial.obj|_R_SAU1_Create|4	1	_R_SAU1_Create	4	0	185	1	191
+1	0x0000535b|r_cg_serial.obj|_R_UART3_Create|4	1	_R_UART3_Create	4	0	190	0
+1	0x000052ee|r_cg_intc.obj|_R_INTC_Create|4	1	_R_INTC_Create	4	0	185	0
+1	0x0000527c|r_cg_dtc.obj|_R_DTC_Create|4	1	_R_DTC_Create	4	0	185	0
+1	0x00003940|cstart.obj|_INIT_BSS|4	2	_INIT_BSS	4	0	183	0
+1	0x0000395f|cstart.obj|_INIT_DATA|4	2	_INIT_DATA	4	0	183	0
+1	0x0000523b|r_main.obj|_main|4	1	_main	4	0	183	2	197	205
+1	0x00003ad2|freertos_start.obj|_Processing_Before_Start_Kernel|4	1	_Processing_Before_Start_Kernel	4	0	196	1	198
+1	0x000039c6|freertos_object_init.obj|_Kernel_Object_init|4	1	_Kernel_Object_init	4	0	197	1	199
+1	0x00004346|tasks.obj|_xTaskCreateStatic|30	1	_xTaskCreateStatic	30	0	198	3	4	200	203
+1	0x000043bd|tasks.obj|_prvInitialiseNewTask@1|28	1	_prvInitialiseNewTask@1	28	0	199	4	135	4	201	202
+1	0x00003ccb|list.obj|_vListInitialiseItem|4	1	_vListInitialiseItem	4	0	200	0
+1	0x00003c03|port.obj|_pxPortInitialiseStack|12	1	_pxPortInitialiseStack	12	0	200	0
+1	0x0000448d|tasks.obj|_prvAddNewTaskToReadyList@1|10	1	_prvAddNewTaskToReadyList@1	10	0	199	4	5	204	15	9
+1	0x00003cba|list.obj|_vListInitialise|4	1	_vListInitialise	4	0	203	0
+1	0x00004577|tasks.obj|_vTaskStartScheduler|16	1	_vTaskStartScheduler	16	0	196	6	206	199	207	6	213	4
+1	0x00003a9b|freertos_start.obj|_vApplicationGetIdleTaskMemory|6	1	_vApplicationGetIdleTaskMemory	6	0	205	0
+1	0x00004d68|timers.obj|_xTimerCreateTimerTask|14	1	_xTimerCreateTimerTask	14	0	205	4	208	212	199	4
+1	0x0000513b|timers.obj|_prvCheckForValidListAndQueue@1|4	1	_prvCheckForValidListAndQueue@1	4	0	207	4	5	204	209	9
+1	0x00003de2|queue.obj|_xQueueGenericCreateStatic|16	1	_xQueueGenericCreateStatic	16	0	208	2	4	210
+1	0x00003e4e|queue.obj|_prvInitialiseNewQueue@1|12	1	_prvInitialiseNewQueue@1	12	0	209	1	211
+1	0x00003d70|queue.obj|_xQueueGenericReset|14	1	_xQueueGenericReset	14	0	210	5	4	5	114	204	9
+1	0x00003ab0|freertos_start.obj|_vApplicationGetTimerTaskMemory|6	1	_vApplicationGetTimerTaskMemory	6	0	207	0
+1	0x00003c6f|port.obj|_xPortStartScheduler|4	1	_xPortStartScheduler	4	0	205	2	214	215
+1	0x00003a43|freertos_start.obj|_vApplicationSetupTimerInterrupt|4	1	_vApplicationSetupTimerInterrupt	4	0	213	0
+1	0x00000300|portasm.obj|_vPortStartFirstTask|4294967295	2	_vPortStartFirstTask	4294967295	0	213	0
+1	0x00003986|cstart.obj|_exit|4	2	_exit	4	0	183	0
+1	0xffffffff||Tasks|0	9	Tasks	0	0	0	5	2	171	130	175	153
+1	0xfffffffe||Interrupts&Reset|0	10	Interrupts&Reset	0	0	0	15	183	20	88	179	96	169	152	165	178	170	29	94	100	24	18
+114
+0x000003be|r_cg_intc_user.obj|__r_intc0_interrupt@1|4	0x6f8c1411	6	4	0x000032c0	1	1	0x00003ad5|freertos_start.obj|_vTaskNotifyGiveFromISR_R_Helper|8	0
+0x00005566|r_cg_serial_user.obj|_r_uart3_callback_error@1|4	0x00000011	10	4	0x000037b0	1	1	0x000054fc|r_cg_serial.obj|_U_UART3_Receive_Stop|4	0
+0x00005696|task_LED0.obj|_task_LED0|4	0x0306f001	50	4	0x00003a80	1	1	0x00004552|tasks.obj|_vTaskDelay|6	0
+0x00005792|UART3.obj|_u_uart3_callback_receivedata|6	0x00000001	38	6	0x00003c38	0	0	0
+0x00003c7f|port.obj|_vPortDISABLE_SYSCALL_INTERRUPT|4	0x00000001	19	4	0x00000e00	0	0	0
+0x000047a1|tasks.obj|_vTaskSwitchContext|14	0x00000001	216	14	0x000021d4	2	2	0x00003a8a|freertos_start.obj|_vApplicationStackOverflowHook|4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0
+0x00003a43|freertos_start.obj|_vApplicationSetupTimerInterrupt|4	0x00000001	28	4	0x00000890	0	0	0
+0x00003a8a|freertos_start.obj|_vApplicationStackOverflowHook|4	0x00000001	17	4	0x00000980	3	3	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003ac5|freertos_start.obj|_vPrintString|6	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0
+0x000052ee|r_cg_intc.obj|_R_INTC_Create|4	0x00000001	79	4	0x00003208	0	0	0
+0x0000535b|r_cg_serial.obj|_R_UART3_Create|4	0x00000001	118	4	0x00003338	0	0	0
+0x000054fc|r_cg_serial.obj|_U_UART3_Receive_Stop|4	0x00000001	7	4	0x00003560	0	0	0
+0x000003da|r_cg_serial_user.obj|__r_uart3_interrupt_receive@1|6	0x00000011	106	6	0x000036c4	2	2	0x00005566|r_cg_serial_user.obj|_r_uart3_callback_error@1|4	0x00005792|UART3.obj|_u_uart3_callback_receivedata|6	0
+0x00005736|UART3.obj|_u_uart3_get_blk|12	0x00000001	92	12	0x00003be0	2	2	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x00000382|portasm.obj|_vPortInterruptCommonHandler_C|4294967295	0x00000002	0	4294967295	0x00005f00	0	0	0
+0x00003c03|port.obj|_pxPortInitialiseStack|12	0x00000001	92	12	0x00000d10	0	0	0
+0x00003a89|freertos_start.obj|_vApplicationTickHook|4	0x00000001	1	4	0x00000960	0	0	0
+0x00003d70|queue.obj|_xQueueGenericReset|14	0x00000001	114	14	0x00000f74	5	5	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x000048c0|tasks.obj|_xTaskRemoveFromEventList|8	0x00003cba|list.obj|_vListInitialise|4	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x0000448d|tasks.obj|_prvAddNewTaskToReadyList@1|10	0x00000011	197	10	0x00001d04	4	4	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003cba|list.obj|_vListInitialise|4	0x00003cd0|list.obj|_vListInsertEnd|10	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x0000533d|r_cg_intc.obj|_R_INTC0_Start|4	0x00000001	7	4	0x00003228	0	0	0
+0x000002bf|portasm.obj|_vPortYield|4294967295	0x00000002	0	4294967295	0x00005f40	0	0	0
+0x000008f5|_REL_ltof.obj|__REL_ltof|4294967295	0x00000002	0	4294967295	0x00006000	0	0	0
+0x000008ca|_REL_f_inf.obj|__REL_f_inf|4294967295	0x03009402	0	4294967295	0x00006440	0	0	0
+0xffffffff||Tasks|0	0x6f8c1409	0	0	0xffffffff	0	0	0
+0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00000001	41	8	0x000008b0	3	3	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003ac5|freertos_start.obj|_vPrintString|6	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x00003a88|freertos_start.obj|_vApplicationIdleHook|4	0x00000001	1	4	0x00000940	0	0	0
+0x00003ad5|freertos_start.obj|_vTaskNotifyGiveFromISR_R_Helper|8	0x00003801	37	8	0x00000b00	2	2	0x00004c58|tasks.obj|_vTaskGenericNotifyGiveFromISR|12	0x000047a1|tasks.obj|_vTaskSwitchContext|14	0
+0x000046b1|tasks.obj|_xTaskIncrementTick|12	0x00000001	240	12	0x000020f0	5	5	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x000049f2|tasks.obj|_prvResetNextTaskUnblockTime@1|4	0x00003d47|list.obj|_uxListRemove|6	0x00003cd0|list.obj|_vListInsertEnd|10	0x00003a89|freertos_start.obj|_vApplicationTickHook|4	0
+0x00004a0b|tasks.obj|_xTaskGetCurrentTaskHandle|4	0x00000001	4	4	0x000025ec	0	0	0
+0x00005344|r_cg_intc.obj|_U_INTC0_Wait|4	0x00000001	11	4	0x00003248	2	2	0x00003b2d|freertos_start.obj|_xTaskGetCurrentTaskHandle_R_Helper|4	0x00003b27|freertos_start.obj|_ulTaskNotifyTake_R_Helper|4	0
+0x00005420|r_cg_serial.obj|_U_UART3_Start|4	0x00000001	9	4	0x00003398	3	3	0x000053d1|r_cg_serial.obj|_R_UART3_Start|4	0x000054fc|r_cg_serial.obj|_U_UART3_Receive_Stop|4	0x00005503|r_cg_serial.obj|_U_UART3_Receive_ClearError|4	0
+0x00000497|r_cg_serial_user.obj|__u_wdt_interrupt@1|4	0x00000011	36	4	0x0000380c	1	1	0x00003afa|freertos_start.obj|_xTaskNotifyFromISR_R_Helper|8	0
+0x00003cf6|list.obj|_vListInsert|12	0x00000001	81	12	0x00000f34	0	0	0
+0x000048c0|tasks.obj|_xTaskRemoveFromEventList|8	0x00000001	105	8	0x00002314	3	3	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003d47|list.obj|_uxListRemove|6	0x00003cd0|list.obj|_vListInsertEnd|10	0
+0x000052ce|r_cg_port.obj|_R_PORT_Create|4	0x00000001	5	4	0x00003170	2	2	0x000052d3|r_cg_port.obj|_R_PORT_Create_org|4	0x000052de|r_cg_port.obj|_R_PORT_Create_simulator_patch|4	0
+0x00000317|portasm.obj|_vPortTickISR|4294967295	0x00000002	0	4294967295	0x00005ee0	0	0	0
+0xfffffffe||Interrupts&Reset|0	0x0000000a	0	0	0xfffffffe	0	0	0
+0x00003997|sim_debugger_console.obj|_sim_debugger_console|4	0x0843d401	47	4	0x000007e0	0	0	0
+0x00003b27|freertos_start.obj|_ulTaskNotifyTake_R_Helper|4	0x00000001	6	4	0x00000bb0	1	1	0x00004a8f|tasks.obj|_ulTaskGenericNotifyTake|14	0
+0x00004a8f|tasks.obj|_ulTaskGenericNotifyTake|14	0x00000001	160	14	0x000026bc	4	4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00004d04|tasks.obj|_prvAddCurrentTaskToDelayedList@1|10	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x00005521|r_cg_serial.obj|_U_UART3_Send_Wait|8	0x00000001	63	8	0x000035bc	5	5	0x00003b2d|freertos_start.obj|_xTaskGetCurrentTaskHandle_R_Helper|4	0x000052bf|r_cg_dtc.obj|_U_DTCD0_UserInit|4	0x000052af|r_cg_dtc.obj|_R_DTCD0_Start|4	0x000053f7|r_cg_serial.obj|_R_UART3_Send|4	0x00003b27|freertos_start.obj|_ulTaskNotifyTake_R_Helper|4	0
+0x00005573|task_CONIO.obj|_task_CONIO|20	0x00000401	291	20	0x00003884	9	9	0x00005420|r_cg_serial.obj|_U_UART3_Start|4	0x000004d5|memset.obj|_memset|4294967295	0x00005521|r_cg_serial.obj|_U_UART3_Send_Wait|8	0x00005429|r_cg_serial.obj|_U_UART3_Receive_Wait|12	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003ac5|freertos_start.obj|_vPrintString|6	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0x00004552|tasks.obj|_vTaskDelay|6	0x00005503|r_cg_serial.obj|_U_UART3_Receive_ClearError|4	0
+0x00003d47|list.obj|_uxListRemove|6	0x00000001	41	6	0x00000f54	0	0	0
+0x00004998|tasks.obj|_prvIdleTask@1|6	0x00000011	54	6	0x00002490	5	5	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003d47|list.obj|_uxListRemove|6	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0x000049ce|tasks.obj|_prvDeleteTCB@1|6	0x00003a88|freertos_start.obj|_vApplicationIdleHook|4	0
+0x00004d68|timers.obj|_xTimerCreateTimerTask|14	0x00000001	86	14	0x000029c0	4	4	0x0000513b|timers.obj|_prvCheckForValidListAndQueue@1|4	0x00003ab0|freertos_start.obj|_vApplicationGetTimerTaskMemory|6	0x00004346|tasks.obj|_xTaskCreateStatic|30	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0
+0x00005260|r_systeminit.obj|_hdwinit|4	0x00000001	5	4	0x00003094	1	1	0x00005246|r_systeminit.obj|_R_Systeminit|4	0
+0x000052d3|r_cg_port.obj|_R_PORT_Create_org|4	0x00000001	11	4	0x000031c8	0	0	0
+0x000003c4|r_cg_serial_user.obj|_r_uart3_interrupt_receive@1|14	0x00000031	22	14	0x000036a4	0	0	0
+0x00005720|UART3.obj|_u_uart3_chk_status|6	0x00000001	22	6	0x00003b88	2	2	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x000008e2|_REL_f_round.obj|__REL_f_round|4294967295	0x00000002	0	4294967295	0x00006260	0	0	0
+0x00000c90|_REL_llrem.obj|__REL_llrem|4294967295	0x00000002	0	4294967295	0x00006280	0	0	0
+0x00003cba|list.obj|_vListInitialise|4	0x00000001	17	4	0x00000ed4	0	0	0
+0x000045e9|tasks.obj|_vTaskSuspendAll|4	0x00000001	4	4	0x00001f78	0	0	0
+0x0000523b|r_main.obj|_main|4	0x00000001	11	4	0x00002f90	2	2	0x00003ad2|freertos_start.obj|_Processing_Before_Start_Kernel|4	0x00004577|tasks.obj|_vTaskStartScheduler|16	0
+0x00000e7c|_REL_ltosl.obj|__REL_ltosl|4294967295	0x03031002	0	4294967295	0x00005fe0	0	0	0
+0x00000876|_REL_fcmp.obj|__REL_fcmp|4294967295	0x00000002	0	4294967295	0x000061e0	0	0	0
+0x00000a37|_REL_ftol.obj|__REL_ftol|4294967295	0x00005402	0	4294967295	0x000063a0	0	0	0
+0x00005429|r_cg_serial.obj|_U_UART3_Receive_Wait|12	0x00000001	211	12	0x0000340c	7	7	0x00003b2d|freertos_start.obj|_xTaskGetCurrentTaskHandle_R_Helper|4	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00005720|UART3.obj|_u_uart3_chk_status|6	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0x00003b27|freertos_start.obj|_ulTaskNotifyTake_R_Helper|4	0x000054fc|r_cg_serial.obj|_U_UART3_Receive_Stop|4	0x00005736|UART3.obj|_u_uart3_get_blk|12	0
+0x00003de2|queue.obj|_xQueueGenericCreateStatic|16	0x0307c801	108	16	0x0000103c	2	2	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003e4e|queue.obj|_prvInitialiseNewQueue@1|12	0
+0x000004d5|memset.obj|_memset|6	0x0307b402	0	6	0x000004d5	0	0	0
+0x00003c92|port.obj|_vPortASSERT_IF_SYSCALL_INTERRUPT_PRIORITY_INVALID|4	0x00000001	13	4	0x00000e20	1	1	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0
+0x00005246|r_systeminit.obj|_R_Systeminit|4	0x0300f001	26	4	0x00002fe8	5	5	0x00005265|r_cg_cgc.obj|_R_CGC_Create|4	0x000052ce|r_cg_port.obj|_R_PORT_Create|4	0x0000534f|r_cg_serial.obj|_R_SAU1_Create|4	0x000052ee|r_cg_intc.obj|_R_INTC_Create|4	0x0000527c|r_cg_dtc.obj|_R_DTC_Create|4	0
+0x000052b7|r_cg_dtc.obj|_R_DTCD0_Stop|4	0x00000001	8	4	0x00003130	0	0	0
+0x000052bf|r_cg_dtc.obj|_U_DTCD0_UserInit|4	0x00000001	15	4	0x00003150	0	0	0
+0x000052de|r_cg_port.obj|_R_PORT_Create_simulator_patch|4	0x00000001	16	4	0x000031e8	0	0	0
+0x000053d1|r_cg_serial.obj|_R_UART3_Start|4	0x00000001	38	4	0x00003358	0	0	0
+0x00005560|r_cg_serial.obj|_U_UART3_Send_Stop|4	0x00000001	6	4	0x00003668	1	1	0x000052b7|r_cg_dtc.obj|_R_DTCD0_Stop|4	0
+0x00000300|portasm.obj|_vPortStartFirstTask|4294967295	0x00000002	0	4294967295	0x00005f20	0	0	0
+0x00003e4e|queue.obj|_prvInitialiseNewQueue@1|12	0x03023c11	42	12	0x00001104	1	1	0x00003d70|queue.obj|_xQueueGenericReset|14	0
+0x00004b2f|tasks.obj|_xTaskGenericNotifyFromISR|18	0x03051c01	297	18	0x00002784	4	4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003c92|port.obj|_vPortASSERT_IF_SYSCALL_INTERRUPT_PRIORITY_INVALID|4	0x00003d47|list.obj|_uxListRemove|6	0x00003cd0|list.obj|_vListInsertEnd|10	0
+0x00004346|tasks.obj|_xTaskCreateStatic|30	0x00000001	119	30	0x00001b74	3	3	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x000043bd|tasks.obj|_prvInitialiseNewTask@1|28	0x0000448d|tasks.obj|_prvAddNewTaskToReadyList@1|10	0
+0x00003986|cstart.obj|_exit|4	0x00000002	0	4	0x00000714	0	0	0
+0x00004552|tasks.obj|_vTaskDelay|6	0x00000001	37	6	0x00001e20	4	4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x000045e9|tasks.obj|_vTaskSuspendAll|4	0x00004d04|tasks.obj|_prvAddCurrentTaskToDelayedList@1|10	0x000045ed|tasks.obj|_xTaskResumeAll|8	0
+0x000045ed|tasks.obj|_xTaskResumeAll|8	0x00000001	180	8	0x00001f98	7	7	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003d47|list.obj|_uxListRemove|6	0x00003cd0|list.obj|_vListInsertEnd|10	0x000049f2|tasks.obj|_prvResetNextTaskUnblockTime@1|4	0x000046b1|tasks.obj|_xTaskIncrementTick|12	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x000052af|r_cg_dtc.obj|_R_DTCD0_Start|4	0x00000001	8	4	0x00003110	0	0	0
+0x0000534f|r_cg_serial.obj|_R_SAU1_Create|4	0x00000001	12	4	0x000032fc	1	1	0x0000535b|r_cg_serial.obj|_R_UART3_Create|4	0
+0x000053f7|r_cg_serial.obj|_R_UART3_Send|4	0x00000001	41	4	0x00003378	0	0	0
+0x00000444|r_cg_serial_user.obj|_r_uart3_interrupt_send@1|14	0x00000031	22	14	0x00003738	0	0	0
+0x00003baa|heap_4.obj|_prvInsertBlockIntoFreeList@1|10	0x00000011	89	10	0x00000cf0	0	0	0
+0x00003cd0|list.obj|_vListInsertEnd|10	0x0845ac01	38	10	0x00000f14	0	0	0
+0x000049ce|tasks.obj|_prvDeleteTCB@1|6	0x00000011	36	6	0x0000253c	2	2	0x00003b37|heap_4.obj|_vPortFree|10	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0
+0x00005503|r_cg_serial.obj|_U_UART3_Receive_ClearError|4	0x00000001	30	4	0x00003580	1	1	0x0000570e|UART3.obj|_u_uart3_init_bf|4	0
+0x00003b2d|freertos_start.obj|_xTaskGetCurrentTaskHandle_R_Helper|4	0x00001001	10	4	0x00000bec	2	2	0x00004a8f|tasks.obj|_ulTaskGenericNotifyTake|14	0x00004a0b|tasks.obj|_xTaskGetCurrentTaskHandle|4	0
+0x00003c6f|port.obj|_xPortStartScheduler|4	0x00000001	8	4	0x00000d88	2	2	0x00003a43|freertos_start.obj|_vApplicationSetupTimerInterrupt|4	0x00000300|portasm.obj|_vPortStartFirstTask|4294967295	0
+0x00003c77|port.obj|_vPortENABLE_SYSCALL_INTERRUPT|4	0x00000001	8	4	0x00000de0	0	0	0
+0x00004c58|tasks.obj|_vTaskGenericNotifyGiveFromISR|12	0x00000001	172	12	0x00002868	4	4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003c92|port.obj|_vPortASSERT_IF_SYSCALL_INTERRUPT_PRIORITY_INVALID|4	0x00003d47|list.obj|_uxListRemove|6	0x00003cd0|list.obj|_vListInsertEnd|10	0
+0x0000527c|r_cg_dtc.obj|_R_DTC_Create|4	0x00000001	51	4	0x000030f0	0	0	0
+0x000003a8|r_cg_intc_user.obj|_r_intc0_interrupt@1|14	0x0843d431	22	14	0x000032a0	0	0	0
+0x00000a88|_REL_lldiv.obj|__REL_lldiv|4294967295	0x00001802	0	4294967295	0x00006180	0	0	0
+0x000043bd|tasks.obj|_prvInitialiseNewTask@1|28	0x0306ac11	208	28	0x00001c20	4	4	0x000004d5|memset.obj|_memset|4294967295	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x00003ccb|list.obj|_vListInitialiseItem|4	0x00003c03|port.obj|_pxPortInitialiseStack|12	0
+0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00000001	7	4	0x00000e5c	1	1	0x00003c7f|port.obj|_vPortDISABLE_SYSCALL_INTERRUPT|4	0
+0x000056c8|task_LED1.obj|_task_LED1|4	0x00000001	70	4	0x00003abc	3	3	0x0000533d|r_cg_intc.obj|_R_INTC0_Start|4	0x00005344|r_cg_intc.obj|_U_INTC0_Wait|4	0x00004552|tasks.obj|_vTaskDelay|6	0
+0x00000357|portasm.obj|_vPortFreeRTOSInterruptCommonHandler_C|4294967295	0x00000002	0	4294967295	0x00005f60	0	0	0
+0x00003b37|heap_4.obj|_vPortFree|10	0x00000001	115	10	0x00000c44	4	4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0x000045e9|tasks.obj|_vTaskSuspendAll|4	0x00003baa|heap_4.obj|_prvInsertBlockIntoFreeList@1|10	0x000045ed|tasks.obj|_xTaskResumeAll|8	0
+0x00004577|tasks.obj|_vTaskStartScheduler|16	0x00000001	114	16	0x00001eb0	6	6	0x00003a9b|freertos_start.obj|_vApplicationGetIdleTaskMemory|6	0x00004346|tasks.obj|_xTaskCreateStatic|30	0x00004d68|timers.obj|_xTimerCreateTimerTask|14	0x00003c7f|port.obj|_vPortDISABLE_SYSCALL_INTERRUPT|4	0x00003c6f|port.obj|_xPortStartScheduler|4	0x00003a5f|freertos_start.obj|_vAssertCalled|8	0
+0x000049f2|tasks.obj|_prvResetNextTaskUnblockTime@1|4	0x00000011	25	4	0x000025cc	0	0	0
+0x00004d04|tasks.obj|_prvAddCurrentTaskToDelayedList@1|10	0x00000011	100	10	0x00002930	3	3	0x00003d47|list.obj|_uxListRemove|6	0x00003cf6|list.obj|_vListInsert|12	0x00003cd0|list.obj|_vListInsertEnd|10	0
+0x00005265|r_cg_cgc.obj|_R_CGC_Create|4	0x00000001	23	4	0x000030d0	0	0	0
+0x00005570|rl78g14_fpb_main.obj|_main_task|4	0x00000001	3	4	0x00003864	0	0	0
+0x0000570e|UART3.obj|_u_uart3_init_bf|4	0x00000001	18	4	0x00003b30	2	2	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x00003940|cstart.obj|_INIT_BSS|4	0x00000002	0	4	0x000006d4	0	0	0
+0x00003988|resetprg.obj|_PowerON_Reset_PC|4	0x030ab401	15	4	0x00000734	5	5	0x00005260|r_systeminit.obj|_hdwinit|4	0x00003940|cstart.obj|_INIT_BSS|4	0x0000395f|cstart.obj|_INIT_DATA|4	0x0000523b|r_main.obj|_main|4	0x00003986|cstart.obj|_exit|4	0
+0x00003afa|freertos_start.obj|_xTaskNotifyFromISR_R_Helper|8	0x6f8c1401	45	8	0x00000b58	2	2	0x00004b2f|tasks.obj|_xTaskGenericNotifyFromISR|18	0x000047a1|tasks.obj|_vTaskSwitchContext|14	0
+0x00003ccb|list.obj|_vListInitialiseItem|4	0x00000001	5	4	0x00000ef4	0	0	0
+0x0000045a|r_cg_serial_user.obj|__r_uart3_interrupt_send@1|4	0x00000011	39	4	0x00003758	2	2	0x00005560|r_cg_serial.obj|_U_UART3_Send_Stop|4	0x00003ad5|freertos_start.obj|_vTaskNotifyGiveFromISR_R_Helper|8	0
+0x00000481|r_cg_serial_user.obj|_u_wdt_interrupt@1|14	0x00000031	22	14	0x000037ec	0	0	0
+0x000008ae|_REL_fordered_core.obj|__REL_fordered_core|4294967295	0x00000002	0	4294967295	0x00006420	0	0	0
+0x0000395f|cstart.obj|_INIT_DATA|4	0x00000002	0	4	0x000006f4	0	0	0
+0x000039c6|freertos_object_init.obj|_Kernel_Object_init|4	0x00000001	125	4	0x00000800	1	1	0x00004346|tasks.obj|_xTaskCreateStatic|30	0
+0x00003a9b|freertos_start.obj|_vApplicationGetIdleTaskMemory|6	0x00003801	21	6	0x00000a10	0	0	0
+0x00003ab0|freertos_start.obj|_vApplicationGetTimerTaskMemory|6	0x00001801	21	6	0x00000a30	0	0	0
+0x00003ac5|freertos_start.obj|_vPrintString|6	0x00000001	13	6	0x00000a50	3	3	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003997|sim_debugger_console.obj|_sim_debugger_console|4	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
+0x00003ad2|freertos_start.obj|_Processing_Before_Start_Kernel|4	0x00002401	3	4	0x00000ac4	1	1	0x000039c6|freertos_object_init.obj|_Kernel_Object_init|4	0
+0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0x00000001	20	4	0x00000e98	1	1	0x00003c77|port.obj|_vPortENABLE_SYSCALL_INTERRUPT|4	0
+0x0000513b|timers.obj|_prvCheckForValidListAndQueue@1|4	0x030c7011	60	4	0x00002e88	4	4	0x00003c9f|port.obj|_vPortENTER_CRITICAL|4	0x00003cba|list.obj|_vListInitialise|4	0x00003de2|queue.obj|_xQueueGenericCreateStatic|16	0x00003ca6|port.obj|_vPortEXIT_CRITICAL|4	0
