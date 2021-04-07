@@ -122,7 +122,7 @@ void vStartTaskNotifyTask( void  )
 				 &xTaskToNotify ); /* Used to pass a handle to the task out is needed, otherwise set to NULL. */
 
 	/* Pseudo seed the random number generator. */
-	uxNextRand = ( size_t ) prvRand;
+	uxNextRand = ( uint32_t ) ( uintptr_t ) prvRand;
 }
 /*-----------------------------------------------------------*/
 
@@ -727,6 +727,6 @@ const uint32_t uxMultiplier = ( uint32_t ) 0x015a4e35, uxIncrement = ( uint32_t 
 
 	/* Utility function to generate a pseudo random number. */
 	uxNextRand = ( uxMultiplier * uxNextRand ) + uxIncrement;
-	return( ( uxNextRand >> 16 ) & ( ( size_t ) 0x7fff ) );
+	return( ( UBaseType_t ) ( ( uxNextRand >> 16 ) & ( ( uint32_t ) 0x7fff ) ) );
 }
 /*-----------------------------------------------------------*/

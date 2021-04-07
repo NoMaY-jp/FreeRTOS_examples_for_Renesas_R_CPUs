@@ -63,7 +63,7 @@
                             							
                             <option id="com.renesas.cdt.managedbuild.gcc.core.option.optimization.functionsections.1847643954" name="Function sections (-ffunction-sections)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.optimization.functionsections" useByScannerDiscovery="true" value="true" valueType="boolean"/>
                             							
-                            <option id="com.renesas.cdt.managedbuild.gcc.core.option.debug.warnStackSize.1250737843" name="Warn if stack size exceeds the limit, in bytes (-Wstack-usage)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.debug.warnStackSize" useByScannerDiscovery="false" value="100" valueType="string"/>
+                            <option id="com.renesas.cdt.managedbuild.gcc.core.option.debug.warnStackSize.1250737843" name="Warn if stack size exceeds the limit, in bytes (-Wstack-usage)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.debug.warnStackSize" useByScannerDiscovery="false" value="140" valueType="string"/>
                             							
                             <option id="com.renesas.cdt.managedbuild.gcc.core.option.warnings.allwarn.809828919" name="Enable all warnings (-Wall)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.warnings.allwarn" useByScannerDiscovery="true" value="true" valueType="boolean"/>
                             							
@@ -89,7 +89,7 @@
                             							
                             <option id="com.renesas.cdt.managedbuild.gcc.core.option.warnings.strictprototypes.600624521" name="Warn if a function has no argument type (-Wstrict-prototypes)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.warnings.strictprototypes" useByScannerDiscovery="true" value="true" valueType="boolean"/>
                             							
-                            <option id="com.renesas.cdt.managedbuild.gcc.core.option.warnings.badfunctioncast.950620017" name="Warn if a cast is wrong (-Wbad-function-cast)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.warnings.badfunctioncast" useByScannerDiscovery="true" value="true" valueType="boolean"/>
+                            <option id="com.renesas.cdt.managedbuild.gcc.core.option.warnings.badfunctioncast.950620017" name="Warn if a cast is wrong (-Wbad-function-cast)" superClass="com.renesas.cdt.managedbuild.gcc.core.option.warnings.badfunctioncast" useByScannerDiscovery="true" value="false" valueType="boolean"/>
                             							
                             <option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.renesas.cdt.managedbuild.gcc.core.option.warnings.otherFlags.1730765873" name="Other Flags" superClass="com.renesas.cdt.managedbuild.gcc.core.option.warnings.otherFlags" useByScannerDiscovery="false" valueType="stringList">
                                 								
