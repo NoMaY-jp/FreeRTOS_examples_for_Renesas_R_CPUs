@@ -1,6 +1,8 @@
 /*
- * FreeRTOS Kernel V10.4.3
- * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * SPDX-License-Identifier: MIT
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -176,7 +178,7 @@ static void vPortYield( void )
 /* *INDENT-ON* */
 
 #define portYIELD()                                       vPortYield()
-#define portYIELD_FROM_ISR( x )                           if( ( x ) != pdFALSE ) portYIELD()
+#define portYIELD_FROM_ISR( x )                           do { if( ( x ) != pdFALSE ) portYIELD(); } while( 0 )
 
 /* These macros should not be called directly, but through the
  * taskENTER_CRITICAL() and taskEXIT_CRITICAL() macros.  An extra check is
@@ -233,6 +235,30 @@ extern void vTaskExitCritical( void );
 
 /* Definition to allow compatibility with existing FreeRTOS Demo using flop.c. */
 #define portTASK_USES_FLOATING_POINT()    vPortTaskUsesDPFPU()
+
+/*-----------------------------------------------------------*/
+
+/* Checks whether the current execution context is interrupt.
+ * Return pdTRUE if the current execution context is interrupt,
+ * pdFALSE otherwise. */
+#pragma inline xPortIsInsideInterrupt
+static BaseType_t xPortIsInsideInterrupt( void )
+{
+    /* When the user stack pointer is used, the context is not interrupt.
+     * When the interrupt stack pointer is used, the context is interrupt.
+     * Don't call this function before the scheduler has started because
+     * this function always returns pdTRUE before the timing. */
+    return ( get_psw() & 0x00020000 /* PSW.U */ ) != 0 ? pdFALSE : pdTRUE;
+}
+
+/*-----------------------------------------------------------*/
+
+#pragma inline_asm vPortMemoryBarrier
+static void vPortMemoryBarrier( void )
+{
+}
+
+#define portMEMORY_BARRIER()    vPortMemoryBarrier()
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus

@@ -1,9 +1,9 @@
 ﻿<CubeSuiteProject>
-  <ProductVersion>9.04.00.00</ProductVersion>
+  <ProductVersion>9.06.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>9.4</FileVersion>
+      <FileVersion>9.6</FileVersion>
       <ProjectGuid>e4273b99-1a26-4344-a4c9-23e0249a53c2</ProjectGuid>
       <ProjectItemGuid>4383b424-c21b-4ce9-b8e1-16a5757c589c</ProjectItemGuid>
       <FileCategoryGuid>fd4185a5-5fcd-4bc6-8caf-a515c94051dd</FileCategoryGuid>
@@ -1991,7 +1991,7 @@
       <GeneralOptionBaseAddressRegister-0>None</GeneralOptionBaseAddressRegister-0>
       <GeneralOptionPatch-0>None</GeneralOptionPatch-0>
       <GeneralOptionSaveAcc-0>False</GeneralOptionSaveAcc-0>
-      <LastCompilerVersion-0>V3.02.00</LastCompilerVersion-0>
+      <LastCompilerVersion-0>V3.03.00</LastCompilerVersion-0>
     </Instance>
     <Instance Guid="95a63257-4aa7-40c0-a74a-7991543b099b">
       <COptionLangC-DefaultValue>C</COptionLangC-DefaultValue>
@@ -2096,6 +2096,7 @@
       <COptionCheck-DefaultValue>No</COptionCheck-DefaultValue>
       <COptionFloatOrder-DefaultValue>False</COptionFloatOrder-DefaultValue>
       <COptionIncode-DefaultValue>Sjis</COptionIncode-DefaultValue>
+      <COptionBranchChaining-DefaultValue>None</COptionBranchChaining-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
       <TimeTagModified--0>-8586075486978517108</TimeTagModified--0>
       <COptionLangC-0>C99</COptionLangC-0>
@@ -2221,6 +2222,7 @@ src\FreeRTOS_Demo
       <COptionCheck-0>No</COptionCheck-0>
       <COptionFloatOrder-0>False</COptionFloatOrder-0>
       <COptionIncode-0>Utf8</COptionIncode-0>
+      <COptionBranchChaining-0>None</COptionBranchChaining-0>
     </Instance>
     <Instance Guid="5ad1746c-d03e-4610-a91f-aaa4fb37bc10">
       <AsmOptionChkpm-DefaultValue>False</AsmOptionChkpm-DefaultValue>
@@ -2482,6 +2484,7 @@ D_1=R_1
       <HexOptionCrcType-DefaultValue>Ccitt</HexOptionCrcType-DefaultValue>
       <HexOptionCrcInitialValue-DefaultValue />
       <HexOptionCrcEndian-DefaultValue>None</HexOptionCrcEndian-DefaultValue>
+      <HexOptionVerboseCrc-DefaultValue>False</HexOptionVerboseCrc-DefaultValue>
       <HexOptionEndRecord-DefaultValue>None</HexOptionEndRecord-DefaultValue>
       <LinkOptionS9-DefaultValue>False</LinkOptionS9-DefaultValue>
       <HexOptionCreateUnfilledArea-DefaultValue>False</HexOptionCreateUnfilledArea-DefaultValue>
@@ -2519,6 +2522,7 @@ D_1=R_1
       <HexOptionCrcType-0>Ccitt</HexOptionCrcType-0>
       <HexOptionCrcInitialValue-0 />
       <HexOptionCrcEndian-0>None</HexOptionCrcEndian-0>
+      <HexOptionVerboseCrc-0>False</HexOptionVerboseCrc-0>
       <HexOptionEndRecord-0>None</HexOptionEndRecord-0>
       <LinkOptionS9-0>False</LinkOptionS9-0>
       <HexOptionCreateUnfilledArea-0>False</HexOptionCreateUnfilledArea-0>
@@ -2657,6 +2661,7 @@ D_1=R_1
       <LbgOptionSimpleFloatConv-DefaultValue>False</LbgOptionSimpleFloatConv-DefaultValue>
       <LbgOptionFpu-DefaultValue>Fpu</LbgOptionFpu-DefaultValue>
       <LbgOptionFloatOrder-DefaultValue>False</LbgOptionFloatOrder-DefaultValue>
+      <LbgOptionBranchChaining-DefaultValue>None</LbgOptionBranchChaining-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
       <TimeTagModified--0>-8586002171725471385</TimeTagModified--0>
       <LbgOptionLanguage-0>C99</LbgOptionLanguage-0>
@@ -2723,6 +2728,7 @@ D_1=R_1
       <LbgOptionSimpleFloatConv-0>False</LbgOptionSimpleFloatConv-0>
       <LbgOptionFpu-0>Fpu</LbgOptionFpu-0>
       <LbgOptionFloatOrder-0>False</LbgOptionFloatOrder-0>
+      <LbgOptionBranchChaining-0>None</LbgOptionBranchChaining-0>
     </Instance>
     <Instance Guid="981806ad-5d7a-404e-84c8-ae18cbb37112">
       <LinkOrder-0>0</LinkOrder-0>

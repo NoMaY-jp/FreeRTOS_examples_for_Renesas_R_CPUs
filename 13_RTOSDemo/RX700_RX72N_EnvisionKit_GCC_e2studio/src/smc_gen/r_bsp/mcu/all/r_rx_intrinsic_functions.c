@@ -842,7 +842,18 @@ void R_BSP_SetDECNT(uint32_t data)
     R_BSP_ASM_INTERNAL_USED(data)
 
     R_BSP_ASM_BEGIN
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+    /*
+    * The following code is a workaround for an internal typo of GNURX 8.3.0.202102.
+    * https://llvm-gcc-renesas.com/question/gnurx-8-3-0-202102-doesnt-recognize-decnt-register-rxv3/#li-comment-374
+    */
+    R_BSP_ASM(    MVTDC   R1, DCENT    )
+#else
+    /*
+    * The following code is correct but this code causes a compile error when using the above version of GNURX.
+    */
     R_BSP_ASM(    MVTDC   R1, DECNT    )
+#endif
     R_BSP_ASM_END
 } /* End of function R_BSP_SetDECNT() */
 
@@ -859,7 +870,18 @@ void bsp_get_decnt(uint32_t *ret)
 
     R_BSP_ASM_BEGIN
     R_BSP_ASM(    PUSH.L     R2           )
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+    /*
+    * The following code is a workaround for an internal typo of GNURX 8.3.0.202102.
+    * https://llvm-gcc-renesas.com/question/gnurx-8-3-0-202102-doesnt-recognize-decnt-register-rxv3/#li-comment-374
+    */
+    R_BSP_ASM(    MVFDC      DCENT, R2    )
+#else
+    /*
+    * The following code is correct but this code causes a compile error when using the above version of GNURX.
+    */
     R_BSP_ASM(    MVFDC      DECNT, R2    )
+#endif
     R_BSP_ASM(    MOV.L      R2, [R1]     )
     R_BSP_ASM(    POP        R2           )
     R_BSP_ASM_END

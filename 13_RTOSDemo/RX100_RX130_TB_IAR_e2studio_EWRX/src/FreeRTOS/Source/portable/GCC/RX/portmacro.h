@@ -1,6 +1,8 @@
 /*
- * FreeRTOS Kernel V10.4.3
- * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * SPDX-License-Identifier: MIT
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -171,7 +173,7 @@ __asm volatile                  \
 )
 /* *INDENT-ON* */
 
-#define portYIELD_FROM_ISR( x )                           if( ( x ) != pdFALSE ) portYIELD()
+#define portYIELD_FROM_ISR( x )                           do { if( ( x ) != pdFALSE ) portYIELD(); } while( 0 )
 
 /* These macros should not be called directly, but through the
  * taskENTER_CRITICAL() and taskEXIT_CRITICAL() macros.  An extra check is
@@ -230,6 +232,24 @@ void vPortSetIPL( uint32_t ulNewIPL ) __attribute__( ( naked ) );
 
 /* Definition to allow compatibility with existing FreeRTOS Demo using flop.c. */
 #define portTASK_USES_FLOATING_POINT()    vPortTaskUsesDPFPU()
+
+/*-----------------------------------------------------------*/
+
+/* Checks whether the current execution context is interrupt.
+ * Return pdTRUE if the current execution context is interrupt,
+ * pdFALSE otherwise. */
+__inline __attribute__( ( always_inline ) ) static BaseType_t xPortIsInsideInterrupt( void )
+{
+    /* When the user stack pointer is used, the context is not interrupt.
+     * When the interrupt stack pointer is used, the context is interrupt.
+     * Don't call this function before the scheduler has started because
+     * this function always returns pdTRUE before the timing. */
+    return ( __builtin_rx_mvfc( 0x0 /* PSW */ ) & 0x00020000 /* PSW.U */ ) != 0 ? pdFALSE : pdTRUE;
+}
+
+/*-----------------------------------------------------------*/
+
+#define portMEMORY_BARRIER()    __asm volatile ( "" ::: "memory" )
 
 /* *INDENT-OFF* */
 #ifdef __cplusplus

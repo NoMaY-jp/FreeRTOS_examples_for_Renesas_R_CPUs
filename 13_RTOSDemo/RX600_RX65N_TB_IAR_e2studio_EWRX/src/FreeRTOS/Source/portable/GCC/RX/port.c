@@ -1,6 +1,8 @@
 /*
- * FreeRTOS Kernel V10.4.3
- * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * SPDX-License-Identifier: MIT
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -111,6 +113,16 @@
 static void prvStartFirstTask( void ) __attribute__( ( naked ) );
 
 /*
+ * Used to catch tasks that attempt to return from their implementing function.
+ */
+static void prvTaskExitError( void ) __attribute__( ( naked, noinline ) );
+
+/*
+ * Force an assert.
+ */
+static void prvForceAssert( void ) __attribute__( ( noinline ) );
+
+/*
  * Software interrupt handler.  Performs the actual context switch (saving and
  * restoring of registers).  Written in asm code as direct register access is
  * required.
@@ -124,7 +136,7 @@ static void prvStartFirstTask( void ) __attribute__( ( naked ) );
 
     void vSoftwareInterruptISR( void ) __attribute__( ( naked ) );
 
-#endif
+#endif /* if ( configINCLUDE_PLATFORM_H_INSTEAD_OF_IODEFINE_H == 1 ) */
 
 /*
  * The tick ISR handler.  The peripheral used is configured by the application
@@ -139,7 +151,7 @@ static void prvStartFirstTask( void ) __attribute__( ( naked ) );
 
     void vTickISR( void ) __attribute__( ( interrupt ) );
 
-#endif
+#endif /* if ( configINCLUDE_PLATFORM_H_INSTEAD_OF_IODEFINE_H == 1 ) */
 
 /*-----------------------------------------------------------*/
 
@@ -167,7 +179,12 @@ StackType_t * pxPortInitialiseStack( StackType_t * pxTopOfStack,
 {
     /* R0 is not included as it is the stack pointer. */
 
-    *pxTopOfStack = 0x00;
+    /* Prevent the debugger from messing up unwinding of the stack. */
+    *pxTopOfStack = ( StackType_t ) 0x0;
+    pxTopOfStack--;
+
+    /* '+ 1 ' is a workaround for preventing rx-elf-gdb from messing up. */
+    *pxTopOfStack = ( ( StackType_t ) prvTaskExitError ) + 1;
     pxTopOfStack--;
     *pxTopOfStack = portINITIAL_PSW;
     pxTopOfStack--;
@@ -332,6 +349,24 @@ StackType_t * pxPortInitialiseStack( StackType_t * pxTopOfStack,
 }
 /*-----------------------------------------------------------*/
 
+static void prvTaskExitError( void )
+{
+    /* A function that implements a task must not exit or attempt to return to
+     * its caller as there is nothing to return to.  If a task wants to exit it
+     * should instead call vTaskDelete( NULL ).
+     *
+     * Artificially force an assert() to be triggered if configASSERT() is
+     * defined, then stop here so application writers can catch the error. */
+
+    /* Adding NOP is a workaround to prevent rx-elf-gdb from messing up. */
+    portNOP();
+
+    /* Any function call other than portNOP() should not be inlined in this
+     * function to ensure the address of here is 'prvTaskExitError + 1'. */
+    prvForceAssert();
+}
+/*-----------------------------------------------------------*/
+
 #if ( portUSE_TASK_DPFPU_SUPPORT == 1 )
 
     void vPortTaskUsesDPFPU( void )
@@ -378,7 +413,18 @@ void vPortEndScheduler( void )
 {
     /* Not implemented in ports where there is nothing to return to.
      * Artificially force an assert. */
+    prvForceAssert();
+}
+/*-----------------------------------------------------------*/
+
+static void prvForceAssert( void )
+{
     configASSERT( pxCurrentTCB == NULL );
+    portDISABLE_INTERRUPTS();
+
+    for( ; ; )
+    {
+    }
 }
 /*-----------------------------------------------------------*/
 
@@ -414,7 +460,16 @@ portASM_BEGIN
     #elif ( portUSE_TASK_DPFPU_SUPPORT == 2 )
 
         /* Restore the DPFPU context. */
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+        /* The following code is a workaround for an internal typo of
+         * GNURX 8.3.0.202102.
+         * https://llvm-gcc-renesas.com/question/gnurx-8-3-0-202102-doesnt-recognize-decnt-register-rxv3/#li-comment-374 */
+        portASM( DPOPM.L    DPSW-DCENT              )
+#else
+        /* The following code is correct but this code causes a compile error
+         * when using the above version of GNURX. */
         portASM( DPOPM.L    DPSW-DECNT              )
+#endif
         portASM( DPOPM.D    DR0-DR15                )
 
     #endif /* portUSE_TASK_DPFPU_SUPPORT */
@@ -574,7 +629,16 @@ portASM_BEGIN
         /* Save the DPFPU context, if any. */
         portASM( BEQ.B      portASM_LAB_NEXT( vSoftwareInterruptISR_1 ) )
         portASM( DPUSHM.D   DR0-DR15                    )
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+        /* The following code is a workaround for an internal typo of
+         * GNURX 8.3.0.202102.
+         * https://llvm-gcc-renesas.com/question/gnurx-8-3-0-202102-doesnt-recognize-decnt-register-rxv3/#li-comment-374 */
+        portASM( DPUSHM.L   DPSW-DCENT                  )
+#else
+        /* The following code is correct but this code causes a compile error
+         * when using the above version of GNURX. */
         portASM( DPUSHM.L   DPSW-DECNT                  )
+#endif
         portASM_LAB( vSoftwareInterruptISR_1:           )
 
         /* Save ulPortTaskHasDPFPUContext itself. */
@@ -584,7 +648,11 @@ portASM_BEGIN
 
         /* Save the DPFPU context, always. */
         portASM( DPUSHM.D   DR0-DR15                    )
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+        portASM( DPUSHM.L   DPSW-DCENT                  )
+#else
         portASM( DPUSHM.L   DPSW-DECNT                  )
+#endif
 
     #endif /* portUSE_TASK_DPFPU_SUPPORT */
 
@@ -627,14 +695,22 @@ portASM_BEGIN
 
         /* Restore the DPFPU context, if any. */
         portASM( BEQ.B      portASM_LAB_NEXT( vSoftwareInterruptISR_2 ) )
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+        portASM( DPOPM.L    DPSW-DCENT                  )
+#else
         portASM( DPOPM.L    DPSW-DECNT                  )
+#endif
         portASM( DPOPM.D    DR0-DR15                    )
         portASM_LAB( vSoftwareInterruptISR_2:           )
 
     #elif ( portUSE_TASK_DPFPU_SUPPORT == 2 )
 
         /* Restore the DPFPU context, always. */
+#if defined(USE_PATCH_FOR_GNURX_202102_INTERNAL_TYPO)
+        portASM( DPOPM.L    DPSW-DCENT                  )
+#else
         portASM( DPOPM.L    DPSW-DECNT                  )
+#endif
         portASM( DPOPM.D    DR0-DR15                    )
 
     #endif /* portUSE_TASK_DPFPU_SUPPORT */

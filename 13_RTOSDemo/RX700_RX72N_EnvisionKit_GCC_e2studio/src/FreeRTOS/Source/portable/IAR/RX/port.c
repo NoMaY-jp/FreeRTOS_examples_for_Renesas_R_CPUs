@@ -1,6 +1,8 @@
 /*
- * FreeRTOS Kernel V10.4.3
- * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS Kernel <DEVELOPMENT BRANCH>
+ * Copyright (C) 2021 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ *
+ * SPDX-License-Identifier: MIT
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -111,6 +113,16 @@
 static void prvStartFirstTask( void );
 
 /*
+ * Used to catch tasks that attempt to return from their implementing function.
+ */
+static void prvTaskExitError( void );
+
+/*
+ * Force an assert.
+ */
+static void prvForceAssert( void );
+
+/*
  * Software interrupt handler.  Performs the actual context switch (saving and
  * restoring of registers).  Written in asm code as direct register access is
  * required.
@@ -149,7 +161,12 @@ StackType_t * pxPortInitialiseStack( StackType_t * pxTopOfStack,
 {
     /* R0 is not included as it is the stack pointer. */
 
-    *pxTopOfStack = 0x00;
+    /* Prevent the debugger from messing up unwinding of the stack. */
+    *pxTopOfStack = ( StackType_t ) 0x0;
+    pxTopOfStack--;
+
+    /* '+ 1 ' is a workaround for preventing rx-elf-gdb from messing up. */
+    *pxTopOfStack = ( ( StackType_t ) prvTaskExitError ) + 1;
     pxTopOfStack--;
     *pxTopOfStack = portINITIAL_PSW;
     pxTopOfStack--;
@@ -314,6 +331,25 @@ StackType_t * pxPortInitialiseStack( StackType_t * pxTopOfStack,
 }
 /*-----------------------------------------------------------*/
 
+#pragma inline = never
+static void prvTaskExitError( void )
+{
+    /* A function that implements a task must not exit or attempt to return to
+     * its caller as there is nothing to return to.  If a task wants to exit it
+     * should instead call vTaskDelete( NULL ).
+     *
+     * Artificially force an assert() to be triggered if configASSERT() is
+     * defined, then stop here so application writers can catch the error. */
+
+    /* Adding NOP is a workaround to prevent rx-elf-gdb from messing up. */
+    portNOP();
+
+    /* Any function call other than portNOP() should not be inlined in this
+     * function to ensure the address of here is 'prvTaskExitError + 1'. */
+    prvForceAssert();
+}
+/*-----------------------------------------------------------*/
+
 #if ( portUSE_TASK_DPFPU_SUPPORT == 1 )
 
     void vPortTaskUsesDPFPU( void )
@@ -360,10 +396,19 @@ void vPortEndScheduler( void )
 {
     /* Not implemented in ports where there is nothing to return to.
      * Artificially force an assert. */
-    configASSERT( pxCurrentTCB == NULL );
+    prvForceAssert();
+}
+/*-----------------------------------------------------------*/
 
-    /* The following line is just to prevent the symbol getting optimised away. */
-    ( void ) vTaskSwitchContext();
+#pragma inline = never
+static void prvForceAssert( void )
+{
+    configASSERT( pxCurrentTCB == NULL );
+    portDISABLE_INTERRUPTS();
+
+    for( ; ; )
+    {
+    }
 }
 /*-----------------------------------------------------------*/
 
@@ -463,6 +508,7 @@ portASM_END
 }
 /*-----------------------------------------------------------*/
 
+#pragma required = vTaskSwitchContext
 #pragma vector = _VECT( _ICU_SWINT )
 __interrupt void vSoftwareInterruptISR( void )
 {
